@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import ElementUI from 'element-ui'
-import './sass/el-mytheme.scss'
-import './sass/base.scss'
+// import './sass/el-mytheme.scss'
+// import './sass/base.scss'
 import App from './App.vue'
 
 

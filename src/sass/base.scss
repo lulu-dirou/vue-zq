@@ -1,0 +1,90 @@
+//********************************
+//
+// colors
+//
+//********************************
+.font-primary             {@include theme_font(primary);}
+.font-primary-light       {@include theme_font(primary-light);}
+.font-primary-dark        {@include theme_font(primary-dark);}
+.font-info                {@include theme_font(info);}
+.font-success             {@include theme_font(success);}
+.font-warning             {@include theme_font(warning);}
+.font-danger              {@include theme_font(danger);}
+.font-neutral             {@include theme_font(neutral);}
+.font-neutral-title       {@include theme_font(neutral-title);}
+.font-neutral-disabled    {@include theme_font(neutral-disabled);}
+.font-neutral-border      {@include theme_font(neutral-border);}
+.font-neutral-divider     {@include theme_font(neutral-divider);}
+
+.bg-primary               {@include theme_bg(primary);}
+.bg-primary-light         {@include theme_bg(primary-light);}
+.bg-primary-dark          {@include theme_bg(primary-dark);}
+.bg-info                  {@include theme_bg(info);}
+.bg-success               {@include theme_bg(success);}
+.bg-warning               {@include theme_bg(warning);}
+.bg-danger                {@include theme_bg(danger);}
+.bg-neutral               {@include theme_bg(neutral);}
+.bg-neutral-title         {@include theme_bg(neutral-title);}
+.bg-neutral-disabled      {@include theme_bg(neutral-disabled);}
+.bg-neutral-border        {@include theme_bg(neutral-border);}
+.bg-neutral-divider       {@include theme_bg(neutral-divider);}
+
+
+
+//********************************
+//
+// common
+//
+//********************************
+*{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-style: normal;
+  text-decoration: none;
+  outline: none;
+  box-sizing: border-box;
+}
+.flex{
+  display: inline-flex;
+  display: -webkit-flex;
+  display: flex;
+}
+.flex-middle{
+  display :flex; 
+  display:-webkit-flex; 
+  align-items:center; 
+  -webkit-align-items:center; 
+  justify-content:center ;
+}
+.clear{
+  &:before,&:after{ display:table;content:" ";}
+  &:after {clear:both;}
+  *zoom:1;
+}
+// 禁止长按选中
+*:not(input, textarea) {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+html,body {
+  height: 100%;
+}
+body {
+  @include theme_font(neutral-content);
+  font-size: $font-size-df;
+}
+a {
+  @include theme_font(neutral);
+  &:hover { @include theme_font(primary) };
+}
+
+
+
+
+
+
