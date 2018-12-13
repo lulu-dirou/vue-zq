@@ -7,12 +7,12 @@ const instance = new Router({
   mode: 'history',
   routes: [
     {
-      path: "/home",
-      component: () => import('./views/home.vue')
+      path: "/aaa",
+      component: () => import('./views/aaa.vue')
     },
     {
-      path: "/",//默认显示
-      redirect: "/home"
+      path: "/",//重定向，默认显示
+      redirect: "/aaa"
     }
   ]
 })

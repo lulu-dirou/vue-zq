@@ -1,38 +1,43 @@
 <template>
   <div id="app">
-indexindexindexindexindexindexindexindexindexindexindexindex
+    <the-head></the-head>
+    <the-menu></the-menu>
+    <div class="theContent clear"> 
+      <router-view></router-view>
+    </div>
+    <the-footer></the-footer>
   </div>
 </template>
 
 <script>
+import TheHead from '../../components/TheHead.vue'
+import TheMenu from '../../components/TheMenu.vue'
+import TheFooter from '../../components/TheFooter.vue'
 
 export default {
-  name: 'app',
   components: {
+    'the-head': TheHead,
+    'the-menu': TheMenu,
+    'the-footer': TheFooter,
   },
   data: function(){
+    return {
+    }
   },
   methods: {
+  },
+  created: function(){
+    //默认加载主题
+    window.document.documentElement.setAttribute('data-theme', 'theme')
+    //测试页面是否存在token
+    if(this.$store.state.Member.token){
+      console.log("token："+this.$store.state.Member.token)
+    }else{
+      console.log("没有token！")
+    }
   }
 }
 </script>
 
 <style lang="scss">
-
-
-#app {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-    margin-top: 60px;
-    .el-row {
-      background-color: $theme-primary-dark;
-      .el-button {
-    @include shadow;
-
-      }
-    }
-}
 </style>
