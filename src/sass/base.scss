@@ -75,7 +75,7 @@ html,body {
   height: 100%;
 }
 body {
-  @include theme_font(neutral-content);
+  @include theme_font(neutral);
   font-size: $font-size-df;
 }
 a {

@@ -1,12 +1,23 @@
 <template>
   <header class="theHead">
-    <div class="box flex-middle">
+    <div class="box clear">
       <div class="logo">
         <img src="../common/images/logo.png" alt="500*80">
       </div>
-      <div class="user flex-middle" v-if="showMsg">
-        <el-button type="warning" plain @click="ModelCtr">登录</el-button>
-        <el-button plain @click="ModelReg">注册</el-button>
+      <div class="gun">
+        <the-home-gun></the-home-gun>
+      </div>
+      <div class="user" v-if="showMsg">
+       <el-popover
+          placement="top-start"
+          title="微信公众号"
+          width="200"
+          trigger="hover">
+          <el-button slot="reference" icon="el-icon-mobile-phone" circle plain></el-button>
+          <div>二维码</div>
+        </el-popover>
+        <el-button type="warning" icon="el-icon-location-outline" round plain @click="ModelCtr">登录</el-button>
+        <el-button round plain @click="ModelReg">注册</el-button>
       </div>
       <div class="user flex-middle" v-if="showMsged">
         <span class="img"><img v-bind:src="this.$store.state.Member.userImg"></span>
@@ -33,9 +44,11 @@
 
 <script >
 import Login from './Login.vue'
+import TheHomeGun from './TheHomeGun.vue'
 export default {
   components: {
-    'login':Login,
+    'login': Login,
+    'the-home-gun': TheHomeGun,
   },
   data: function(){
     return {
@@ -99,16 +112,21 @@ export default {
     height: 80px;
     margin: 0 auto;
     .logo {
-      flex: 1;
+      float: left;
       font-size: 0;
       img {
         height: 80px;
       }
     }
+    .gun {
+      float: left;
+      margin-top: 20px;
+    }
     .user {
+      float: right;
+      margin-top: 20px;
       button {
         margin-left: 10px;
-        @include radius(2px);
       }
       span {
         cursor: pointer;

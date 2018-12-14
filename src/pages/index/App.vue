@@ -5,6 +5,7 @@
     <div class="theContent clear"> 
       <router-view></router-view>
     </div>
+    <the-flink></the-flink>
     <the-footer></the-footer>
   </div>
 </template>
@@ -12,12 +13,14 @@
 <script>
 import TheHead from '../../components/TheHead.vue'
 import TheMenu from '../../components/TheMenu.vue'
+import TheFlink from '../../components/TheFlink.vue'
 import TheFooter from '../../components/TheFooter.vue'
 
 export default {
   components: {
     'the-head': TheHead,
     'the-menu': TheMenu,
+    'the-flink': TheFlink,
     'the-footer': TheFooter,
   },
   data: function(){
@@ -40,4 +43,8 @@ export default {
 </script>
 
 <style lang="scss">
+#app {
+  min-width: 1200px;
+  overflow-x: hidden;
+}
 </style>
