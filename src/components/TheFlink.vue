@@ -1,43 +1,45 @@
 <template>
   <div class="theFlink">
-    <el-row :gutter="40">
-      <el-col :span="6">
-        <el-select v-model="value1" @change="getUrl(value1);">
-          <el-option
-            v-for="item in options1"
-            :key="item.label"
-            :label="item.label"
-            :value="item.value"></el-option>
-        </el-select>
-      </el-col>
-      <el-col :span="6">
-        <el-select v-model="value2" @change="getUrl(value2);">
-          <el-option
-            v-for="item in options2"
-            :key="item.label"
-            :label="item.label"
-            :value="item.value"></el-option>
-        </el-select>
-      </el-col>
-      <el-col :span="6">
-        <el-select v-model="value3" @change="getUrl(value3);">
-          <el-option
-            v-for="item in options3"
-            :key="item.label"
-            :label="item.label"
-            :value="item.value"></el-option>
-        </el-select>
-      </el-col>
-      <el-col :span="6">
-        <el-select v-model="value4" @change="getUrl(value4);">
-          <el-option
-            v-for="item in options4"
-            :key="item.label"
-            :label="item.label"
-            :value="item.value"></el-option>
-        </el-select>
-      </el-col>
-    </el-row>
+    <div class="box">
+      <el-row :gutter="40">
+        <el-col :span="6">
+          <el-select v-model="value1" @change="getUrl(value1);">
+            <el-option
+              v-for="item in options1"
+              :key="item.label"
+              :label="item.label"
+              :value="item.value"></el-option>
+          </el-select>
+        </el-col>
+        <el-col :span="6">
+          <el-select v-model="value2" @change="getUrl(value2);">
+            <el-option
+              v-for="item in options2"
+              :key="item.label"
+              :label="item.label"
+              :value="item.value"></el-option>
+          </el-select>
+        </el-col>
+        <el-col :span="6">
+          <el-select v-model="value3" @change="getUrl(value3);">
+            <el-option
+              v-for="item in options3"
+              :key="item.label"
+              :label="item.label"
+              :value="item.value"></el-option>
+          </el-select>
+        </el-col>
+        <el-col :span="6">
+          <el-select v-model="value4" @change="getUrl(value4);">
+            <el-option
+              v-for="item in options4"
+              :key="item.label"
+              :label="item.label"
+              :value="item.value"></el-option>
+          </el-select>
+        </el-col>
+      </el-row>
+    </div>
   </div>
 </template>
 
@@ -103,12 +105,19 @@ export default {
 
 <style lang="scss">
 .theFlink {
-  width: 1200px;
-  margin: 20px auto;
-  .el-select {
-    width: 100%;
-    .el-input .el-select__caret {
-      @include theme_font(neutral);
+  padding: 20px 0;
+  @include theme_bg(neutral-divider);
+  .box {
+    width: 1200px;
+    margin: 0 auto;
+    .el-select {
+      width: 100%;
+      .el-input__inner {
+        @include theme_font(neutral,0.6);
+      }
+      .el-input .el-select__caret {
+        @include theme_font(neutral);
+      }
     }
   }
 }

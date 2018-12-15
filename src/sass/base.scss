@@ -80,7 +80,7 @@ body {
 }
 a {
   @include theme_font(neutral);
-  &:hover { @include theme_font(primary) };
+  &:hover { @include theme_font(primary);};
 }
 
 
