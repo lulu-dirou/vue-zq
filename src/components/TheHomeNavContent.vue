@@ -19,7 +19,7 @@
         <el-row :gutter="20">
           <el-col :span="24">
             <div class="imgSlide">
-              <!-- <the-video></the-video> -->
+              <the-video></the-video>
             </div>
           </el-col>
         </el-row>
@@ -52,11 +52,11 @@
 
 
 <script>
-// import TheVideo from './TheVideo.vue'
+import TheVideo from './TheVideo.vue'
 
 export default {
   components: {
-    // 'the-video': TheVideo,
+    'the-video': TheVideo,
   },
   props: {
   },
