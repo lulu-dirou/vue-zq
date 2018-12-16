@@ -3,12 +3,12 @@
     <div class="fullslide-box">
       <div class="msg-box">
         <the-search class="search"></the-search>
-        <the-home-nav class="homeNav"></the-home-nav>
+        <the-home-nav-content class="homeNavContent"></the-home-nav-content>
       </div>
       <the-fullslide></the-fullslide>
     </div>
     <div class="tab-box">
-      <el-tabs v-model="tabBoxActiveName" @tab-click="handleClick">
+      <el-tabs v-model="tabBoxActiveName">
         <el-tab-pane label="动漫解读" name="1">
           <list-dmjd></list-dmjd>
         </el-tab-pane>
@@ -24,14 +24,14 @@
 <script>
 import TheFullslide from '../../../components/TheFullslide.vue'
 import TheSearch from '../../../components/TheSearch.vue'
-import TheHomeNav from '../../../components/TheHomeNav.vue'
+import TheHomeNavContent from '../../../components/TheHomeNavContent.vue'
 import ListDmjd from '../../../components/ListDmjd.vue'
 
 export default {
   components: {
     'the-fullslide': TheFullslide,
     'the-search': TheSearch,
-    'the-home-nav': TheHomeNav,
+    'the-home-nav-content': TheHomeNavContent,
     'list-dmjd': ListDmjd,
   },
   props: {
