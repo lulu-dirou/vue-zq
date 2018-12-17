@@ -9,6 +9,8 @@
 
 
 <script>
+import ImgUrl from '../common/images/videoImg.jpg'
+import VideoUrl from '../common/images/video.mp4'
 
 export default {
   components: {
@@ -28,9 +30,9 @@ export default {
         fluid: true, // 当true时，Video.js player将拥有流体大小。换句话说，它将按比例缩放以适应其容器。
         sources: [{
           type: "video/mp4",
-          src: "https://media.html5media.info/video.mp4" //url地址
+          src: VideoUrl //url地址
         }],
-        poster: "../../static/images/test.jpg", //你的封面地址
+        poster: ImgUrl, //你的封面地址
         // width: document.documentElement.clientWidth,
         notSupportedMessage: '此视频暂无法播放，请稍后再试', //允许覆盖Video.js无法播放媒体源时显示的默认信息。
         controlBar: {
@@ -65,6 +67,12 @@ export default {
     >.video-js {
       height: 100%;
     }
+  }
+  .vjs-poster {
+    background-size: 100% 100%;
+  }
+  .vjs-custom-skin > .video-js .vjs-big-play-button {
+    font-size: 4em;
   }
 }
 </style>

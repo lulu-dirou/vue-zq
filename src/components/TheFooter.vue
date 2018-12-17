@@ -47,6 +47,26 @@
 
 
 <script>
+export default {
+  components: {
+  },
+  props: {
+  },
+  data: function() {
+    return {
+    }
+  },
+  computed: {
+  },
+  watch: {
+  },
+  methods: {
+  },
+  created: function(){
+  },
+  mounted: function(){
+  }
+}
 </script>
 
 

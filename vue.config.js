@@ -2,6 +2,8 @@
 // 官方vue.config.js 参考文档 https://cli.vuejs.org/zh/config/#css-loaderoptions
 
 module.exports = {
+  // 基本路径
+  baseUrl: './',
   // 多页面
   pages: {
     index: {

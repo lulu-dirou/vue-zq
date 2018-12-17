@@ -45,6 +45,7 @@
 <script >
 import Login from './Login.vue'
 import TheHomeGun from './TheHomeGun.vue'
+
 export default {
   components: {
     'login': Login,
@@ -66,15 +67,18 @@ export default {
       window.document.documentElement.setAttribute('data-theme', 'theme'+vals)
       this.colorCur = val
     },
-    ModelCtr: function(val){
-      if(val == false){
-        this.loginShow = val;
-      }else{
-        this.loginShow = true;
-      }
+    // ModelCtr: function(val){
+    //   if(val == false){
+    //     this.loginShow = val;
+    //   }else{
+    //     this.loginShow = true;
+    //   }
+    // },
+    ModelCtr: function(){
+      this.$router.push({path:'/login'})
     },
     ModelReg: function(){
-      this.$router.push({path:'/member/reg'})
+      this.$router.push({path:'/reg'})
     },
     logouted: function(){
       this.$store.commit('logout');
