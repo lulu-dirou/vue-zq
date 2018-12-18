@@ -1,8 +1,8 @@
 <template>
   <div class="listDmjd">
     <ul class="flex">
-      <li v-for="(list,index) in lists" :key="list.id" class="flex-middle">
-        <div class="img-box"><img :src="lists[index].imgUrl"></div>
+      <li v-for="(list,index) in lists" :key="list.id">
+        <div class="img-box"><img src="../common/images/imgAj.png" class="aj"><img :src="lists[index].imgUrl"></div>
         <div class="msg-box">
           <span class="title"><a href="">{{ lists[index].title }}</a></span>
           <span class="label">{{ lists[index].label }}</span>
@@ -20,8 +20,8 @@ import ImgUrl1 from '../common/images/dmjdFm_1.png'
 import ImgUrl2 from '../common/images/dmjdFm_2.png'
 import ImgUrl3 from '../common/images/dmjdFm_3.png'
 import ImgUrl4 from '../common/images/dmjdFm_4.png'
-import ImgUrl5 from '../common/images/dmjdFm_5.png'
-import ImgUrl6 from '../common/images/dmjdFm_6.png'
+// import ImgUrl5 from '../common/images/dmjdFm_5.png'
+// import ImgUrl6 from '../common/images/dmjdFm_6.png'
 
 export default {
   components: {
@@ -55,18 +55,12 @@ export default {
           label: '动漫图片',
           time: '2018-11-24'
         },
-        {
-          imgUrl: ImgUrl5,
-          title: '佛山市重点品牌展会认定扶持方法政策解读',
-          label: '动漫图片',
-          time: '2018-11-12'
-        },
-        {
-          imgUrl: ImgUrl6,
-          title: '佛山市新引进领军人才安家补贴工作实施细则政策解读',
-          label: '动漫图片',
-          time: '2018-11-06'
-        }
+        // {
+        //   imgUrl: ImgUrl5,
+        //   title: '佛山市重点品牌展会认定扶持方法政策解读',
+        //   label: '动漫图片',
+        //   time: '2018-11-12'
+        // },
       ]
     }
   },
@@ -92,10 +86,10 @@ export default {
     margin-bottom: -10px;
     li {
       position: relative;
-      top: 0;
-      flex: 0 0 32.5%;
-      margin-bottom: 10px;
       padding: 20px;
+      top: 0;
+      flex: 0 0 24%;
+      margin-bottom: 10px;
       background-color: #fff;
       @include transition(0.2s);
       @include radius(2px);
@@ -105,20 +99,22 @@ export default {
         @include shadow(0,0,20px,2px);
       }
       .img-box {
-        flex: 0 0 60px;
-        height: 60px;
-        margin-right: 20px;
+        position: relative;
+        height: 90px;
+        .aj {
+          position: absolute;
+          left: 0;
+          top: 0;
+        }
         img {
           width: 100%;
           height: 100%;
-          @include radius(100px);
+          @include radius(2px);
         }
       }
       .msg-box {
-        margin-right: 20px;
-        justify-content: space-between;
         .title {
-          margin-bottom: 3px;
+          margin: 10px 0;
           @include lines(2);
         }
         .label {

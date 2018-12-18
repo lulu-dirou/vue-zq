@@ -107,6 +107,9 @@ export default {
 
 <style lang="scss">
 .theHomeNavContent {
+  padding: 20px;
+  background-color: #fff;
+  @include shadow(0,0,20px,5px,rgba(#000,0.1));
   .el-row {
     margin-bottom: 20px;
     &:last-child {
@@ -115,7 +118,7 @@ export default {
   }
   .ico-box {
     width: 100%;
-    height: 100px;
+    height: 80px;
     padding: 10px;
     cursor: pointer;
     color: #fff;
@@ -124,7 +127,7 @@ export default {
     // @include shadow(0,0,10px,5px,rgba(#000,0.1));
     i {
       margin: 0 10px;
-      font-size: 60px;
+      font-size: 50px;
       // @include theme_font(primary);
     }
     span {
@@ -148,13 +151,12 @@ export default {
   .imgSlide {
     width: 100%;
     height: 300px;
-    padding: 20px;
-    background-color: #fff;
+    overflow: hidden;
   }
   .hot {
     width: 100%;
-    height: 420px;
-    padding: 20px;
+    height: 400px;
+    padding: 0 20px;
     background-color: #fff;
     .el-tabs__item {
       font-size: $font-size-lgm;
@@ -166,8 +168,6 @@ export default {
   }
   .fcList {
     width: 100%;
-    height: 320px;
-    padding: 0 20px 10px 20px;
     background-color: #fff;
     .el-tabs__item {
       font-size: $font-size-lgm;
@@ -178,11 +178,17 @@ export default {
     }
     .con {
       flex-wrap: wrap;
+      height: 266px;
+      padding-bottom: 1px;
       li {
         display: flex;
         align-items: center;
         flex: 0 0 50%;
-        padding: 10px 0;
+        padding: 12px 10px;
+        margin-bottom: -1px;
+        margin-right: -1px;
+        border: 1px solid #e1e1e1;
+        @include theme_bd(neutral-border);
         .el-button.is-circle { padding: 6px; }
         i {font-size: 26px;}
         em {font-size:12px; margin-left:2px;}

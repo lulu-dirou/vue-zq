@@ -83,7 +83,7 @@ export default {
         text-align: center;
         img {
           max-width: 100%;
-          height: 800px;
+          height: 700px;
         }
       }
     }

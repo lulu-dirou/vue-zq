@@ -7,7 +7,7 @@
         <div class="time-box"><span class="time">{{ lists[index].time }}</span></div>
       </li>
     </ul>
-    <el-button size="small" round plain type="primary">更多</el-button>
+    <div class="more">MORE...</div>
   </div>
 </template>
 
@@ -74,15 +74,16 @@ export default {
 <style lang="scss" scoped>
 .listNews {
   ul {
+    flex: 1;
     li {
       position: relative;
       margin: 15px 0;
       .dot-box {
-        flex: 0 0 20px;
+        flex: 0 0 15px;
         span {
           display: block;
-          width: 6px;
-          height: 6px;
+          width: 5px;
+          height: 5px;
           @include radius(100px);
           @include theme_bg(warning);
         }
@@ -100,6 +101,14 @@ export default {
         }
       }
     }
+  }
+  .more {
+    width: 100%;
+    padding: 5px 0;
+    margin-top: 20px;
+    background-color: #f5f5f5;
+    text-align: center;
+    font-size: $font-size-xs;
   }
 }
 </style>

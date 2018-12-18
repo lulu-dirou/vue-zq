@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="flex">
     <the-head></the-head>
     <the-menu></the-menu>
     <div class="theContent clear"> 
@@ -44,7 +44,13 @@ export default {
 
 <style lang="scss">
 #app {
+  flex-direction: column;
   min-width: 1200px;
+  height: 100%;
   overflow-x: hidden;
+  .theContent {
+    flex: auto;
+    -webkit-flex: 100%;
+  }
 }
 </style>
