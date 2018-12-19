@@ -28,8 +28,31 @@ const instance = new Router({
       component: () => import('./views/member/regDetail.vue')
     },
     {
-      path: "/login",
-      component: () => import('./views/member/login.vue')
+      path: "/policy",
+      component: () => import('./views/policy/child'),
+      children: [
+        {
+          path: "zchb",
+          component: () => import('./views/policy/zchb')
+        },
+        {
+          path: "sbzc",
+          component: () => import('./views/policy/sbzc')
+        },
+        {
+          path: "zcjd",
+          component: () => import('./views/policy/zcjd'),
+        },
+        {
+          path: "zcdy",
+          component: () => import('./views/policy/zcdy'),
+          // meta: { requireAuth: true }
+        },
+        {
+          path: "/",//重定向，默认显示
+          redirect: "zchb"
+        }
+      ]
     },
     {
       path: "/",//默认显示

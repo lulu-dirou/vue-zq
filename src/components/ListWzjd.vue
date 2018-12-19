@@ -9,6 +9,16 @@
           <span class="time">{{ lists[index].time }}</span>
         </div>
       </li>
+      <li class="pagination">
+        <el-pagination
+          @size-change="handleSizeChange"
+          @current-change="handleCurrentChange"
+          :current-page="currentPage"
+          :page-size="100"
+          layout="total, prev, pager, next, jumper"
+          :total="400">
+        </el-pagination>
+      </li>
     </ul>
   </div>
 </template>
@@ -22,6 +32,7 @@ export default {
   },
   data: function() {
     return {
+      currentPage: 1,
       lists : [
         {
           title: '提振民营企业信心营造良好法治环境--全面清理不利明规则更要清理暗规则',
@@ -53,6 +64,12 @@ export default {
   watch: {
   },
   methods: {
+    handleSizeChange(val) {
+      console.log(`每页 ${val} 条`);
+    },
+    handleCurrentChange(val) {
+      console.log(`当前页: ${val}`);
+    }
   },
   created: function(){
   },
@@ -68,6 +85,7 @@ export default {
     li {
       padding: 15px 15px;
       border-bottom: 1px solid #e1e1e1;
+      background-color: #fff;
       @include theme_bd(neutral-divider);
       &:last-child {
         border-bottom: 0;

@@ -3,7 +3,7 @@
 
 module.exports = {
   // 基本路径
-  baseUrl: './',
+  //baseUrl: './',  //设置这个子路由会报错。未解决
   // 多页面
   pages: {
     index: {

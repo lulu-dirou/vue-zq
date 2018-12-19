@@ -10,7 +10,18 @@
         </div>
         <div class="edit-box flex-middle"><i class="iconfont icon-pin" title="收藏"></i></div>
       </li>
+      
     </ul>
+    <div class="pagination">
+      <el-pagination
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
+        :current-page="currentPage"
+        :page-size="100"
+        layout="total, prev, pager, next, jumper"
+        :total="400">
+      </el-pagination>
+    </div>
   </div>
 </template>
 
@@ -30,6 +41,7 @@ export default {
   },
   data: function() {
     return {
+      currentPage: 1,
       lists : [
         {
           imgUrl: ImgUrl1,
@@ -69,6 +81,12 @@ export default {
   watch: {
   },
   methods: {
+    handleSizeChange(val) {
+      console.log(`每页 ${val} 条`);
+    },
+    handleCurrentChange(val) {
+      console.log(`当前页: ${val}`);
+    }
   },
   created: function(){
   },
@@ -143,6 +161,11 @@ export default {
         }
       }
     }
+  }
+  .pagination {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #fff;
   }
 }
 </style>
