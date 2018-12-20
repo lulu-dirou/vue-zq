@@ -47,7 +47,7 @@ export default {
   flex-direction: column;
   min-width: 1200px;
   height: 100%;
-  overflow-x: hidden;
+  // overflow-x: hidden;
   .theContent {
     flex: auto;
     -webkit-flex: 100%;

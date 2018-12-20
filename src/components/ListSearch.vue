@@ -4,6 +4,14 @@
       <input type="text"/>
       <button type="button"><i class="el-icon-search"></i></button>
     </div>
+    <div class="hotWords">
+      <span>热门搜索：</span>
+      <a href="">上市扶持</a>
+      <span>，</span>
+      <a href="">找商铺</a>
+      <span>，</span>
+      <a href="">新企业注册</a>
+    </div>
   </div>
 </template>
 
@@ -51,6 +59,18 @@ export default {
       cursor: pointer;
       @include radius(0 2px 2px 0);
       @include theme_bg(primary);
+    }
+  }
+  .hotWords {
+    padding: 10px 0;
+    text-align: center;
+    span {
+      color: rgba(#fff,0.7);
+      @include text-shadow()
+    }
+    a {
+      color: #fff;
+      @include text-shadow()
     }
   }
 }

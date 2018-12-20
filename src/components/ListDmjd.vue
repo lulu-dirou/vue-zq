@@ -1,7 +1,7 @@
 <template>
   <div class="listDmjd">
-    <ul class="flex">
-      <li v-for="(list,index) in lists" :key="list.id">
+    <!-- <ul class="flex">
+      <li v-for="(list,index) in filterLists" :key="list.id">
         <div class="img-box"><img src="../common/images/imgAj.png" class="aj"><img :src="lists[index].imgUrl"></div>
         <div class="msg-box">
           <span class="title"><a href="">{{ lists[index].title }}</a></span>
@@ -11,8 +11,22 @@
         <div class="edit-box flex-middle"><i class="iconfont icon-pin" title="收藏"></i></div>
       </li>
       
+    </ul> -->
+
+    <ul class="clear">
+      <li v-for="(list,index) in filterLists" :key="list.id">
+        <div class="li-box">
+          <div class="img-box"><img src="../common/images/imgAj.png" class="aj"><img :src="lists[index].imgUrl"></div>
+          <div class="msg-box">
+            <span class="title"><a href="">{{ lists[index].title }}</a></span>
+            <span class="label">{{ lists[index].label }}</span>
+            <span class="time">{{ lists[index].time }}</span>
+          </div>
+          <div class="edit-box flex-middle"><i class="iconfont icon-pin" title="收藏"></i></div>
+        </div>
+      </li>
     </ul>
-    <div class="pagination">
+    <div class="pagination" v-if="paginationShow">
       <el-pagination
         @size-change="handleSizeChange"
         @current-change="handleCurrentChange"
@@ -31,13 +45,18 @@ import ImgUrl1 from '../common/images/dmjdFm_1.png'
 import ImgUrl2 from '../common/images/dmjdFm_2.png'
 import ImgUrl3 from '../common/images/dmjdFm_3.png'
 import ImgUrl4 from '../common/images/dmjdFm_4.png'
-// import ImgUrl5 from '../common/images/dmjdFm_5.png'
-// import ImgUrl6 from '../common/images/dmjdFm_6.png'
+import ImgUrl5 from '../common/images/dmjdFm_5.png'
+import ImgUrl6 from '../common/images/dmjdFm_6.png'
+import ImgUrl7 from '../common/images/dmjdFm_1.png'
+import ImgUrl8 from '../common/images/dmjdFm_2.png'
+import ImgUrl9 from '../common/images/dmjdFm_3.png'
 
 export default {
   components: {
   },
   props: {
+    listNum: Number,
+    paginationShow: Boolean,
   },
   data: function() {
     return {
@@ -67,16 +86,43 @@ export default {
           label: '动漫图片',
           time: '2018-11-24'
         },
-        // {
-        //   imgUrl: ImgUrl5,
-        //   title: '佛山市重点品牌展会认定扶持方法政策解读',
-        //   label: '动漫图片',
-        //   time: '2018-11-12'
-        // },
+        {
+          imgUrl: ImgUrl5,
+          title: '佛山市重点品牌展会认定扶持方法政策解读',
+          label: '动漫图片',
+          time: '2018-11-12'
+        },
+        {
+          imgUrl: ImgUrl6,
+          title: '佛山市重点品牌展会认定扶持方法政策解读',
+          label: '动漫图片',
+          time: '2018-11-12'
+        },
+        {
+          imgUrl: ImgUrl7,
+          title: '佛山市重点品牌展会认定扶持方法政策解读',
+          label: '动漫图片',
+          time: '2018-11-12'
+        },
+        {
+          imgUrl: ImgUrl8,
+          title: '佛山市重点品牌展会认定扶持方法政策解读',
+          label: '动漫图片',
+          time: '2018-11-12'
+        },
+        {
+          imgUrl: ImgUrl9,
+          title: '佛山市重点品牌展会认定扶持方法政策解读',
+          label: '动漫图片',
+          time: '2018-11-12'
+        },
       ]
     }
   },
   computed: {
+    filterLists: function(){
+      return this.lists.slice(0, this.listNum)
+    }
   },
   watch: {
   },
@@ -98,72 +144,78 @@ export default {
 
 <style lang="scss" scoped>
 .listDmjd {
+  height: 100%;
   ul {
-    flex-wrap: wrap;
-    justify-content: space-between;
+    margin-left: -5px;
+    margin-right: -5px;
     margin-bottom: -10px;
-    li {
+  }
+  li {
+    float: left;
+    width: 25%;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-bottom: 10px;
+  }
+  .li-box {
+    position: relative;
+    padding: 20px;
+    top: 0;
+    background-color: #fff;
+    @include transition(0.2s);
+    @include radius(2px);
+    &:hover {
+      z-index: 2;
+      top: -5px;
+      @include shadow(0,0,20px,2px);
+    }
+    .img-box {
       position: relative;
-      padding: 20px;
-      top: 0;
-      flex: 0 0 24%;
-      margin-bottom: 10px;
-      background-color: #fff;
-      @include transition(0.2s);
-      @include radius(2px);
-      &:hover {
-        z-index: 2;
-        top: -5px;
-        @include shadow(0,0,20px,2px);
-      }
-      .img-box {
-        position: relative;
-        height: 90px;
-        .aj {
-          position: absolute;
-          left: 0;
-          top: 0;
-        }
-        img {
-          width: 100%;
-          height: 100%;
-          @include radius(2px);
-        }
-      }
-      .msg-box {
-        .title {
-          margin: 10px 0;
-          @include lines(2);
-        }
-        .label {
-          margin-right: 10px;
-          font-size: $font-size-xs;
-          @include theme_font(info);
-        }
-        .time {
-          font-size: $font-size-xs;
-          @include theme_font(neutral-disabled);
-        }
-      }
-      .edit-box {
+      height: 90px;
+      .aj {
         position: absolute;
-        right: 0;
-        bottom: 0;
-        width: 25px;
-        height: 25px;
+        left: 0;
+        top: 0;
+      }
+      img {
+        width: 100%;
+        height: 100%;
+        @include radius(2px);
+      }
+    }
+    .msg-box {
+      .title {
+        margin: 10px 0;
+        @include lines(2);
+      }
+      .label {
+        margin-right: 10px;
         font-size: $font-size-xs;
-        color: #fff;
-        background: url("../common/images/sprite.png") 0 0 no-repeat;
-        i {
-          position: relative;
-          top: 5px;
-          left: 5px;
-        }
+        @include theme_font(info);
+      }
+      .time {
+        font-size: $font-size-xs;
+        @include theme_font(neutral-disabled);
+      }
+    }
+    .edit-box {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 25px;
+      height: 25px;
+      font-size: $font-size-xs;
+      color: #fff;
+      background: url("../common/images/sprite.png") 0 0 no-repeat;
+      i {
+        position: relative;
+        top: 5px;
+        left: 5px;
       }
     }
   }
   .pagination {
-    margin-top: 20px;
+    margin-top: 10px;
     padding: 10px 20px;
     background-color: #fff;
   }

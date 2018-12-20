@@ -3,7 +3,8 @@
     <ul>
       <li v-for="list in 5" :key="list.id">
         <dd class="dd-1 flex-middle"><span class="title-max btn btn-sm">企业云服务平台</span><el-button icon="el-icon-star-off" circle size="mini"></el-button></dd>
-        <dd class="dd-2"><span class="title"><a href="">2018年度广东省科学技术奖评审方案</a></span></dd>
+        <!-- <dd class="dd-2"><span class="title"><router-link to="/policy/detail">2018年度广东省科学技术奖评审方案</router-link></span></dd> -->
+        <dd class="dd-2"><span class="title"><router-link :to="{path:'/policy/detail'}">2018年度广东省科学技术奖评审方案</router-link></span></dd>
         <dd class="dd-3"><span class="label">企业标签：<em>电力市场，运营系统，现货交易，系统功能指南</em></span></dd>
         <dd class="dd-4"><span class="time">发布时间：<em class="font-info">2018-11-27 12:32:02</em></span><span class="time">阅读量：<em class="font-info">140</em></span></dd>
       </li>

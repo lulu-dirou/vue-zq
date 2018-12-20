@@ -178,20 +178,26 @@ export default {
     }
     .con {
       flex-wrap: wrap;
-      height: 266px;
-      padding-bottom: 1px;
+      justify-content: space-between;
+      margin-bottom: -8px;
       li {
         display: flex;
         align-items: center;
-        flex: 0 0 50%;
-        padding: 12px 10px;
-        margin-bottom: -1px;
-        margin-right: -1px;
+        flex: 0 0 48%;
+        padding: 8px 10px;
+        margin-bottom: 9px;
         border: 1px solid #e1e1e1;
-        @include theme_bd(neutral-border);
+        cursor: pointer;
+        @include transition(0.2s);
+        @include theme_bd(neutral-divider,0.8);
+        @include theme_bg(neutral-divider,0.8);
         .el-button.is-circle { padding: 6px; }
         i {font-size: 26px;}
         em {font-size:12px; margin-left:2px;}
+        &:hover {
+          @include theme_bd(primary,0.6);
+          @include theme_bg(primary,0.1);
+        }
       }
     }
   }

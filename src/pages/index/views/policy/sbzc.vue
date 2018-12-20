@@ -1,14 +1,16 @@
 <template>
-  <div>
-    2222222
+  <div class="sbzc">
+    <list-fcsb :paginationShow="true"></list-fcsb>
   </div>
 </template>
 
 
 <script>
+import ListFcsb from '../../../../components/ListFcsb'
 
 export default {
   components: {
+    'list-fcsb': ListFcsb,
   },
   props: {
   },

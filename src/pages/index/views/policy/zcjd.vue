@@ -2,9 +2,9 @@
   <div class="zcjd flex">
     <div class="left-box">
       <div class="list-box">
-        <list-dmjd v-if="num===0?'true':''"></list-dmjd>
-        <list-spjd v-if="num===1?'true':''"></list-spjd>
-        <list-wzjd v-if="num===2?'true':''"></list-wzjd>
+        <list-dmjd v-if="num===0?'true':''" :paginationShow="true"></list-dmjd>
+        <list-spjd v-if="num===1?'true':''" :paginationShow="true"></list-spjd>
+        <list-wzjd v-if="num===2?'true':''" :paginationShow="true"></list-wzjd>
       </div>
     </div>
     <div class="right-box">

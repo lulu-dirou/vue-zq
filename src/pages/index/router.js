@@ -55,6 +55,10 @@ const instance = new Router({
       ]
     },
     {
+      path: "/policy/detail",
+      component: () => import('./views/policy/detail.vue')
+    },
+    {
       path: "/",//默认显示
       redirect: "/home"
     }

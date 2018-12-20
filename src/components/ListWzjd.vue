@@ -1,15 +1,14 @@
 <template>
   <div class="listWzjd">
     <ul>
-      <li v-for="(list,index) in lists" :key="list.id" class="flex">
+      <li v-for="(list,index) in filterLists" :key="list.id" class="flex">
         <div class="dot-box"><span>{{ index+1 }}</span></div>
         <div class="msg-box">
           <span class="title"><a href="">{{ lists[index].title }}</a></span>
-          <span class="label">{{ lists[index].label }}</span>
           <span class="time">{{ lists[index].time }}</span>
         </div>
       </li>
-      <li class="pagination">
+      <li class="pagination" v-if="paginationShow">
         <el-pagination
           @size-change="handleSizeChange"
           @current-change="handleCurrentChange"
@@ -29,6 +28,8 @@ export default {
   components: {
   },
   props: {
+    listNum: Number,
+    paginationShow: Boolean,
   },
   data: function() {
     return {
@@ -46,20 +47,21 @@ export default {
           title: '媒体：建学校增学位　办人民满意教育',
           time: '2018-12-05'
         },
-        // {
-        //   title: '佛山市市级现代农业研究中心认定标准政策解读',
-        //   time: '2018-11-24'
-        // },
-        // {
-        //   imgUrl: ImgUrl5,
-        //   title: '佛山市重点品牌展会认定扶持方法政策解读',
-        //   label: '动漫图片',
-        //   time: '2018-11-12'
-        // },
+        {
+          title: '佛山市市级现代农业研究中心认定标准政策解读',
+          time: '2018-11-24'
+        },
+        {
+          title: '佛山市重点品牌展会认定扶持方法政策解读',
+          time: '2018-11-12'
+        },
       ]
     }
   },
   computed: {
+    filterLists: function(){
+      return this.lists.slice(0, this.listNum)
+    }
   },
   watch: {
   },
