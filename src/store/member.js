@@ -2,7 +2,7 @@ export default {
   state: {
     token: window.sessionStorage.getItem('token'),
     user: window.sessionStorage.getItem('user'),
-    userImg: window.sessionStorage.getItem('userImg')
+    userImg: window.sessionStorage.getItem('userImg'),
   },
   getters: {
   },

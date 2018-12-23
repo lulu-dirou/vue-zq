@@ -27,4 +27,20 @@ module.exports = {
       }
     }
   },
+  //dev-server
+  devServer: {
+    // 配置跨域处理
+    proxy: {
+      '/api': {
+        // target: 'http://183.237.175.100:3333/',
+        //target: 'http://192.168.5.204:8080/',
+        target: 'http://zqpt.chancheng.gov.cn/',
+        // secure: false,  // 如果是https接口，需要配置这个参数
+        changeOrigin: true,
+        pathRewrite: {
+          '^/api': '/'
+        }
+      }
+    }
+  },
 }

@@ -8,7 +8,35 @@
         <the-home-gun></the-home-gun>
       </div>
       <div class="user" v-if="showMsg">
-       <el-popover
+        <el-button type="warning" icon="el-icon-location-outline" round plain @click="ModelCtr">登录</el-button>
+        <el-button round plain @click="ModelReg">注册</el-button>
+      </div>
+      <div class="user flex-middle" v-if="showMsged">
+        <el-dropdown :hide-on-click="false" :show-timeout=0>
+          <span class="el-dropdown-link flex-middle">
+            <span class="img"><img v-bind:src="this.$store.state.Member.userImg"></span><i class="el-icon-arrow-down el-icon--right"></i>
+          </span>
+          <el-dropdown-menu slot="dropdown" class="userPop">
+            <el-dropdown-item><span class="font-primary-light">{{ qymc }}</span></el-dropdown-item>
+            <el-dropdown-item divided>
+              <span class="color">
+                <i class="iconfont icon-mouse"></i>
+                <em 
+                  v-for="(color,index) in colors" 
+                  :key="color.id" 
+                  @click="changeTheme (color) " 
+                  class="" 
+                  :class="[colorCur===index+1?'active':'',color===index+1?('color'+index):('')]"
+                  ><b class="iconfont icon-dui"></b></em>
+              </span>
+            </el-dropdown-item>
+            <el-dropdown-item ><span><i class="iconfont icon-gear-settings"></i>个人中心</span></el-dropdown-item>
+            <el-dropdown-item divided><span @click="logouted"><i class="iconfont icon-close-"></i>退出</span></el-dropdown-item>
+          </el-dropdown-menu>
+        </el-dropdown>
+      </div>
+      <div class="phone">
+        <el-popover
           placement="top-start"
           title="微信公众号"
           width="200"
@@ -16,48 +44,25 @@
           <el-button slot="reference" icon="el-icon-mobile-phone" circle plain></el-button>
           <div>二维码</div>
         </el-popover>
-        <el-button type="warning" icon="el-icon-location-outline" round plain @click="ModelCtr">登录</el-button>
-        <el-button round plain @click="ModelReg">注册</el-button>
-      </div>
-      <div class="user flex-middle" v-if="showMsged">
-        <span class="img"><img v-bind:src="this.$store.state.Member.userImg"></span>
-        <span class="name">{{ qymc }}</span><em>|</em>
-        <span class="set"><router-link to="/member">个人中心</router-link></span><em>|</em>
-        <span class="color flex-middle">
-          <i 
-            v-for="(color,index) in colors" 
-            :key="color.id" 
-            @click="changeTheme (color) " 
-            :class="colorCur===index+1?'active':''"
-          >{{ color }}</i>
-        </span><em>|</em>
-        <span class="logout" @click="logouted">退出</span>
       </div>
     </div>
-    <login 
-      :propsLoginShow="loginShow" 
-      @emitModelClose='ModelCtr' 
-      @emitMsgChange='msgChange'></login>
   </header>
 </template>
 
 
 <script >
-import Login from './Login.vue'
 import TheHomeGun from './TheHomeGun.vue'
 
 export default {
   components: {
-    'login': Login,
     'the-home-gun': TheHomeGun,
   },
   data: function(){
     return {
-      loginShow : false,
       colors: [1,2,3,4],
       colorCur: 1,
       showMsg: true,
-      showMsged: false
+      showMsged: false,
     }
   },
   methods: {
@@ -67,13 +72,6 @@ export default {
       window.document.documentElement.setAttribute('data-theme', 'theme'+vals)
       this.colorCur = val
     },
-    // ModelCtr: function(val){
-    //   if(val == false){
-    //     this.loginShow = val;
-    //   }else{
-    //     this.loginShow = true;
-    //   }
-    // },
     ModelCtr: function(){
       this.$router.push({path:'/login'})
     },
@@ -81,10 +79,14 @@ export default {
       this.$router.push({path:'/reg'})
     },
     logouted: function(){
-      this.$store.commit('logout');
-      alert("已退出登录");
-      this.showMsg = true;
-      this.showMsged = false;
+      this.$confirm("<i class='el-alert__icon el-icon-warning font-warning'></i> 是否退出登录？", {
+        dangerouslyUseHTMLString: true, //作为 HTML 片段处理
+        confirmButtonText: '确定',
+        cancelButtonText: '取消'
+      }).then(() => {
+        this.$store.commit('logout');
+      }).catch(() => {
+      })
     },
     msgChange: function(val){
       if(this.$store.state.Member.token) {
@@ -97,8 +99,22 @@ export default {
     }
   },
   computed: {
+    token: function(){
+      return this.$store.state.Member.token
+    },
     qymc: function(){
       return this.$store.state.Member.user
+    }
+  },
+  watch: {
+    token(){
+      if(this.token) {
+        this.showMsg = false;
+        this.showMsged = true;
+      }else {
+        this.showMsg = true;
+        this.showMsged = false;
+      }
     }
   },
   created: function(){
@@ -126,6 +142,11 @@ export default {
       float: left;
       margin-top: 20px;
     }
+    .phone {
+      float: right;
+      margin-right: 10px;
+      margin-top: 20px;
+    }
     .user {
       float: right;
       margin-top: 20px;
@@ -137,41 +158,60 @@ export default {
       }
       em {
         margin: 0 10px;
-        color: #ccc;
+        // color: #ccc;
       }
       .img {
         width: 40px;
         height: 40px;
         margin-right: 10px;
-        @include radius(40px);
-        background-color: #ccc;
+        border: 1px solid #ccc;
+        @include radius(100px);
+        overflow: hidden;
         img {
           width: 40px;
           height: 40px;
         }
       }
-      .name {
-        font-weight: 600;
-        @include theme_font(info);
-      }
-      .color {
-        i {
-          width: 20px;
-          height: 20px;
-          line-height: 20px;
-          margin: 0 5px;
-          text-align: center;
-          @include radius(20px);
-          background-color: #e1e1e1;
-          &.active {
-            color: #fff;
-            @include theme_bg(primary);
-          }
-        }
-      }
       .set .router-link-active {
         font-weight: 600;
         @include theme_font(primary);
+      }
+    }
+  }
+}
+.userPop {
+  .el-dropdown-menu__item{
+    font-size: $font-size-xs;
+    span {
+      display: flex;
+      align-items: center;
+      i {
+        margin-right: 10px;
+      }
+    }
+    .color {
+      em {
+        width: 20px;
+        height: 20px;
+        line-height: 20px;
+        margin: 5px 10px 5px 0;
+        text-align: center;
+        @include radius(20px);
+        background-color: #e1e1e1;
+        b {
+          display: none;
+        }
+        &.color0{ background-color: $theme-primary; }
+        &.color1{ background-color: $theme1-primary; }
+        &.color2{ background-color: $theme2-primary; }
+        &.color3{ background-color: $theme3-primary; }
+        &.active {
+          color: #fff;
+          @include theme_bg(primary);
+          b {
+            display: block;
+          }
+        }
       }
     }
   }

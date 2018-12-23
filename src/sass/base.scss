@@ -3,6 +3,13 @@
 // colors
 //
 //********************************
+.font-xs                  {font-size: $font-size-xs}
+.font-sm                  {font-size: $font-size-sm}
+.font-df                  {font-size: $font-size-df}
+.font-lgm                 {font-size: $font-size-lgm}
+.font-lg                  {font-size: $font-size-lg}
+.font-lgx                 {font-size: $font-size-lgx}
+
 .font-primary             {@include theme_font(primary);}
 .font-primary-light       {@include theme_font(primary-light);}
 .font-primary-dark        {@include theme_font(primary-dark);}
@@ -28,6 +35,15 @@
 .bg-neutral-disabled      {@include theme_bg(neutral-disabled);}
 .bg-neutral-border        {@include theme_bg(neutral-border);}
 .bg-neutral-divider       {@include theme_bg(neutral-divider);}
+
+.btn-primary              {@include theme_bg(primary);@include theme_bd(primary);color:#fff;}
+.btn-primary-light        {@include theme_bg(primary-light);@include theme_bd(primary-light);color:#fff;}
+.btn-primary-dark         {@include theme_bg(primary-dark);@include theme_bd(primary-dark);color:#fff;}
+.btn-info                 {@include theme_bg(info);@include theme_bd(info);color:#fff;}
+.btn-success              {@include theme_bg(success);@include theme_bd(success);color:#fff;}
+.btn-warning              {@include theme_bg(warning);@include theme_bd(warning);color:#fff;}
+.btn-danger               {@include theme_bg(danger);@include theme_bd(danger);color:#fff;}
+.btn-disabled             {@include theme_bg(neutral-disabled);@include theme_bd(neutral-disabled);color:#fff;}
 
 
 
@@ -68,7 +84,6 @@
   background: none;
   padding: 7px 10px;
   font-size: $font-size-df;
-  color: #666;
   cursor: pointer;
   &.btn-xs {
     font-size: $font-size-sm;
@@ -355,6 +370,7 @@ a {
       min-height: 400px;
       padding: 20px 40px;
       .title {
+        text-align: center;
         margin: 20px 0 30px 0;
         font-size: 24px;
         @include theme_font(neutral);
@@ -384,12 +400,13 @@ a {
             span {
               margin-right: 20px;
             }
-            .pt em {
-              @include theme_font(primary);
-            }
           }
           .sc {
             align-items: center;
+            button {
+              margin-left: 10px;
+              border-radius: 100px;
+            }
           }
         }
       }
@@ -398,20 +415,21 @@ a {
         line-height: 1.5;
         font-size: $font-size-df;
         .tabs {
-          margin-bottom: 30px;
-          border-bottom: 1px solid #e1e1e1;
-          text-align: right;
-          li {
-            display: inline-block;
-            padding: 15px 0;
-            margin: 0 30px;
-            text-align: center;
-            border-bottom: 3px solid #fff;
-            @include theme_font(info);
-            cursor: pointer;
-            &.active {
-              @include theme_font(primary);
-              @include theme_bd(primary);
+          .el-tabs__nav {
+            float: right;
+            margin-right: 40px;
+            .el-tabs__active-bar {
+              height: 4px;
+            }
+            .el-tabs__item {
+              height: 54px;
+              line-height: 54px;
+              font-size: $font-size-lgm;
+              @include theme_font(primary-light);
+              &.is-active {
+                font-weight: 600;
+                @include theme_font(primary);
+              }
             }
           }
         }

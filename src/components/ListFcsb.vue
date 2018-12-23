@@ -1,34 +1,36 @@
 <template>
-  <div class="listFcsb">
+  <div class="listFcsb" v-loading="loading">
     <ul class="clear">
-      <li v-for="list in filterLists" :key="list.id">
-        <div class="li-box">
-          <div class="li-h flex-middle">
-            <span class="label">市质监局</span>
-            <span class="state">已结束</span>
-          </div>
-          <div class="li-c flex">
-            <div class="time-box flex-middle"><span>0</span><em>剩余天数</em></div>
-            <div class="msg-box">
-              <div class="money">0万-10万</div>
-              <div class="title">佛山市工业产品质量提升扶持（计量类）</div>
+      <li v-for="(list,index) in filterLists" :key="list.id">
+        <router-link v-bind:to="{path:'/policy/detail_sb',query:{id:list.id}}">
+          <div class="li-box">
+            <div class="li-h flex-middle">
+              <span class="label">{{ list.govname }}</span>
+              <span class="state">已结束</span>
+            </div>
+            <div class="li-c flex">
+              <div class="time-box flex-middle"><span>0</span><em>剩余天数</em></div>
+              <div class="msg-box">
+                <div class="money">{{ moneyState(index) }}</div>
+                <div class="title">{{ list.name }}</div>
+              </div>
+            </div>
+            <div class="li-f flex">
+              <div class="time">申报时间：{{ $common.date_en(list.createdAt) }}</div>
+              <div class="sc"><i class="iconfont icon-like-heart" title="收藏"></i></div>
             </div>
           </div>
-          <div class="li-f flex">
-            <div class="time">申报时间：2018-08-20</div>
-            <div class="sc"><i class="iconfont icon-like-heart" title="收藏"></i></div>
-          </div>
-        </div>
+        </router-link>
       </li>
     </ul>
+    <div v-if="noData">抱歉！没有相关记录</div>
     <div class="pagination" v-if="paginationShow">
       <el-pagination
-        @size-change="handleSizeChange"
         @current-change="handleCurrentChange"
         :current-page="currentPage"
-        :page-size="100"
+        :page-size="listPageSize"
         layout="total, prev, pager, next, jumper"
-        :total="400">
+        :total="listTotal">
       </el-pagination>
     </div>
   </div>
@@ -45,8 +47,15 @@ export default {
   },
   data: function() {
     return {
+      loading: true,
+      listTotal: 150,
+      listPageSize: 12,
       currentPage: 1,
-      lists: [1,2,3,4,5,6,7,8,9]
+      lists: [],
+      noData: false,
+      btnState: '',
+      btnStateMsg: '',
+      stateTimeClass: '',
     }
   },
   computed: {
@@ -57,14 +66,48 @@ export default {
   watch: {
   },
   methods: {
-    handleSizeChange(val) {
-      console.log(`每页 ${val} 条`);
+    getApi: function(){
+      this.$http.post(this.$url.sbfw.sbzt,{
+        pagesize: this.listPageSize,
+        startindex: this.currentPage
+      }).then((res) => {
+        this.lists = res.data.body.list
+        this.loading = false
+        if(this.lists.length == 0){
+          this.noData = true
+        }
+      })
     },
     handleCurrentChange(val) {
+      this.loading = true
+      this.currentPage = val;
+      this.getApi();
       console.log(`当前页: ${val}`);
+    },
+    moneyState: function(val){
+      if(this.lists[val].moneyMin == this.lists[val].moneyMax){
+        return '资金支持'
+      }else{
+        return this.lists[val].moneyMin+'万-'+this.lists[val].moneyMax+'万'
+      }
+    },
+    dayState: function(index){
+      //let startTime = this.$common.date_de(this.lists[index].startDate)
+      let endTime = this.$common.date_de(this.lists[index].endDate)
+      let curTime = this.lists[index].dqsj
+      if(endTime>curTime){
+        this.btnState = 'active'
+        this.btnStateMsg = '申报中'
+        this.stateTimeClass = 'active'
+        return parseInt((Math.abs(endTime - curTime)) / 3600 / 24 / 1000)
+      }else{
+        this.btnStateMsg = '已结束'
+        return 0
+      }
     }
   },
   created: function(){
+    this.getApi()
   },
   mounted: function(){
   }
@@ -109,7 +152,7 @@ export default {
       font-size: $font-size-xs;
       @include theme_bd(neutral-border);
       .label {
-        @include theme_font(primary-dark);
+        @include theme_font(primary-light);
       }
       .state {
         padding: 5px 10px;

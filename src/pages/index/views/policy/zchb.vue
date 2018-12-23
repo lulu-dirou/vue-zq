@@ -2,7 +2,7 @@
   <div class="zchb flex">
     <div class="left-box">
       <div class="list-box">
-        <list-zc></list-zc>
+        <list-zc :paginationShow="true"></list-zc>
       </div>
     </div>
     <div class="right-box">

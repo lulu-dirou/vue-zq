@@ -5,26 +5,26 @@
       <div class="reg-title"><span>用户登录</span></div>
       <div class="reg-area">
         <!-- el-form -->
-        <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="150px" label-position=left class="reg-ruleForm">
+        <el-form :model="ruleForm" status-icon  ref="ruleForm" label-width="150px" label-position=left class="reg-ruleForm" v-loading="loading">
           <!------------------------------------------------------------->
-          <el-form-item label="用户名" prop="jgdm">
-            <el-input v-model="ruleForm.jgdm"></el-input>
+          <el-form-item label="用户名" prop="sjhm">
+            <el-input v-model="ruleForm.sjhm" clearable></el-input>
           </el-form-item>
           <!------------------------------------------------------------->
           <el-form-item label="密码" prop="pass">
-            <el-input type="password" v-model="ruleForm.pass" autocomplete="off"></el-input>
+            <el-input type="password" v-model="ruleForm.pass" clearable></el-input>
           </el-form-item>
           <!------------------------------------------------------------->
           <el-form-item label="验证码">
             <el-col :span="17">
-            <el-form-item prop="visitCode"><el-input v-model="ruleForm.visitCode"></el-input></el-form-item>
+            <el-form-item prop="visitCode"><el-input v-model="ruleForm.visitCode" clearable></el-input></el-form-item>
             </el-col>
             <el-col :span="6" :offset="1">
             <el-form-item><el-button type="warning" plain>获取验证码</el-button></el-form-item></el-col>
           </el-form-item>
           <!------------------------------------------------------------->
           <el-form-item label-width="0">
-            <el-button class="submitBtn" type="primary" @click="submitForm('ruleForm')">登录</el-button>
+            <el-button class="submitBtn" type="primary" @click="getApi()">登录</el-button>
           </el-form-item>
           <!------------------------------------------------------------->
 
@@ -45,24 +45,25 @@ export default {
   },
   data: function() {
     return {
+      loading: false,
       ruleForm: {
-        jgdm: '',
+        sjhm: '',
         pass: '',
         visitCode: ''
       },
-      rules: {
-        jgdm: [
-          { required: false, message: '没有用户名', trigger: 'blur' },
-          { min: 3, max: 20, message: '长度在 3 到 20 个字符', trigger: 'blur' }
-        ],
-        pass: [
-          { required: false, validator: this.validatePass, trigger: 'blur' },
-          { min: 6, max: 10, message: '密码需要6-10位', trigger: 'blur' }
-        ],
-        visitCode: [
-          { required: false, message: '请输入验证码', trigger: 'blur' },
-        ],
-      }
+      // rules: {
+      //   jgdm: [
+      //     { required: false, message: '没有用户名', trigger: 'blur' },
+      //     { min: 3, max: 20, message: '长度在 3 到 20 个字符', trigger: 'blur' }
+      //   ],
+      //   pass: [
+      //     { required: false, validator: this.validatePass, trigger: 'blur' },
+      //     { min: 6, max: 10, message: '密码需要6-10位', trigger: 'blur' }
+      //   ],
+      //   visitCode: [
+      //     { required: false, message: '请输入验证码', trigger: 'blur' },
+      //   ],
+      // }
     }
   },
   computed: {
@@ -70,27 +71,72 @@ export default {
   watch: {
   },
   methods: {
-    validatePass: function(rule, value, callback){
-      if (value === '') {
-        callback(new Error('请输入密码'));
-      } else {
-        callback();
-      }
-    },
-    submitForm(formName) {
-      this.$refs[formName].validate((valid) => {
-        if (valid) {
-          alert('submit!登录成功');
-          this.$router.push({path:'/home'})
-        } else {
-          console.log('error submit!!');
-          return false;
+    // validatePass: function(rule, value, callback){
+    //   if (value === '') {
+    //     callback(new Error('请输入密码'));
+    //   } else {
+    //     callback();
+    //   }
+    // },
+    //获取loginAPI
+    getApi: function(){
+      this.loading = true
+      this.$http.post(this.$url.qyzcxx.login,{
+        sjhm: this.ruleForm.sjhm,
+        mm: this.$md5(this.ruleForm.pass)
+      }).then((res) => {
+        this.loading = false
+        if(res.status===200){
+          if(res.data.errorCode == 1){
+            this.$common.elAlert("warning","登录失败！请输入账号密码")
+          }else if(res.data.errorCode == 2){
+            this.$common.elAlert("warning","用户不存在!")
+          }else if(res.data.errorCode == 3){
+            this.$common.elAlert("warning","密码错误!")
+          }else if(res.data.errorCode == -1) {
+            this.$store.commit('setToken', res.data.body.token);
+            this.$store.commit('getUser', res.data.body.qyzcxx.qymc);
+            this.getUserImgApi();
+            // this.elAlert(" <i class='el-alert__icon el-icon-success font-success'></i> 登录成功！")
+            this.$router.push("./home"); //跳转到路由指定页面
+          }
         }
-      });
+      })
     },
-    resetForm(formName) {
-      this.$refs[formName].resetFields();
-    }
+    //获取头像API放到getApi里面调用,注意设置图片请求类型arraybuffer
+    getUserImgApi: function(){
+      this.$http.post(this.$url.qyzcxx.getQytx,{
+        token: this.$store.state.Member.token,
+      },'arraybuffer').then((res) => {
+        //图片流转码
+        var src = 'data:image/png;base64,'+ btoa(new Uint8Array(res.data).reduce((data, byte) => data + String.fromCharCode(byte), ''));
+        this.$store.commit('getUserImg', src)
+      })
+    },
+    // 封装elAlert
+    // elAlert: function(msg){
+    //   this.$alert(String(msg), {
+    //     closeOnClickModal: true, //是否可通过点击遮罩关闭 MessageBox
+    //     dangerouslyUseHTMLString: true, //作为 HTML 片段处理
+    //     showConfirmButton: false
+    //   }).then(() => {
+    //   }).catch(() => {
+    //   })
+    // }
+    // submitForm(formName) {
+    //   this.$refs[formName].validate((valid) => {
+    //     if (valid) {
+    //       alert('submit!登录成功');
+    //       this.$router.push({path:'/home'})
+    //     } else {
+    //       console.log('error submit!!');
+    //       return false;
+    //     }
+    //   });
+    // },
+    // resetForm(formName) {
+    //   this.$refs[formName].resetFields();
+    // }
   },
   created: function(){
   },

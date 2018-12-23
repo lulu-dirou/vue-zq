@@ -1,3 +1,6 @@
+import { MessageBox } from 'element-ui'
+
+
 export default {
   // api_baseUrl: 'http://183.237.175.100:3333',
   api_baseUrl: 'http://zqpt.chancheng.gov.cn',
@@ -54,5 +57,20 @@ export default {
   // 时间截取2018-01-01 12:00:00 => 2018-01-01
   time_slice: function(val){
     return val.slice(0,10)
+  },
+  // 封装elAlert http://element-cn.eleme.io/#/zh-CN/component/message-box
+  elAlert: function(ico,msg){
+    if(ico == "warning"){
+      ico = String("<i class='el-alert__icon el-icon-warning font-warning'></i> ")
+    }else if(ico == "success"){
+      ico = String("<i class='el-alert__icon el-icon-success font-success'></i> ")
+    }
+    MessageBox.alert(ico+String(msg),{
+      closeOnClickModal: true, //是否可通过点击遮罩关闭 MessageBox
+      dangerouslyUseHTMLString: true, //作为 HTML 片段处理
+      showConfirmButton: false
+    }).then(() => {
+    }).catch(() => {
+    })
   }
 }

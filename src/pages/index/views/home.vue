@@ -10,7 +10,6 @@
     <div class="tabs">
       <div class="tabs-box">
         <ul class="nav">
-          
           <li :class="tabNmb===0?'active':''" @click="changeActive(0)">
             <div class="__bar"></div><i class="iconfont icon-icon_bangzhuwendang"></i><span>政策解读</span>
           </li>
@@ -19,11 +18,11 @@
           </li>
         </ul>
         <div class="content">
-          <div v-if="tabNmb===0?'true':''" class="c1 flex">
+          <div v-show="tabNmb===0?'true':''" class="c1 flex">
             <list-wzjd :listNum='3'></list-wzjd>
             <list-dmjd :listNum='4'></list-dmjd>
           </div>
-          <div v-if="tabNmb===1?'true':''" class="c2"><list-fcsb :listNum='6'></list-fcsb></div>
+          <div v-show="tabNmb===1?'true':''" class="c2"><list-fcsb :listNum='6'></list-fcsb></div>
         </div>
       </div>
     </div>

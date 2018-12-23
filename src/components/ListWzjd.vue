@@ -1,21 +1,25 @@
 <template>
-  <div class="listWzjd">
-    <ul>
+  <div class="listWzjd" v-loading="loading">
+    <ul class="clear">
       <li v-for="(list,index) in filterLists" :key="list.id" class="flex">
         <div class="dot-box"><span>{{ index+1 }}</span></div>
         <div class="msg-box">
-          <span class="title"><a href="">{{ lists[index].title }}</a></span>
-          <span class="time">{{ lists[index].time }}</span>
+          <span class="title">
+            <router-link v-bind:to="{path:'/policy/detail_wz',query:{id:list.id}}">
+              {{ $common.html_decode(list.jdmc) }}
+            </router-link>
+          </span>
+          <span class="time">{{ $common.time_slice(list.fbsj) }}</span>
         </div>
       </li>
+      <li v-if="noData">抱歉！没有相关记录</li>
       <li class="pagination" v-if="paginationShow">
         <el-pagination
-          @size-change="handleSizeChange"
           @current-change="handleCurrentChange"
           :current-page="currentPage"
-          :page-size="100"
+          :page-size="listPageSize"
           layout="total, prev, pager, next, jumper"
-          :total="400">
+          :total="listTotal">
         </el-pagination>
       </li>
     </ul>
@@ -33,29 +37,12 @@ export default {
   },
   data: function() {
     return {
+      listTotal: 150,
+      listPageSize: 10,
       currentPage: 1,
-      lists : [
-        {
-          title: '提振民营企业信心营造良好法治环境--全面清理不利明规则更要清理暗规则',
-          time: '2018-12-12'
-        },
-        {
-          title: '改革开放大潮中的全面依法治国壮丽诗篇',
-          time: '2018-12-07'
-        },
-        {
-          title: '媒体：建学校增学位　办人民满意教育',
-          time: '2018-12-05'
-        },
-        {
-          title: '佛山市市级现代农业研究中心认定标准政策解读',
-          time: '2018-11-24'
-        },
-        {
-          title: '佛山市重点品牌展会认定扶持方法政策解读',
-          time: '2018-11-12'
-        },
-      ]
+      lists: [],
+      noData: false,
+      loading: true
     }
   },
   computed: {
@@ -66,14 +53,24 @@ export default {
   watch: {
   },
   methods: {
-    handleSizeChange(val) {
-      console.log(`每页 ${val} 条`);
+    getApi: function(){
+      this.$http.post(this.$url.zcfw.listZcjd,{
+        pageSize: this.listPageSize,
+        pageNo: this.currentPage
+      }).then((res) => {
+        this.lists = res.data.body.list
+        this.loading = false
+      })
     },
     handleCurrentChange(val) {
+      this.loading = true
+      this.currentPage = val;
+      this.getApi();
       console.log(`当前页: ${val}`);
     }
   },
   created: function(){
+    this.getApi()
   },
   mounted: function(){
   }
@@ -85,7 +82,7 @@ export default {
 .listWzjd {
   ul {
     li {
-      padding: 15px 15px;
+      padding: 15px 20px;
       border-bottom: 1px solid #e1e1e1;
       background-color: #fff;
       @include theme_bd(neutral-divider);
@@ -96,6 +93,7 @@ export default {
         margin-right: 10px;
         span {
           display: block;
+          margin-top: 3px;
           width: 15px;
           height: 15px;
           line-height: 15px;
@@ -103,6 +101,7 @@ export default {
           color: #fff;
           font-size: $font-size-xs;
           @include theme_bg(primary-light);
+          @include radius(100px);
         }
       }
       .msg-box {
