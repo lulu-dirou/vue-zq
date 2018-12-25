@@ -45,6 +45,15 @@
 .btn-danger               {@include theme_bg(danger);@include theme_bd(danger);color:#fff;}
 .btn-disabled             {@include theme_bg(neutral-disabled);@include theme_bd(neutral-disabled);color:#fff;}
 
+.btn0-primary             {@include theme_bg(primary,0.1);@include theme_bd(primary,0.3);@include theme_font(primary);}
+.btn0-primary-light       {@include theme_bg(primary-light,0.1);@include theme_bd(primary-light,0.3);@include theme_font(primary-light);}
+.btn0-primary-dark        {@include theme_bg(primary-dark,0.1);@include theme_bd(primary-dark,0.3);@include theme_font(primary-dark);}
+.btn0-info                {@include theme_bg(info,0.1);@include theme_bd(info,0.3);@include theme_font(info);}
+.btn0-success             {@include theme_bg(success,0.1);@include theme_bd(success,0.3);@include theme_font(success);}
+.btn0-warning             {@include theme_bg(warning,0.1);@include theme_bd(warning,0.3);@include theme_font(warning);}
+.btn0-danger              {@include theme_bg(danger,0.1);@include theme_bd(danger,0.3);@include theme_font(danger);}
+.btn0-disabled            {@include theme_bg(neutral-disabled,0.2);@include theme_bd(neutral-disabled,0.3);@include theme_font(neutral-disabled);}
+
 
 
 //********************************
@@ -85,8 +94,9 @@
   padding: 7px 10px;
   font-size: $font-size-df;
   cursor: pointer;
+  @include radius(2px);
   &.btn-xs {
-    font-size: $font-size-sm;
+    font-size: $font-size-xs;
     padding: 1px 2px;
   }
   &.btn-sm {
@@ -147,6 +157,9 @@ a {
 // el-breadcrumb
 .el-breadcrumb {
   font-size: $font-size-xs;
+  .el-breadcrumb__inner.is-link, .el-breadcrumb__inner a {
+    @include theme_font(primary);
+  }
   .el-breadcrumb__separator {
     @include theme_font(neutral-disabled);
   }
@@ -437,5 +450,93 @@ a {
     }
   }
 }
-        
+
+
+//********************************
+//
+// single
+//
+//********************************
+.single {
+  .navBar {
+    width: 1200px;
+    margin: 10px auto;
+    padding: 12px;
+    @include radius(2px);
+    @include theme_bg(neutral-divider);
+  }
+  .single-box {
+    margin: 0 auto 80px auto;
+    .title-box {
+      font-size: 20px;
+      border-bottom: 1px solid #e1e1e1;
+      margin-bottom: 30px;
+      @include theme_bd(neutral,0.4);
+      @include theme_font(neutral-title);
+      .title {
+        width: 700px;
+        margin: 0 auto;
+        span {
+          display: inline-block;
+          padding: 0 20px 0 10px;
+          height: 80px;
+          line-height: 80px;
+          margin-bottom: -1px;
+          border-bottom: 5px solid #e1e1e1;
+          @include theme_bd(primary);
+        }
+        i {
+          margin-right: 10px;
+          font-size: 35px;
+          vertical-align: middle;
+          @include theme_font(primary-light,0.4);
+        }
+      }
+    }
+    .msg-box {
+      width: 700px;
+      margin: 0 auto;
+      .el-form-item__label {
+        font-size: $font-size-lgm;
+      }
+      button.submitBtn {
+        width: 100%;
+        padding: 14px 20px;
+        font-size: $font-size-lg;
+      }
+      .state-box {
+        align-items: center;
+        padding: 10px 0;
+        margin-top: -30px;
+        border-bottom: 1px solid #e1e1e1;
+        @include theme_bd(neutral-divider);
+        @include theme_font(neutral,0.6);
+        .state {
+          margin-right: 20px;
+        }
+        .time {
+          flex: 1;
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

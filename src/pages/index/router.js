@@ -31,6 +31,21 @@ const instance = new Router({
       component: () => import('./views/member/regDetail.vue')
     },
     {
+      path: "/appeal",
+      component: () => import('./views/appeal/child.vue'),
+      meta: { requireAuth: true }
+    },
+    {
+      path: "/appeal/appealFrom",
+      component: () => import('./views/appeal/appealFrom.vue'),
+      meta: { requireAuth: true }
+    },
+    {
+      path: "/appeal/detail",
+      component: () => import('./views/appeal/detail.vue'),
+      meta: { requireAuth: true }
+    },
+    {
       path: "/policy",
       component: () => import('./views/policy/child'),
       children: [

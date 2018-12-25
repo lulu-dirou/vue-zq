@@ -85,6 +85,7 @@ export default {
         cancelButtonText: '取消'
       }).then(() => {
         this.$store.commit('logout');
+        this.$router.push("./home");
       }).catch(() => {
       })
     },

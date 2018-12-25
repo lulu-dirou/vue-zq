@@ -111,6 +111,7 @@ export default {
           margin-bottom: 20px;
           border-right: 1px solid #e1e1e1;
           font-size: $font-size-lgx;
+          font-weight: 600;
           cursor: pointer;
           @include transition(0.2s);
           @include theme_bd(neutral-border,0.8);
@@ -138,10 +139,8 @@ export default {
           i {
             margin-right: 10px;
             font-size: 30px;
-          }
-          span {
-            position: relative;
-            top: -3px;
+            font-weight: normal;
+            vertical-align: middle;
           }
           &:hover {
             @include theme_font(primary);

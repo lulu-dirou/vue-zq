@@ -20,5 +20,8 @@ export default {
   },
   qyhdgl: {
     listQyhd: '/GEService/qyfwpt/qyhd/listQyhd' //最新企业活动列表(政企头条)
-  }
+  },
+  sq: {
+    listQysq: '/GEService/qyfwpt/qysq/listQysq' //我的企业诉求列表
+  },
 }
