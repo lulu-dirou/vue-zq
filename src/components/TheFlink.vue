@@ -103,7 +103,7 @@ export default {
 </script>
 
 
-<style lang="scss">
+<style lang="scss" scoped>
 .theFlink {
   padding: 20px 0;
   @include theme_bg(neutral-divider);

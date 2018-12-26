@@ -2,13 +2,13 @@
   <div class="child policy">
     <div class="child-banner">
       <div class="w-1200">
-        <list-search-policy></list-search-policy>
+        <list-search-declare></list-search-declare>
         <nav>
           <ul class="flex-middle">
-            <li><router-link to="/policy/zchb">政策汇编</router-link></li>
-            <li><router-link to="/policy/sbzc">申报政策</router-link></li>
-            <li><router-link to="/policy/zcjd">政策解读</router-link></li>
-            <li><router-link to="/policy/zcdy">政策订阅</router-link></li>
+            <li><router-link to="/declare/sbtz">看通知</router-link></li>
+            <li><router-link to="/declare/sbzc">读政策</router-link></li>
+            <li><router-link to="/declare/sbxm">报项目</router-link></li>
+            <li><router-link to="/declare/sbjd">查进度</router-link></li>
           </ul>
         </nav>
       </div>
@@ -18,7 +18,7 @@
         <i class="iconfont icon-periscope icohome"></i>
         <el-breadcrumb separator="/">
           <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-          <el-breadcrumb-item :to="{ path: '/policy' }">政策</el-breadcrumb-item>
+          <el-breadcrumb-item :to="{ path: '/declare' }">申报</el-breadcrumb-item>
         </el-breadcrumb>
       </div>
     </div>
@@ -30,11 +30,11 @@
 
 
 <script>
-import ListSearchPolicy from '../../../../components/ListSearchPolicy'
+import ListSearchDeclare from '../../../../components/ListSearchDeclare'
 
 export default {
   components: {
-    'list-search-policy': ListSearchPolicy
+    'list-search-declare': ListSearchDeclare
   },
   props: {
   },

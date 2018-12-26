@@ -31,9 +31,34 @@ const instance = new Router({
       component: () => import('./views/member/regDetail.vue')
     },
     {
+      path: "/declare",
+      component: () => import('./views/declare/child.vue'),
+      children: [
+        {
+          path: "sbtz",
+          component: () => import('./views/declare/sbtz')
+        },
+        {
+          path: "sbzc",
+          component: () => import('./views/declare/sbzc')
+        },
+        {
+          path: "sbxm",
+          component: () => import('./views/declare/sbxm'),
+        },
+        {
+          path: "sbjd",
+          component: () => import('./views/declare/sbjd'),
+        },
+        {
+          path: "/",//重定向，默认显示
+          redirect: "sbtz"
+        }
+      ]
+    },
+    {
       path: "/appeal",
       component: () => import('./views/appeal/child.vue'),
-      meta: { requireAuth: true }
     },
     {
       path: "/appeal/appealFrom",

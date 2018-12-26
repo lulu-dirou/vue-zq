@@ -29,14 +29,17 @@
         </div>
       </div>
     </div>
+    <the-toolbar></the-toolbar>
   </div>
 </template>
 
 
 <script>
+import TheToolbar from '../../../../components/TheToolbar'
 
 export default {
   components: {
+    'the-toolbar': TheToolbar
   },
   props: {
   },

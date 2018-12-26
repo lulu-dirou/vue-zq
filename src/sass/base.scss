@@ -156,13 +156,20 @@ a {
 }
 // el-breadcrumb
 .el-breadcrumb {
-  font-size: $font-size-xs;
   .el-breadcrumb__inner.is-link, .el-breadcrumb__inner a {
-    @include theme_font(primary);
+    font-weight: normal;
+    @include theme_font(neutral);
+    &:hover {
+      @include theme_font(primary);
+    }
   }
   .el-breadcrumb__separator {
     @include theme_font(neutral-disabled);
   }
+}
+
+.el-button--mini {
+  padding: 7px 8px;
 }
 
 //********************************
@@ -178,42 +185,104 @@ a {
     margin: 0 auto;
   }
   .child-banner {
-    height: 160px;
-    background: url("../common/images/child-banner.jpg");
+    position: relative;
+    height: 180px;
+    background: url("../common/images/child-banner.jpg") center center no-repeat;
+    background-size: 100% 100%;
+    @include transition(0.5s);
+    &:before {
+      position: absolute;
+      left: 0;
+      bottom: 60px;
+      width: 100%;
+      height: 1px;
+      content: '';
+      background-color: rgba(#fff,0.2);
+    }
+    &:after {
+      position: absolute;
+      left: 0;
+      bottom: 99px;
+      width: 100%;
+      height: 1px;
+      content: '';
+      background-color: rgba(#fff,0.2);
+    }
+    &:hover {
+      background-size: 120% 120%;
+    }
     .w-1200 {
       position: relative;
       height: 100%;
     }
     .listSearch {
+      z-index: 2;
       position: absolute;
       right: 0;
-      top: 60px;
+      bottom: 60px;
+      .search-box {
+        background-color: #fff;
+        @include radius(2px);
+        input {
+          width: 250px;
+          height: 40px;
+          padding: 0 10px;
+          border: 0;
+          background: none;
+          @include theme_font(primary-dark);
+        }
+        button {
+          width: 50px;
+          height: 40px;
+          border: 0;
+          color: #fff;
+          cursor: pointer;
+          background: none;
+          @include theme_font(primary);
+          i {
+            font-size: 26px;
+          }
+        }
+      }
     }
-    nav {
+    .childTitle {
+      z-index: 2;
       position: absolute;
       left: 0;
-      bottom: 0;
+      bottom: 60px;
+      height: 40px;
+      line-height: 38px;
+      color: #fff;
+      font-size: 35px;
+    }
+    nav {
+      z-index: 2;
+      position: absolute;
+      left: 0;
+      bottom: 60px;
       li {
         a {
           position: relative;
           display: inline-block;
-          padding: 10px 30px;
+          padding: 0 30px;
+          height: 40px;
+          line-height: 38px;
           margin-right: -1px;
           font-size: $font-size-lgm;
           color: rgba(#fff,0.8);
-          border: 1px solid rgba(#fff,0.2);
-          @include theme_bg(primary);
+          @include theme_bg(primary-light);
+          @include transition(0.2s);
           &:before {
             display: none;
             position: absolute;
             left: 50%;
             margin-left: -8px;
-            bottom: -9px;
+            bottom: -8px;
             content: '';
             @include arrow(bottom,8px,#fff);
           }
           &:hover {
-            @include theme_bg(primary,0.3);
+            @include theme_bg(primary-light,0.6);
           }
           &.router-link-active,&.router-link-active:hover {
             @include theme_font(primary);
@@ -226,8 +295,20 @@ a {
       }
     }
   }
+  .navBar {
+    padding: 10px 0;
+    background-color: #fff;
+    .w-1200 {
+      align-items: center;
+      .icohome {
+        margin-right: 10px;
+        font-size: 20px;
+        @include theme_font(neutral,0.6);
+      }
+    }
+  }
   .child-box {
-    margin: 20px auto;
+    margin: 30px auto;
     .left-box {
       flex: 1;
     }
@@ -356,6 +437,29 @@ a {
           }
         }
       }
+      .r-md-1 {
+        padding: 20px;
+        background-color: #fff;
+        .hd {
+          margin-bottom: 20px;
+          span {
+            position: relative;
+            padding-left: 15px;
+            font-size: $font-size-lgm;
+            @include theme_font(primary);
+            &:before {
+              position: absolute;
+              left: 0;
+              top: 50%;
+              margin-top: -7px;
+              width: 4px;
+              height: 14px;
+              content: '';
+              @include theme_bg(primary);
+            }
+          }
+        }
+      }
     }
   }
 }
@@ -368,6 +472,7 @@ a {
 //********************************
 .detail {
   background: url("../common/images/detail-banner.png") center 0 no-repeat;
+  background-attachment: fixed;
   .detail-box {
     width: 1200px;
     padding: 20px;

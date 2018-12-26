@@ -2,7 +2,17 @@
   <div class="child child-appeal">
     <div class="child-banner">
       <div class="w-1200">
-        <list-search></list-search>
+        <list-search-appeal class="childSearch"></list-search-appeal>
+        <div class="childTitle">我的诉求</div>
+      </div>
+    </div>
+    <div class="navBar">
+      <div class="w-1200 flex">
+        <i class="iconfont icon-periscope icohome"></i>
+        <el-breadcrumb separator="/">
+          <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+          <el-breadcrumb-item :to="{ path: '/appeal' }">诉求</el-breadcrumb-item>
+        </el-breadcrumb>
       </div>
     </div>
     <div class="child-box w-1200 flex">
@@ -12,6 +22,10 @@
           <button class="btn-danger" @click="jump"><i class="iconfont icon-edit"></i>我要诉求</button>
           <!-- <el-button type="danger"><i class="iconfont icon-edit"></i>我要诉求</el-button> -->
         </div>
+        <section class="r-md-1">
+          <div class="hd"><span>诉求类型</span></div>
+          <div class="bd"><list-appeal-sqlx></list-appeal-sqlx></div>
+        </section>
       </div>
     </div>
   </div>
@@ -19,13 +33,15 @@
 
 
 <script>
-import ListSearch from '../../../../components/ListSearch'
+import ListSearchAppeal from '../../../../components/ListSearchAppeal'
 import ListAppeal from '../../../../components/ListAppeal'
+import ListAppealSqlx from '../../../../components/ListAppealSqlx'
 
 export default {
   components: {
-    'list-search': ListSearch,
-    'list-appeal': ListAppeal
+    'list-search-appeal': ListSearchAppeal,
+    'list-appeal': ListAppeal,
+    'list-appeal-sqlx': ListAppealSqlx
   },
   props: {
   },
@@ -55,6 +71,7 @@ export default {
   .child-box {
     .right-box {
       .sq {
+        margin-bottom: 20px;
         button {
           width: 100%;
           height: 60px;
