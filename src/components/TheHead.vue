@@ -30,7 +30,7 @@
                   ><b class="iconfont icon-dui"></b></em>
               </span>
             </el-dropdown-item>
-            <el-dropdown-item ><span><i class="iconfont icon-gear-settings"></i>个人中心</span></el-dropdown-item>
+            <el-dropdown-item ><router-link to="/member/baseMsg"><span><i class="iconfont icon-gear-settings"></i>个人中心</span></router-link></el-dropdown-item>
             <el-dropdown-item divided><span @click="logouted"><i class="iconfont icon-close-"></i>退出</span></el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
@@ -41,7 +41,8 @@
           title="微信公众号"
           width="200"
           trigger="hover">
-          <el-button slot="reference" icon="el-icon-mobile-phone" circle plain></el-button>
+          <!-- <el-button  icon="" circle plain></el-button> -->
+          <div class="ico" slot="reference"><i class="iconfont icon-QRCode"></i></div>
           <div>二维码</div>
         </el-popover>
       </div>
@@ -147,6 +148,18 @@ export default {
       float: right;
       margin-right: 10px;
       margin-top: 20px;
+      .ico {
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        border: 1px solid #e1e1e1;
+        @include radius(50%);
+        @include theme_bd(neutral-border);
+        .iconfont {
+          font-size: 26px;
+        }
+      }
     }
     .user {
       float: right;

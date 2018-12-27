@@ -6,7 +6,7 @@
         <div class="swiper-slide"><img src="../common/images/fullslide-2.jpg"></div>
         <div class="swiper-slide"><img src="../common/images/fullslide-3.jpg"></div>
       </div>
-      <div class="midCircle"><img src="../common/images/fullslide_mid.png" alt=""></div>
+      <!-- <div class="midCircle"><img src="../common/images/fullslide_mid.png" alt=""></div> -->
       <div class="swiper-pagination"></div>
     </div>
   </div>
@@ -38,6 +38,7 @@ export default {
     new Swiper('.swiper-fullsilde',{
       autoplay: 8000,
       speed: 2000,
+      effect: 'fade',
       autoplayDisableOnInteraction : false,
       loop : true,
       pagination: '.swiper-pagination',

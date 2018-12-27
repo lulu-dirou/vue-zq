@@ -267,10 +267,10 @@ a {
           padding: 0 30px;
           height: 40px;
           line-height: 38px;
-          margin-right: -1px;
+          margin-right: 1px;
           font-size: $font-size-lgm;
           color: rgba(#fff,0.8);
-          @include theme_bg(primary-light);
+          @include theme_bg(primary);
           @include transition(0.2s);
           &:before {
             display: none;
@@ -282,7 +282,7 @@ a {
             @include arrow(bottom,8px,#fff);
           }
           &:hover {
-            @include theme_bg(primary-light,0.6);
+            @include theme_bg(primary,0.6);
           }
           &.router-link-active,&.router-link-active:hover {
             @include theme_font(primary);
@@ -552,6 +552,24 @@ a {
           }
         }
       }
+      .toMore {
+        .tabs {
+          .el-tabs__nav {
+            margin-left: 20px;
+            .el-tabs__active-bar {
+              height: 4px;
+            }
+            .el-tabs__item {
+              height: 50px;
+              line-height: 50px;
+              @include theme_font(primary-light);
+              &.is-active {
+                @include theme_font(primary);
+              }
+            }
+          }
+        }
+      }
     }
   }
 }
@@ -628,9 +646,152 @@ a {
 }
 
 
+//********************************
+//
+// listMini
+//
+//********************************
+.listMini {
+  tr {
+    td {
+      font-size: $font-size-xs;
+      &.mini-dot {
+        position: relative;
+        width: 20px;
+        text-align: center;
+        i {
+          position: absolute;
+          left: 0;
+          top: 50%;
+          margin-top: -3px;
+          width: 6px;
+          height: 6px;
+          background-color: red;
+          @include theme_bg(warning);
+        }
+      }
+      &.mini-title {
+        a {
+          @include lines(1);
+        }
+      }
+      &.mini-time {
+        width: 100px;
+        text-align: right;
+        @include theme_font(neutral,0.6);
+      }
+    }
+  }
+}
 
 
-
+//********************************
+//
+// dialogScreening
+//
+//********************************
+.dialogScreening {
+  .el-dialog__body {
+    padding-top: 10px;
+    .Screening-box {
+      .title {
+        width: 100%;
+        height: 50px;
+        line-height: 50px;
+        padding-left: 20px;
+        margin-bottom: 60px;
+        font-size: $font-size-lgx;
+        font-weight: 600;
+        color: #fff;
+        background-color: #000;
+        background: url("../common/images/screening-title.png") no-repeat;
+      }
+      .content {
+        position: relative;
+        height: 200px;
+        border: 1px solid #ccc;
+        // @include theme_bd(primary,0.6);
+        .step-li {
+          position: relative;
+          top: -45px;
+          width: 200px;
+          margin: 0 30px;
+          display: inline-block;
+          text-align: center;
+          .ico {
+            width: 90px;
+            height: 90px;
+            line-height: 90px;
+            margin: 0 auto;
+            margin-bottom: 20px;
+            text-align: center;
+            background: url("../common/images/screening-step1-ico.png") no-repeat;
+            i {
+              font-size: 48px;
+              @include theme_font(primary-light);
+            }
+          }
+          .msg {
+            margin-bottom: 20px;
+          }
+        }
+        &:before {
+          position: absolute;
+          right: 0;
+          top: -55px;
+          width: 160px;
+          height: 200px;
+          content: '';
+          background: url("../common/images/screening-kefu.png") no-repeat;
+        }
+      }
+      .content-sel {
+        height: auto;
+        padding: 30px 20px;
+        margin-top: -20px;
+        margin-bottom: 20px;
+        border-width: 2px;
+        @include theme_bd(primary);
+        &:before {
+          top: auto;
+          bottom: 0;
+        }
+        ul {
+          width: 520px;
+          .el-radio.is-bordered {
+            height: auto;
+            padding: 12px 30px 12px 20px;
+            margin: 5px 10px 5px 0;
+            .el-radio__label {
+              font-size: $font-size-lgm;
+            }
+          }
+          .el-radio__inner:hover {
+            @include theme_bd(warning);
+          }
+          .el-radio.is-bordered.is-checked {
+             @include theme_bd(warning);
+             @include theme_bg(warning,0.1);
+          }
+          .el-radio__input.is-checked{
+            +.el-radio__label {
+              @include theme_font(warning);
+            }
+            .el-radio__inner {
+              @include theme_bd(warning);
+              @include theme_bg(warning);
+            }
+          }
+        }
+      }
+      .footer {
+        z-index: 22;
+        position: relative;
+        text-align: right;
+      }
+    }
+  }
+}
 
 
 

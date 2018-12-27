@@ -31,6 +31,42 @@ const instance = new Router({
       component: () => import('./views/member/regDetail.vue')
     },
     {
+      path: "/member",
+      component: () => import('./views/member/child.vue'),
+      meta: { requireAuth: true },
+      children: [
+        {
+          path: "baseMsg",
+          component: () => import('./views/member/baseMsg'),
+          meta: { requireAuth: true }
+        },
+        {
+          path: "push",
+          component: () => import('./views/member/push'),
+          meta: { requireAuth: true }
+        },
+        {
+          path: "fav",
+          component: () => import('./views/member/fav'),
+          meta: { requireAuth: true }
+        },
+        {
+          path: "mylive",
+          component: () => import('./views/member/mylive'),
+          meta: { requireAuth: true }
+        },
+        {
+          path: "setting",
+          component: () => import('./views/member/setting'),
+          meta: { requireAuth: true }
+        },
+        {
+          path: "/",//重定向，默认显示
+          redirect: "baseMsg"
+        }
+      ]
+    },
+    {
       path: "/declare",
       component: () => import('./views/declare/child.vue'),
       children: [
@@ -59,6 +95,7 @@ const instance = new Router({
     {
       path: "/appeal",
       component: () => import('./views/appeal/child.vue'),
+      meta: { requireAuth: true }
     },
     {
       path: "/appeal/appealFrom",

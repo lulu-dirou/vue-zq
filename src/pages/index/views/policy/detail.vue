@@ -27,6 +27,17 @@
         <div class="content">
           <p v-html="results.zcbj"></p>
         </div>
+        <div class="toMore">
+          <el-tabs v-model="toMoreActiveName" class="tabs">
+            <el-tab-pane label="相关政策" name="0">
+              <list-my-zc></list-my-zc>
+            </el-tab-pane>
+            <el-tab-pane label="申报通知" name="1">
+              <list-my-sb></list-my-sb>
+            </el-tab-pane>
+          </el-tabs>
+
+        </div>
       </div>
     </div>
     <the-toolbar></the-toolbar>
@@ -36,10 +47,14 @@
 
 <script>
 import TheToolbar from '../../../../components/TheToolbar'
+import ListMyZc from '../../../../components/ListMyZc'
+import ListMySb from '../../../../components/ListMySb'
 
 export default {
   components: {
-    'the-toolbar': TheToolbar
+    'the-toolbar': TheToolbar,
+    'list-my-zc': ListMyZc,
+    'list-my-sb': ListMySb,
   },
   props: {
   },
@@ -48,7 +63,8 @@ export default {
       loading: true,
       results: [],
       bdlists: [],
-      reset_Zczt: ''
+      reset_Zczt: '',
+      toMoreActiveName: '0',
     }
   },
   computed: {

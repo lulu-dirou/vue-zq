@@ -97,7 +97,7 @@ export default {
       padding: 20px;
       border-bottom: 1px solid #e1e1e1;
       background: #fff;
-      @include theme_bd(neutral-border);
+      @include theme_bd(neutral-diviter);
       &:last-child {
         border-bottom: 0;
       }
