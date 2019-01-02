@@ -36,7 +36,6 @@
               <list-my-sb></list-my-sb>
             </el-tab-pane>
           </el-tabs>
-
         </div>
       </div>
     </div>

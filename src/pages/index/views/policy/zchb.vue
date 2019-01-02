@@ -17,7 +17,7 @@
             <span>园区企业</span>
           </div>
         </div>
-        <list-zc :paginationShow="true"></list-zc>
+        <list-zc :paginationShow="true" :popIds="ids"></list-zc>
       </div>
     </div>
     <div class="right-box">
@@ -27,26 +27,26 @@
       <div class="nav">
         <div class="title"><span>综合类</span></div>
         <ul class="flex">
-          <li><i class="iconfont icon-info"></i><span>促投资</span></li>
-          <li class="active"><i class="iconfont icon-notifications"></i><span>助融资</span></li>
-          <li><i class="iconfont icon-user"></i><span>引人才</span></li>
-          <li><i class="iconfont icon-hot"></i><span>促创新</span></li>
-          <li><i class="iconfont icon-crown"></i><span>建品牌</span></li>
-          <li><i class="iconfont icon-repeat-"></i><span>降产品</span></li>
-          <li><i class="iconfont icon-fb-messenger"></i><span>扶成长</span></li>
-          <li><i class="iconfont icon-route"></i><span>鼓励园区发展</span></li>
+          <li @click="jump('fe5ac768714b45faaa90f79ae0297b11')"><i class="iconfont icon-info"></i><span>促投资</span></li>
+          <li @click="jump('4d78f8e6994a486981338da601384998')" class="active"><i class="iconfont icon-notifications"></i><span>助融资</span></li>
+          <li @click="jump('8160ff0c0a354c72a4718eef3a2e5c32')"><i class="iconfont icon-user"></i><span>引人才</span></li>
+          <li @click="jump('0619c5b14e144e61b7635ee65e12fc14')"><i class="iconfont icon-hot"></i><span>促创新</span></li>
+          <li @click="jump('9dbeb07c5d4f4176a410f24b9a9045e2')"><i class="iconfont icon-crown"></i><span>建品牌</span></li>
+          <li @click="jump('3827b8d067d54e2cb7f8db615f68905c')"><i class="iconfont icon-repeat-"></i><span>降成本</span></li>
+          <li @click="jump('6d8fa80fd308440eaa880044566e4cec')"><i class="iconfont icon-fb-messenger"></i><span>扶成长</span></li>
+          <li @click="jump('4a7730d35ded4d9f9620c5962bd73afd')"><i class="iconfont icon-route"></i><span>鼓励园区发展</span></li>
         </ul>
       </div>
       <div class="nav">
         <div class="title"><span>产业类</span></div>
         <ul class="flex">
-          <li><i class="iconfont icon-chart"></i><span>金融产业</span></li>
-          <li><i class="iconfont icon-user"></i><span>服务业</span></li>
-          <li><i class="iconfont icon-office-box"></i><span>制造业</span></li>
-          <li><i class="iconfont icon-monitor"></i><span>电子商务</span></li>
-          <li><i class="iconfont icon-globe"></i><span>文旅产业</span></li>
-          <li><i class="iconfont icon-delivery"></i><span>物流产业</span></li>
-          <li><i class="iconfont icon-lamp"></i><span>生命健康</span></li>
+          <li @click="jump('aeb977fa85834ca591419dbe90660686')"><i class="iconfont icon-chart"></i><span>金融产业</span></li>
+          <li @click="jump('b826e2ce62ea4f8d884ba77850266201')"><i class="iconfont icon-user"></i><span>服务业</span></li>
+          <li @click="jump('aeb977fa85834ca591419dbe90660686')"><i class="iconfont icon-office-box"></i><span>制造业</span></li>
+          <li @click="jump('aeb977fa85834ca591419dbe90660686')"><i class="iconfont icon-monitor"></i><span>电子商务</span></li>
+          <li @click="jump('aeb977fa85834ca591419dbe90660686')"><i class="iconfont icon-globe"></i><span>文旅产业</span></li>
+          <li @click="jump('8b370fa9c5284b0b83f1e0525ddcf170')"><i class="iconfont icon-delivery"></i><span>物流产业</span></li>
+          <li @click="jump('d7a272b248cf475d831d0fc99ee1b9ce')"><i class="iconfont icon-lamp"></i><span>生命健康</span></li>
         </ul>
       </div>
     </div>
@@ -64,10 +64,12 @@ export default {
     'the-dialog-screening': TheDialogScreening,
   },
   props: {
+
   },
   data: function() {
     return {
       dialogVisible: false,
+      ids: ''
     }
   },
   computed: {
@@ -75,6 +77,9 @@ export default {
   watch: {
   },
   methods: {
+    jump: function(val){
+      this.ids = val
+    }
   },
   created: function(){
   },

@@ -1,14 +1,17 @@
 <template>
   <div class="mylive">
-    mylive
+    <div class="mySetting-title"><span>我的直播</span></div>
+    <my-live :paginationShow="true"></my-live>
   </div>
 </template>
 
 
 <script>
+import MyLive from '../../../../components/MyLive'
 
 export default {
   components: {
+    'my-live': MyLive,
   },
   props: {
   },

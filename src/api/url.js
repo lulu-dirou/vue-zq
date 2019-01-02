@@ -6,7 +6,8 @@ export default {
   },
   zcfw: {
     getZcfw: '/GEService/qyfwpt/zcfw/getZcfw', // 获取政策服务明细
-    listZcfw: '/GEService/qyfwpt/zcfw/listZcfw', // 最新政策列表
+    zclb: '/GEService/sbfw/mh/zclb', // 政策汇编
+    //listZcfw: '/GEService/qyfwpt/zcfw/listZcfw', // 最新政策列表
     listZcfwSearch: '/GEService/qyfwpt/zcfw/searchZcfw', // 最新政策搜索
     listZcjd: '/GEService/qyfwpt/zcfw/listZcjd', // 文字解读（政策解读）
     listDmjd: '/GEService/qyfwpt/zcfw/listDmjd', // 动漫解读（政策解读）

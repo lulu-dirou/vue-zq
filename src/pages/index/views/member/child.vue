@@ -104,7 +104,7 @@ export default {
   }
   .right {
     flex: 1;
-    padding: 50px;
+    padding: 40px;
     background-color: #fff;
   }
 }
