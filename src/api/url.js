@@ -25,5 +25,9 @@ export default {
   sq: {
     listQysq: '/GEService/qyfwpt/qysq/listQysq', //我的企业诉求列表
     getSqlx: '/GEService/qyfwpt/qysq/getSqlx', //诉求类型
+    mhListQysq: '/GEService/qyfwpt/qysq/mhListQysq', //门户网站获取企业诉求列表
+    mhGetSqlxTj: '/GEService/qyfwpt/qysq/mhGetSqlxTj', //门户网站获取企业诉求类型数量统计
+    mhGetQysq: '/GEService/qyfwpt/qysq/mhGetQysq', //门户网站获取我的企业诉求明细
+    
   },
 }

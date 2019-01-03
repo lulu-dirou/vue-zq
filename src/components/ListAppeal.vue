@@ -4,16 +4,16 @@
       <li v-for="(list,index) in filterLists" :key="list.id">
         <div class="li-box">
           <div class="title-box flex-middle">
-            <span class="title" @click="jump()">{{ list.sqzxzt }}</span>
-            <button class="btn" @click="jump()" :class="ztColor(index)">{{ ztMsg(index) }}</button>
+            <span class="title" @click="jump(index)">{{ list.qymc }}的{{ list.sqlxmc }}</span>
+            <button class="btn active" @click="jump(index)" :class="ztColor(index)">{{ ztMsg(index) }}</button>
           </div>
           <div class="msg-box">
-            <div class="title">{{ list.sqzxnr }}</div>
+            <div class="title" @click="jump(index)">{{ list.xbnr }}</div>
             <dl class="font-xs clear">
-            <dd><span>诉求类型</span><span><em class="btn btn-xs btn0-info">{{ list.sqzxlx }}</em></span></dd>
+            <dd><span>诉求类型</span><span><em class="btn btn-xs btn0-info">{{ list.sqlxmc }}</em></span></dd>
             <dd><span>诉求时间</span><span><em class="font-info">{{ list.fbsj }}</em></span></dd>
-            <dd><span>诉求来源</span><span><em class="font-info">政企平台</em></span></dd>
-            <dd><el-button type="primary" size="mini" icon="el-icon-star-off" plain @click="dialogVisible = true">待评价</el-button></dd>
+            <dd><span>诉求来源</span><span><em class="font-info">{{ list.sqzxly }}</em></span></dd>
+            <!-- <dd><el-button type="primary" size="mini" icon="el-icon-star-off" plain @click="dialogVisible = true">待评价</el-button></dd> -->
             </dl>
           </div>
           <el-dialog
@@ -37,7 +37,7 @@
         </div>
       </li>
     </ul>
-    <div v-if="noData">抱歉！没有相关记录</div>
+    <div class="noData" v-if="noData">抱歉！没有相关记录</div>
     <div class="pagination" v-if="paginationShow">
       <el-pagination
         @current-change="handleCurrentChange"
@@ -58,6 +58,8 @@ export default {
   props: {
     listNum: Number,
     paginationShow: Boolean,
+    propSqlx: String,
+    propKeyWord: String,
   },
   data: function() {
     return {
@@ -79,45 +81,56 @@ export default {
   computed: {
     filterLists: function(){
       return this.lists.slice(0, this.listNum)
-    },
+    }
   },
   watch: {
   },
   methods: {
-    getApi: function(){
-      this.$http.post(this.$url.sq.listQysq,{
-        token: this.$store.state.Member.token
+    // @诉求类型,@关键字,@当前页初始化
+    getApi: function(sqlxValue,keyWordValue,curVal){
+      if(curVal==1){
+        this.currentPage = 1
+      }
+      this.$http.post(this.$url.sq.mhListQysq,{
+        pageSize: this.listPageSize,
+        pageNo: this.currentPage,
+        token: this.$store.state.Member.token,
+        sqlx: sqlxValue,
+        keyWord: keyWordValue,
       }).then((res) => {
-        this.lists = res.data.body.zdSqList
-        this.listTotal = res.data.body.zdSqList.length
+        this.lists = res.data.body.list
+        this.listTotal = res.data.body.tatol
         this.loading = false
         if(this.lists.length == 0){
           this.noData = true
+        }else {
+          this.noData = false
         }
       })
     },
     ztMsg: function(index){
       switch(Number(this.lists[index].zt))
       {
-        case 1: return '已提交'
-        case 4: return '已办结'
+        case 0: return '处理中'
+        case 2: return '已办结'
       }
     },
     ztColor: function(index){
       switch(Number(this.lists[index].zt))
       {
-        case 1: return 'btn-warning'
-        case 4: return 'btn-disabled'
+        case 0: return 'btn-warning'
+        case 2: return 'btn-disabled'
       }
     },
     handleCurrentChange(val) {
       this.loading = true
-      this.currentPage = val;
-      this.getApi();
+      this.currentPage = val
+      this.getApi(this.propSqlx,this.propKeyWord);
       console.log(`当前页: ${val}`);
     },
-    jump: function(){
-      this.$router.push("./appeal/detail"); 
+    jump: function(index){
+      // this.$router.push("./appeal/detail"); 
+      this.$router.push({path:'./appeal/detail', query:{sqid:this.lists[index].id,xbid:this.lists[index].xbid}}) 
     }
   },
   created: function(){
@@ -165,10 +178,11 @@ export default {
       padding: 20px 0;
       border-bottom: 1px solid #e1e1e1;
       @include theme_bd(neutral-divider);
-      span {
+      .title {
         flex: 1;
         font-size: $font-size-lg;
         font-weight: 600;
+        cursor: pointer;
         @include lines(1);
         @include theme_font(primary);
       }
@@ -179,7 +193,9 @@ export default {
     .msg-box {
       padding: 10px 0 20px 0;
       .title {
+        font-size: $font-size-lgm;
         margin-bottom: 20px;
+        cursor: pointer;
       }
       dl {
         dd {
@@ -222,6 +238,11 @@ export default {
         padding: 20px 20px;
       }
     }
+  }
+  .noData {
+    padding: 20px;
+    margin-bottom: -10px;
+    background-color: #fff;
   }
   .pagination {
     margin-top: 10px;
