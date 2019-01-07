@@ -12,10 +12,12 @@ const instance = new Router({
   routes: [
     {
       path: "/index.html",
+      name: 'index',
       component: () => import('./views/home.vue')
     },
     {
       path: "/home",
+      name: 'home',
       component: () => import('./views/home.vue')
     },
     {

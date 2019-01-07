@@ -1,10 +1,10 @@
 <template>
-  <div class="theSerch">
+  <div class="the-search">
     <div class="search-box flex-middle">
       <input type="text"/>
-      <button type="button"><i class="el-icon-search"></i></button>
+      <button class="btn active" type="button"><i class="el-icon-search"></i></button>
     </div>
-    <div class="hotWords">
+<!--     <div class="hotWords">
       <span>热门搜索：</span>
       <a href="">上市扶持</a>
       <span>，</span>
@@ -15,7 +15,7 @@
       <a href="">税务办理</a>
       <span>，</span>
       <a href="">人力社保</a>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -45,37 +45,41 @@ export default {
 
 
 <style lang="scss" scoped>
-.theSerch {
+.the-search {
   .search-box {
     input {
-      width: 500px;
+      width: 200px;
       height: 40px;
       padding: 0 10px;
-      border: 0;
+      border: 1px solid rgba(#fff,0.3);
+      border-right: 0;
+      color: #fff;
+      font-size: $font-size-df;
+      background-color: transparent;
       @include radius(2px 0 0 2px);
     }
     button {
-      width: 100px;
+      width: 50px;
       height: 40px;
       border: 0;
       color: #fff;
       font-size: $font-size-lgx;
-      cursor: pointer;
+      border: 1px solid rgba(#fff,0.3);
+      background-color: rgba(#fff,0.2);
       @include radius(0 2px 2px 0);
-      @include theme_bg(primary);
     }
   }
-  .hotWords {
-    padding: 10px 0;
-    text-align: center;
-    span {
-      color: rgba(#fff,0.7);
-      @include text-shadow()
-    }
-    a {
-      color: #fff;
-      @include text-shadow()
-    }
-  }
+  // .hotWords {
+  //   padding: 10px 0;
+  //   text-align: center;
+  //   span {
+  //     color: rgba(#fff,0.7);
+  //     @include text-shadow()
+  //   }
+  //   a {
+  //     color: #fff;
+  //     @include text-shadow()
+  //   }
+  // }
 }
 </style>

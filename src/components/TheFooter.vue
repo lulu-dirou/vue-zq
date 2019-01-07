@@ -1,6 +1,16 @@
 <template>
-  <footer class="theFooter">
-    <div class="footer flex">
+  <footer class="the-footer">
+    <div class="footer">
+      <p class="link">
+        <router-link to="/home"><span>首页</span></router-link>|
+        <router-link to="/appeal"><span>诉求</span></router-link>|
+        <router-link to="/policy"><span>政策</span></router-link>|
+        <router-link to="/declare"><span>申报</span></router-link>
+      </p>
+      <p>Copyright © 2018 -  OKing Co.,Ltd All Rights Reserved 禅城区政企服务中心，服务热线：0757-82271580</p>
+      <p>技术支持：广东奥博信息产业股份有限公司</p>
+    </div>
+<!--     <div class="footer flex">
       <div class="link">
         <ul class="flex">
           <li>
@@ -41,7 +51,7 @@
           </li>
         </ul>
       </div>
-    </div>
+    </div> -->
   </footer>
 </template>
 
@@ -71,40 +81,65 @@ export default {
 
 
 <style lang="scss" scoped>
-.theFooter {
+.the-footer {
   padding: 40px 0;
   @include theme_bg(neutral-title);
   .footer {
     width: 1200px;
     margin: 0 auto;
+    text-align: left;
+    p {
+      line-height: 1.5;
+      font-size: $font-size-xs;
+      color: rgba(#fff,0.5);
+    }
     .link {
-      flex: 1;
-    }
-    .about {
-      border-left: 1px solid rgba(#fff,0.2);
-      border-right: 1px solid rgba(#fff,0.2);
-      padding: 0 40px;
-      flex: 0 0 300px;
-      margin-left: 20px;
-    }
-    li {
-      margin-right: 60px;
-      .title {
-        display: block;
-        margin-bottom: 20px;
-        color: rgba(#fff,0.7);
-      }
-      dd {
-        color: rgba(#fff,0.5);
-        margin-bottom: 5px;
-      }
-      .new {
-        @include theme_font(primary-light);
-      }
-      .hot {
-        @include theme_font(warning);
+      margin-bottom: 10px;
+      a {
+        display: inline-block;
+        margin-right: 10px;
+        margin-left: 10px;
+        &:first-child {
+          margin-left: 0;
+        }
+        span {
+          color: rgba(#fff,0.5);
+        }
+        &:hover {
+          span {
+            color: rgba(#fff,1);
+          }
+        }
       }
     }
+    // .link {
+    //   flex: 1;
+    // }
+    // .about {
+    //   border-left: 1px solid rgba(#fff,0.2);
+    //   border-right: 1px solid rgba(#fff,0.2);
+    //   padding: 0 40px;
+    //   flex: 0 0 300px;
+    //   margin-left: 20px;
+    // }
+    // li {
+    //   margin-right: 60px;
+    //   .title {
+    //     display: block;
+    //     margin-bottom: 20px;
+    //     color: rgba(#fff,0.7);
+    //   }
+    //   dd {
+    //     color: rgba(#fff,0.5);
+    //     margin-bottom: 5px;
+    //   }
+    //   .new {
+    //     @include theme_font(primary-light);
+    //   }
+    //   .hot {
+    //     @include theme_font(warning);
+    //   }
+    // }
   }
 }
 </style>

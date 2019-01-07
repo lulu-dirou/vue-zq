@@ -6,7 +6,6 @@
         <div class="swiper-slide"><img src="../common/images/fullslide-2.jpg"></div>
         <div class="swiper-slide"><img src="../common/images/fullslide-3.jpg"></div>
       </div>
-      <!-- <div class="midCircle"><img src="../common/images/fullslide_mid.png" alt=""></div> -->
       <div class="swiper-pagination"></div>
     </div>
   </div>
@@ -37,7 +36,7 @@ export default {
   mounted: function(){
     new Swiper('.swiper-fullsilde',{
       autoplay: 8000,
-      speed: 2000,
+      speed: 200,
       effect: 'fade',
       autoplayDisableOnInteraction : false,
       loop : true,
@@ -45,7 +44,7 @@ export default {
       paginationType: 'bullets',
       paginationClickable : true,
       observer:true,//修改swiper自己或子元素时，自动初始化swiper
-      observeParents:true//修改swiper的父元素时，自动初始化swiper
+      observeParents:true,//修改swiper的父元素时，自动初始化swiper
     })
   }
 }
@@ -84,19 +83,26 @@ export default {
         text-align: center;
         img {
           max-width: 100%;
-          height: 700px;
+          height: 750px;
         }
       }
     }
     .swiper-pagination {
+      // margin-left: 500px;
       bottom: 20px;
       .swiper-pagination-bullet {
-        width: 12px;
-        height: 12px;
-        background-color: #fff;
+        width: 14px;
+        height: 14px;
+        margin: 9px;
+        border: 2px solid #fff;
+        opacity: 1;
+        background-color: transparent;
+        @include transition(0.2s);
       }
       .swiper-pagination-bullet-active {
-        opacity: 1;
+        border-width: 3px;
+        @include theme_bd(danger);
+        @include scale(1.5,1.5);
       }
     }
   }

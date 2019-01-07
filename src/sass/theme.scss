@@ -7,7 +7,7 @@ $theme-primary-dark         : #002a69 !default;
 $theme-info                 : #4fa4c8 !default;
 $theme-success              : #7fa54e !default;
 $theme-warning              : #ff6600 !default;
-$theme-danger               : #F44336 !default;
+$theme-danger               : #C71A1A !default;
 $theme-neutral              : #515a6e !default;
 $theme-neutral-title        : #1f2f3d !default;
 $theme-neutral-disabled     : mix($theme-white, $theme-neutral, 67%) !default;
@@ -64,12 +64,12 @@ $theme3-neutral-divider      : mix($theme3-white, $theme3-neutral, 87%) !default
 
 
 // 字体定义规范
-$font-size-xs               : 12px !default;
-$font-size-sm               : 13px !default;
-$font-size-df               : 14px !default;
-$font-size-lgm              : 16px !default;
-$font-size-lg               : 18px !default;
-$font-size-lgx              : 20px !default;
+$font-size-xs               : 14px !default;
+$font-size-sm               : 15px !default;
+$font-size-df               : 16px !default;
+$font-size-lgm              : 18px !default;
+$font-size-lg               : 20px !default;
+$font-size-lgx              : 22px !default;
  
 
 

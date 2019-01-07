@@ -1,7 +1,7 @@
 <template>
   <div class="listZc" v-loading="loading">
     <el-row :gutter="30">
-      <el-col :span="8" v-for="(list,index) in filterLists" :key="list.id">
+      <el-col :span="12" v-for="(list,index) in filterLists" :key="list.id">
         <div class="grid-content">
           <div class="title-max"><span>{{ list.fwdw}}</span></div>
           <div class="title-box">
@@ -74,7 +74,7 @@ export default {
   data: function() {
     return {
       listTotal: 10,
-      listPageSize: 9,
+      listPageSize: 10,
       currentPage: 1,
       lists: [],
       noData: false,
@@ -141,8 +141,8 @@ export default {
         @include theme_bd(neutral-border);
         .title-max {
           margin: -1px -1px 0 -1px;
-          padding: 5px 10px;
-          font-size: 12px;
+          padding: 5px 20px;
+          font-size: $font-size-xs;
           color: #fff;
           @include theme_bg(primary);
           span {
@@ -150,14 +150,15 @@ export default {
           }
         }
         .title-box {
-          padding: 20px 10px;
+          padding: 20px;
           .title {
-            height: 70px;
+            height: 60px;
             span {
-              @include lines(3);
+              @include lines(2);
             }
           }
           .label {
+            width: 60%;
             font-size: $font-size-xs;
             @include lines(1);
             span {
@@ -174,7 +175,7 @@ export default {
           @include theme_bd(neutral-border);
           @include theme_font(neutral,0.6);
           li {
-            padding: 15px 20px 15px 10px;
+            padding: 10px 20px 10px 20px;
             float: left;
             border-right: 1px solid #e1e1e1;
             @include theme_bd(neutral-divider);

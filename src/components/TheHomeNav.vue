@@ -1,38 +1,43 @@
 <template>
-  <div class="theHomeNav">
-    <ul class="clear">
-      <li>
-        <div class="li-box clear">
-          <div class="ico"><i class="iconfont icon-wodegongzuo-liebiao"></i></div>
-          <div class="title">企业服务</div>
+  <div class="the-home-nav">
+    <el-row :gutter="40">
+      <el-col :span="6">
+        <div class="grid-content">
+          <div class="ico ico-01"></div>
+          <div class="msg clear">
+            <span>企业查一查</span>
+            <em></em>
+          </div>
         </div>
-      </li>
-      <li>
-        <div class="li-box clear">
-          <div class="ico"><i class="iconfont icon-woderenwu-liebiao"></i></div>
-          <div class="title">知识库</div>
+      </el-col>
+      <el-col :span="6">
+        <div class="grid-content">
+          <div class="ico ico-02"></div>
+          <div class="msg clear">
+            <span>工商事项</span>
+            <em></em>
+          </div>
         </div>
-      </li>
-      <li class="disabled">
-        <div class="li-box clear">
-          <div class="ico"><i class="iconfont icon-tiaochaziliaoguanli"></i></div>
-          <div class="title">政策库</div>
+      </el-col>
+      <el-col :span="6">
+          <div class="grid-content">
+          <div class="ico ico-03"></div>
+          <div class="msg clear">
+            <span>税务事项</span>
+            <em></em>
+          </div>
         </div>
-      </li>
-      <li class="disabled">
-        <div class="li-box clear">
-          <div class="ico"><i class="iconfont icon-hezhunshenqing"></i></div>
-          <div class="title">企业诉求</div>
+      </el-col>
+      <el-col :span="6">
+        <div class="grid-content">
+          <div class="ico ico-04"></div>
+          <div class="msg clear">
+            <span>自助咨询</span>
+            <em></em>
+          </div>
         </div>
-      </li>
-      <li class="disabled">
-        <div class="li-box clear">
-          <div class="ico"><i class="iconfont icon-rizhi"></i></div>
-          <div class="title">日常办公</div>
-        </div>
-      </li>
-      <div class="line"></div>
-    </ul>
+      </el-col>
+    </el-row>
   </div>
 </template>
 
@@ -63,102 +68,66 @@ export default {
 
 
 <style lang="scss" scoped>
-.theHomeNav {
-  ul {
+.the-home-nav {
+  width: 1200px;
+  margin: 40px auto;
+  .grid-content {
     position: relative;
-    text-align: center;
-    .line {
+    height: 80px;
+    cursor: pointer;
+    .ico {
       position: absolute;
-      top: 50%;
-      left: -5%;
-      width: 110%;
-      height: 1px;
-      content: '';
-      background-color: rgba(#fff,0.3);
+      left: 0;
+      top: 0;
+      width: 80px;
+      height: 80px;
+      line-height: 80px;
+      text-align: center;
+      background-color: #fff;
+      @include transition(0.4s);
+      @include radius(10px);
+      @include shadow(0,15px,30px,0,rgba(#000,0.15));
+      background-image: url("../common/images/home-nav.png");
+      &.ico-01 {
+        background-position: 0 0;
+      }
+      &.ico-02 {
+        background-position: 0 -80px;
+      }
+      &.ico-03 {
+        background-position: 0 -160px;
+      }
+      &.ico-04 {
+        background-position: 0 -240px;
+      }
     }
-    li {
+    .msg {
       position: relative;
-      display: inline-block;
-      width:200px;
-      height: 200px;
-      margin: 20px;
-      cursor: pointer;
-      background-color: rgba(#fff,0.2);
-      @include radius(200px);
-      &:before {
-        display: none;
-        z-index: -1;
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 200px;
-        height: 200px;
-        content: '';
-        @include radius(200px);
-        @include animation(libg,2s,ease-out);
-        @include keyframes(libg){
-          0% {
-            @include scale(1,1);
-            background-color: rgba(#fff,0.4);
-          }
-          100% {
-            @include scale(1.5,1.5);
-            background-color: rgba(#fff,0);
-          }
-        }
-      }
-      &:hover:before {
+      margin-left: 90px;
+      span {
         display: block;
+        margin: 15px 0 15px 0;
       }
-      .li-box {
-        z-index: 2;
-        position: relative;
-        width: 160px;
-        height: 160px;
-        margin: 20px;
-        @include radius(200px);
-        @include shadow(0,0,20px,10px,rgba(#000,0.05));
-        background-color: #fff;
-        .ico {
-          width: 90px;
-          height: 90px;
-          margin: 15px auto 5px auto;
-          i {
-            font-size: 80px;
-            @include theme_font(primary-light);
-          }
-        }
-        .title {
-          @include theme_font(neutral-title);
-          font-size: $font-size-lgx;
-        }
+      em {
+        display: block;
+        width: 20px;
+        height: 6px;
+        @include transition(0.2s);
+        @include radius(100px);
+        @include theme_bg(neutral-border);
       }
-      &:hover {
-        .li-box {
+    }
+    &:hover {
+      .ico {
+        @include rotateY();
+      }
+      .msg {
+        span {
+          @include theme_font(danger);
+        }
+        em {
+          width: 40px;
           @include theme_bg(primary);
-          .ico {
-            i {
-              color: #fff;
-            }
-          }
-          .title {
-            color: #fff;
-          }
-        }
-      }
-      &.disabled,&.disabled:hover {
-        cursor: not-allowed;
-        .li-box {
-          background-color: rgba(#fff,1);
-          .ico {
-            i {
-              background-color: transparent;
-              @include theme_font(neutral-disabled);
-            }
-          }
-          .title {
-            @include theme_font(neutral-disabled);
-          }
         }
       }
     }

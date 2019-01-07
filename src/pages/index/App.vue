@@ -1,11 +1,10 @@
 <template>
   <div id="app" class="flex">
-    <the-head></the-head>
-    <the-menu></the-menu>
+    <the-head v-if="headShow"></the-head>
+    <the-menu v-if="menuShow"></the-menu>
     <div class="theContent clear"> 
       <router-view></router-view>
     </div>
-    <!-- <the-flink></the-flink> -->
     <the-footer></the-footer>
   </div>
 </template>
@@ -13,18 +12,28 @@
 <script>
 import TheHead from '../../components/TheHead.vue'
 import TheMenu from '../../components/TheMenu.vue'
-// import TheFlink from '../../components/TheFlink.vue'
 import TheFooter from '../../components/TheFooter.vue'
 
 export default {
   components: {
     'the-head': TheHead,
     'the-menu': TheMenu,
-    // 'the-flink': TheFlink,
     'the-footer': TheFooter,
   },
   data: function(){
     return {
+      headShow: false,
+      menuShow: false,
+      flinkShow: false
+    }
+  },
+  computed: {
+  },
+  watch: {
+    $route: function(e){
+      this.headShow = (e.name=='home'||e.name=='index') ? false : true
+      this.menuShow = (e.name=='home'||e.name=='index') ? false : true
+      this.flinkShow = (e.name=='home'||e.name=='index') ? true : false
     }
   },
   methods: {
@@ -45,9 +54,9 @@ export default {
 <style lang="scss">
 #app {
   flex-direction: column;
-  min-width: 1200px;
+  // min-width: 1200px;
   height: 100%;
-  // overflow-x: hidden;
+  // overflow: hidden;
   .theContent {
     flex: auto;
     -webkit-flex: 100%;
