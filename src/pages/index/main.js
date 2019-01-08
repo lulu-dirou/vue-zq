@@ -11,7 +11,6 @@ import App from './App.vue'
 
 import '../../sass/el-mytheme.scss' // element样式
 import '../../sass/base.scss' // base样式
-import '../../sass/table.scss' 
 import '../../common/iconfont/iconfont.css' // iconfont字体图标
 import 'video.js/dist/video-js.css' // VideoPlayer
 import 'vue-video-player/src/custom-theme.css' // VideoPlayer

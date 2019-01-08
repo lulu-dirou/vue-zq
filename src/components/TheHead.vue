@@ -215,10 +215,10 @@ export default {
         b {
           display: none;
         }
-        &.color0{ background-color: $theme-primary; }
-        &.color1{ background-color: $theme1-primary; }
-        &.color2{ background-color: $theme2-primary; }
-        &.color3{ background-color: $theme3-primary; }
+        &.color0{ background-color: map-get($theme, primary); }
+        &.color1{ background-color: map-get($theme1, primary); }
+        &.color2{ background-color: map-get($theme2, primary); }
+        &.color3{ background-color: map-get($theme3, primary); }
         &.active {
           color: #fff;
           @include theme_bg(primary);

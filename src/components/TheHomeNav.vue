@@ -123,7 +123,7 @@ export default {
       }
       .msg {
         span {
-          @include theme_font(danger);
+          @include theme_font(primary-sec);
         }
         em {
           width: 40px;

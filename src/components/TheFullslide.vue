@@ -101,7 +101,7 @@ export default {
       }
       .swiper-pagination-bullet-active {
         border-width: 3px;
-        @include theme_bd(danger);
+        @include theme_bd(primary-sec);
         @include scale(1.5,1.5);
       }
     }

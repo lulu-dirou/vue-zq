@@ -51,12 +51,12 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 #app {
   flex-direction: column;
-  // min-width: 1200px;
+  min-width: 1200px;
   height: 100%;
-  // overflow: hidden;
+  overflow: hidden;
   .theContent {
     flex: auto;
     -webkit-flex: 100%;

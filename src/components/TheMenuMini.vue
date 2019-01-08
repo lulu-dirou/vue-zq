@@ -5,7 +5,7 @@
         <div class="li-box">
           <router-link to="/appeal">
           <div class="ico ico-01"></div>
-          <div class="title">诉求</div>
+          <div class="title">我要诉求</div>
           <div class="msg">登录后可查看企业、个人相关诉求结果</div>
           <div class="dot"><i class="iconfont icon-xialajiantou-up"></i></div>
           </router-link>
@@ -15,7 +15,7 @@
         <div class="li-box">
           <router-link to="/policy">
           <div class="ico ico-02"></div>
-          <div class="title">政策</div>
+          <div class="title">我要找政策</div>
           <div class="msg">精准推荐符合企业、个人的相关政策和解读</div>
           <div class="dot"><i class="iconfont icon-xialajiantou-up"></i></div>
           </router-link>
@@ -25,7 +25,7 @@
         <div class="li-box">
           <router-link to="/declare">
           <div class="ico ico-03"></div>
-          <div class="title">申报</div>
+          <div class="title">我要申报</div>
           <div class="msg">查看企业、个人相关申报结果</div>
           <div class="dot"><i class="iconfont icon-xialajiantou-up"></i></div>
           </router-link>
@@ -93,7 +93,7 @@ export default {
         position: relative;
         width: 100%;
         height: 100%;
-        padding: 30px 20px;
+        padding: 30px 0;
         text-align: center;
         background-color: #fff;
         @include radius(10px);
@@ -119,6 +119,7 @@ export default {
           @include theme_font(neutral-title);
         }
         .msg {
+          padding: 0 20px;
           text-align: left;
           @include lines(2);
         }

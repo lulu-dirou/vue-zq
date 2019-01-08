@@ -6,7 +6,7 @@
           <div class="myself">
             <h1>{{ list.title }}</h1>
             <p>{{ list.nr }}</p>
-            <button class="btn btn-lg btn-danger active"><span><i class="iconfont icon-sound-on"></i></span>查看详情</button>
+            <button class="btn btn-lg btn-primary-sec hover"><span><i class="iconfont icon-sound-on"></i></span>查看详情</button>
           </div>
         </div>
       </div>
@@ -112,7 +112,6 @@ export default {
   }
   button {
     margin-bottom: 30px;
-    border: 0;
     font-size: $font-size-df;
     @include radius(100px);
     span {

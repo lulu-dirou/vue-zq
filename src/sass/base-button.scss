@@ -1,0 +1,173 @@
+.btn {
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: 7px 10px;
+  font-size: $font-size-df;
+  background: none;
+  @include transition(0.2s);
+  @include radius(2px);
+  &.btn-xs {
+    font-size: $font-size-xs;
+    padding: 1px 2px;
+  }
+  &.btn-sm {
+    font-size: $font-size-sm;
+    padding: 4px 6px;
+  }
+  &.btn-lg {
+    font-size: $font-size-lg;
+    padding: 10px 24px;
+  }
+}
+
+.btn:hover, .btn:focus {
+  text-decoration: none;
+}
+
+.btn.focus:focus {
+  outline: 0;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.2);
+}
+
+.btn.disabled, .btn:disabled {
+  opacity: 0.65;
+}
+
+.btn:not(:disabled):not(.disabled) {
+  cursor: pointer;
+}
+
+.btn:not(:disabled):not(.disabled):active, .btn:not(:disabled):not(.disabled).active {
+  background-image: none;
+}
+
+a.btn.disabled,
+fieldset:disabled a.btn {
+  pointer-events: none;
+}
+
+
+
+
+
+
+.btn-primary {
+  color: #fff;
+  @include theme_bg(primary);
+  &.hover:hover {@include theme_mixbg(#fff,primary,20);}
+  &.focus:focus {@include theme_shadow(primary,0,0,0,4px,0.3);}
+}
+.btn-primary-sec {
+  color: #fff;
+  @include theme_bg(primary-sec);
+  &.hover:hover {@include theme_mixbg(#fff,primary-sec,20);}
+  &.focus:focus {@include theme_shadow(primary-sec,0,0,0,4px,0.3);}
+}
+.btn-primary-light {
+  color: #fff;
+  @include theme_bg(primary-light);
+  &.hover:hover {@include theme_mixbg(#fff,primary-light,20);}
+  &.focus:focus {@include theme_shadow(primary-light,0,0,0,4px,0.3);}
+}
+.btn-primary-dark {
+  color: #fff;
+  @include theme_bg(primary-dark);
+  &.hover:hover {@include theme_mixbg(#fff,primary-dark,20);}
+  &.focus:focus {@include theme_shadow(primary-dark,0,0,0,4px,0.3);}
+}
+.btn-info {
+  color: #fff;
+  @include theme_bg(info);
+  &.hover:hover {@include theme_mixbg(#fff,info,20);}
+  &.focus:focus {@include theme_shadow(info,0,0,0,4px,0.3);}
+}
+.btn-success {
+  color: #fff;
+  @include theme_bg(success);
+  &.hover:hover {@include theme_mixbg(#fff,success,20);}
+  &.focus:focus {@include theme_shadow(success,0,0,0,4px,0.3);}
+}
+.btn-warning {
+  color: #fff;
+  @include theme_bg(warning);
+  &.hover:hover {@include theme_mixbg(#fff,warning,20);}
+  &.focus:focus {@include theme_shadow(warning,0,0,0,4px,0.3);}
+}
+.btn-danger {
+  color: #fff;
+  @include theme_bg(danger);
+  &.hover:hover {@include theme_mixbg(#fff,danger,20);}
+  &.focus:focus {@include theme_shadow(danger,0,0,0,4px,0.3);}
+}
+.btn-disabled {
+  color: #fff;
+  @include theme_bg(neutral-disabled);
+  &.hover:hover {@include theme_mixbg(#fff,neutral-disabled,20);}
+  &.focus:focus {@include theme_shadow(neutral-disabled,0,0,0,4px,0.3);}
+}
+
+
+
+
+.btn0-primary {
+  @include theme_font(primary);
+  @include theme_bd(primary);
+  &.hover:hover {color:#fff;@include theme_mixbg(#fff,primary,20);}
+  &.focus:focus {@include theme_shadow(primary,0,0,0,4px,0.3);}
+}
+.btn0-primary-sec {
+  @include theme_font(primary-sec);
+  @include theme_bd(primary-sec);
+  &.hover:hover {color:#fff;@include theme_mixbg(#fff,primary-sec,20);}
+  &.focus:focus {@include theme_shadow(primary-sec,0,0,0,4px,0.3);}
+}
+.btn0-primary-light {
+  @include theme_font(primary-light);
+  @include theme_bd(primary-light);
+  &.hover:hover {color:#fff;@include theme_mixbg(#fff,primary-light,20);}
+  &.focus:focus {@include theme_shadow(primary-light,0,0,0,4px,0.3);}
+}
+.btn0-primary-dark {
+  @include theme_font(primary-dark);
+  @include theme_bd(primary-dark);
+  &.hover:hover {color:#fff;@include theme_mixbg(#fff,primary-dark,20);}
+  &.focus:focus {@include theme_shadow(primary-dark,0,0,0,4px,0.3);}
+}
+.btn0-info {
+  @include theme_font(info);
+  @include theme_bd(info);
+  &.hover:hover {color:#fff;@include theme_mixbg(#fff,info,20);}
+  &.focus:focus {@include theme_shadow(info,0,0,0,4px,0.3);}
+}
+.btn0-success {
+  @include theme_font(success);
+  @include theme_bd(success);
+  &.hover:hover {color:#fff;@include theme_mixbg(#fff,success,20);}
+  &.focus:focus {@include theme_shadow(success,0,0,0,4px,0.3);}
+}
+.btn0-warning {
+  @include theme_font(warning);
+  @include theme_bd(warning);
+  &.hover:hover {color:#fff;@include theme_mixbg(#fff,warning,20);}
+  &.focus:focus {@include theme_shadow(warning,0,0,0,4px,0.3);}
+}
+.btn0-danger {
+  @include theme_font(danger);
+  @include theme_bd(danger);
+  &.hover:hover {color:#fff;@include theme_mixbg(#fff,danger,20);}
+  &.focus:focus {@include theme_shadow(danger,0,0,0,4px,0.3);}
+}
+.btn0-disabled {
+  @include theme_font(neutral-disabled);
+  @include theme_bd(neutral-disabled);
+  &.hover:hover {color:#fff;@include theme_mixbg(#fff,neutral-disabled,20);}
+  &.focus:focus {@include theme_shadow(neutral-disabled,0,0,0,4px,0.3);}
+}

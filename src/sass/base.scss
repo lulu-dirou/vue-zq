@@ -1,3 +1,7 @@
+@import "./base-table.scss";
+@import "./base-button.scss";
+
+
 //********************************
 //
 // colors
@@ -36,23 +40,23 @@
 .bg-neutral-border        {@include theme_bg(neutral-border);}
 .bg-neutral-divider       {@include theme_bg(neutral-divider);}
 
-.btn-primary              {@include theme_bg(primary);@include theme_bd(primary);color:#fff;}
-.btn-primary-light        {@include theme_bg(primary-light);@include theme_bd(primary-light);color:#fff;}
-.btn-primary-dark         {@include theme_bg(primary-dark);@include theme_bd(primary-dark);color:#fff;}
-.btn-info                 {@include theme_bg(info);@include theme_bd(info);color:#fff;}
-.btn-success              {@include theme_bg(success);@include theme_bd(success);color:#fff;}
-.btn-warning              {@include theme_bg(warning);@include theme_bd(warning);color:#fff;}
-.btn-danger               {@include theme_bg(danger);@include theme_bd(danger);color:#fff;}
-.btn-disabled             {@include theme_bg(neutral-disabled);@include theme_bd(neutral-disabled);color:#fff;}
+// .btn-primary              {@include theme_bg(primary);@include theme_bd(primary);color:#fff;}
+// .btn-primary-light        {@include theme_bg(primary-light);@include theme_bd(primary-light);color:#fff;}
+// .btn-primary-dark         {@include theme_bg(primary-dark);@include theme_bd(primary-dark);color:#fff;}
+// .btn-info                 {@include theme_bg(info);@include theme_bd(info);color:#fff;}
+// .btn-success              {@include theme_bg(success);@include theme_bd(success);color:#fff;}
+// .btn-warning              {@include theme_bg(warning);@include theme_bd(warning);color:#fff;}
+// .btn-danger               {@include theme_bg(danger);@include theme_bd(danger);color:#fff;}
+// .btn-disabled             {@include theme_bg(neutral-disabled);@include theme_bd(neutral-disabled);color:#fff;}
 
-.btn0-primary             {@include theme_bg(primary,0.1);@include theme_bd(primary,0.3);@include theme_font(primary);}
-.btn0-primary-light       {@include theme_bg(primary-light,0.1);@include theme_bd(primary-light,0.3);@include theme_font(primary-light);}
-.btn0-primary-dark        {@include theme_bg(primary-dark,0.1);@include theme_bd(primary-dark,0.3);@include theme_font(primary-dark);}
-.btn0-info                {@include theme_bg(info,0.1);@include theme_bd(info,0.3);@include theme_font(info);}
-.btn0-success             {@include theme_bg(success,0.1);@include theme_bd(success,0.3);@include theme_font(success);}
-.btn0-warning             {@include theme_bg(warning,0.1);@include theme_bd(warning,0.3);@include theme_font(warning);}
-.btn0-danger              {@include theme_bg(danger,0.1);@include theme_bd(danger,0.3);@include theme_font(danger);}
-.btn0-disabled            {@include theme_bg(neutral-disabled,0.2);@include theme_bd(neutral-disabled,0.3);@include theme_font(neutral-disabled);}
+// .btn0-primary             {@include theme_bg(primary,0.1);@include theme_bd(primary,0.3);@include theme_font(primary);}
+// .btn0-primary-light       {@include theme_bg(primary-light,0.1);@include theme_bd(primary-light,0.3);@include theme_font(primary-light);}
+// .btn0-primary-dark        {@include theme_bg(primary-dark,0.1);@include theme_bd(primary-dark,0.3);@include theme_font(primary-dark);}
+// .btn0-info                {@include theme_bg(info,0.1);@include theme_bd(info,0.3);@include theme_font(info);}
+// .btn0-success             {@include theme_bg(success,0.1);@include theme_bd(success,0.3);@include theme_font(success);}
+// .btn0-warning             {@include theme_bg(warning,0.1);@include theme_bd(warning,0.3);@include theme_font(warning);}
+// .btn0-danger              {@include theme_bg(danger,0.1);@include theme_bd(danger,0.3);@include theme_font(danger);}
+// .btn0-disabled            {@include theme_bg(neutral-disabled,0.2);@include theme_bd(neutral-disabled,0.3);@include theme_font(neutral-disabled);}
 
 
 
@@ -87,46 +91,7 @@
   &:after {clear:both;}
   *zoom:1;
 }
-.btn {
-  position: relative;
-  display: inline-block;
-  border: 1px solid #e1e1e1;
-  background: none;
-  padding: 7px 10px;
-  font-size: $font-size-df;
-  overflow: hidden;
-  @include radius(2px);
-  &.active:before  {
-    z-index: 0;
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    content: '';
-    cursor: pointer;
-    background-color: rgba(#fff,0);
-    @include transition(0.2s);
-  }
-  &.active:active:before  {
-    background-color: rgba(#000,0.1);
-  }
-  &.active:hover:before  {
-    background-color: rgba(#fff,0.2);
-  }
-  &.btn-xs {
-    font-size: $font-size-xs;
-    padding: 1px 2px;
-  }
-  &.btn-sm {
-    font-size: $font-size-sm;
-    padding: 4px 6px;
-  }
-  &.btn-lg {
-    font-size: $font-size-lg;
-    padding: 10px 24px;
-  }
-}
+
 // 禁止长按选中
 *:not(input, textarea) {
   -webkit-touch-callout: none;

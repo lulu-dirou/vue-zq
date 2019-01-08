@@ -1,17 +1,17 @@
 /* 改变主题色变量 */
-$--color-white              : $theme-white;
-$--color-black              : $theme-black;
+// $--color-white              : $theme-white;
+// $--color-black              : $theme-black;
 
-$--color-primary            : $theme-primary;
-$--color-success            : $theme-success;
-$--color-warning            : $theme-warning;
-$--color-danger             : $theme-danger;
-$--color-info               : $theme-info;
+// $--color-primary            : map-get($theme, primary);
+// $--color-success            : $theme-success;
+// $--color-warning            : $theme-warning;
+// $--color-danger             : $theme-danger;
+// $--color-info               : $theme-info;
 
-$--color-text-primary       : $theme-neutral-title;
-$--color-text-regular       : $theme-neutral;
-$--color-text-secondary     : $theme-neutral-border;
-$--color-text-placeholder   : $theme-neutral-divider;
+// $--color-text-primary       : $theme-neutral-title;
+// $--color-text-regular       : $theme-neutral;
+// $--color-text-secondary     : $theme-neutral-border;
+// $--color-text-placeholder   : $theme-neutral-divider;
 
 
 /* 改变 icon 字体路径变量，必需 */

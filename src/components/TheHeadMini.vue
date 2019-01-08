@@ -5,7 +5,7 @@
         <img src="../common/images/logo@png.png" alt="500*80">
       </div>
       <div class="user" v-if="showMsg">
-        <button class="btn btn-lg btn-primary active" @click="ModelCtr">登录</button>
+        <button class="btn btn-lg btn-primary" @click="ModelCtr">登录</button>
         <button class="btn btn-lg" @click="ModelReg">注册</button>
         <!-- <el-button type="warning" icon="el-icon-location-outline" round plain @click="ModelCtr">登录</el-button>
         <el-button round plain @click="ModelReg">注册</el-button> -->
@@ -177,8 +177,6 @@ export default {
         margin-left: 10px;
         border: 0;
         color: #fff;
-        cursor: pointer;
-        @include transition(0.2s);
         &:hover {
           @include theme_bg(primary);
         }
@@ -231,10 +229,10 @@ export default {
         b {
           display: none;
         }
-        &.color0{ background-color: $theme-primary; }
-        &.color1{ background-color: $theme1-primary; }
-        &.color2{ background-color: $theme2-primary; }
-        &.color3{ background-color: $theme3-primary; }
+        &.color0{ background-color: map-get($theme, primary); }
+        &.color1{ background-color: map-get($theme1, primary); }
+        &.color2{ background-color: map-get($theme2, primary); }
+        &.color3{ background-color: map-get($theme3, primary); }
         &.active {
           color: #fff;
           @include theme_bg(primary);
