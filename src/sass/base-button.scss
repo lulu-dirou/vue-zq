@@ -13,7 +13,7 @@
   font-size: $font-size-df;
   background: none;
   @include transition(0.2s);
-  @include radius(2px);
+  @include radius(5px);
   &.btn-xs {
     font-size: $font-size-xs;
     padding: 1px 2px;
@@ -25,6 +25,14 @@
   &.btn-lg {
     font-size: $font-size-lg;
     padding: 10px 24px;
+  }
+  &.btn-lgx {
+    font-size: $font-size-lgx;
+    padding: 15px 30px;
+  }
+  &.block {
+    display: block;
+    width: 100%;
   }
 }
 

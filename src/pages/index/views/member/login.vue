@@ -1,36 +1,88 @@
 <template>
-  <div class="reg clear">
+  <div class="child reg clear">
+    <div class="child-banner">
+      <div class="maskbg"><img src="../../../../common/images/child-banner-reg.jpg"></div>
+      <div class="w-1200">
+        <div class="msg-box clear">
+          <div class="title">登录</div>
+          <div class="dot"><i class="iconfont icon-xialajiantou-down"></i></div>
+        </div>
+      </div>
+    </div>
+
+
     <!--  -->
     <div class="reg-box clear">
-      <div class="reg-title"><span>用户登录</span></div>
-      <div class="reg-area">
-        <!-- el-form -->
-        <el-form :model="ruleForm" status-icon  ref="ruleForm" label-width="150px" label-position=left class="reg-ruleForm" v-loading="loading">
+      <el-tabs v-model="loginTab" class="tabs">
+        <el-tab-pane label="企业登录" name="0">
+          <!-- el-form -->
+          <el-form :model="ruleForm1" status-icon ref="ruleForm1" label-width="150px" label-position=left class="reg-ruleForm" v-loading="loading">
           <!------------------------------------------------------------->
+          <br/>
           <el-form-item label="用户名" prop="sjhm">
-            <el-input v-model="ruleForm.sjhm" clearable></el-input>
+            <el-input v-model="ruleForm1.sjhm" prefix-icon="iconfont icon-user" clearable></el-input>
           </el-form-item>
           <!------------------------------------------------------------->
           <el-form-item label="密码" prop="pass">
-            <el-input type="password" v-model="ruleForm.pass" clearable></el-input>
+            <el-input type="password" v-model="ruleForm1.pass" prefix-icon="iconfont icon-lamp" clearable></el-input>
           </el-form-item>
-          <!------------------------------------------------------------->
-          <el-form-item label="验证码">
-            <el-col :span="17">
-            <el-form-item prop="visitCode"><el-input v-model="ruleForm.visitCode" clearable></el-input></el-form-item>
-            </el-col>
-            <el-col :span="6" :offset="1">
-            <el-form-item><el-button type="warning" plain>获取验证码</el-button></el-form-item></el-col>
-          </el-form-item>
+          <br/>
           <!------------------------------------------------------------->
           <el-form-item label-width="0">
-            <el-button class="submitBtn" type="primary" @click="getApi()">登录</el-button>
+            <button type="button" class="submitBtn btn btn-lg btn-primary block hover focus" @click="getApi()">登录</button>
           </el-form-item>
           <!------------------------------------------------------------->
-
-        </el-form>
-        <!-- el-form end -->
-        <div class="reg-msg flex"><span><router-link to="/reg">注册</router-link></span><span>忘记密码</span></div>
+          </el-form>
+        </el-tab-pane>
+        <el-tab-pane label="人才登录" name="1">
+          <el-tabs v-model="loginTabMini" class="tabsMini">
+            <el-tab-pane label="短信验证码登陆" name="0">
+              <!-- el-form -->
+              <el-form :model="ruleForm2" status-icon ref="ruleForm2" label-width="150px" label-position=left class="reg-ruleForm" v-loading="loading">
+              <!------------------------------------------------------------->
+              <el-form-item label="手机号码" prop="sjhm">
+                <el-input v-model="ruleForm2.sjhm" prefix-icon="iconfont icon-user" clearable></el-input>
+              </el-form-item>
+              <!------------------------------------------------------------->
+              <el-form-item label="验证码">
+                <el-col :span="17">
+                <el-form-item prop="visitCode"><el-input v-model="ruleForm2.visitCode" clearable></el-input></el-form-item>
+                </el-col>
+                <el-col :span="6" :offset="1"><button type="button" class="btn btn0-warning block hover focus">获取验证码</button></el-col>
+              </el-form-item>
+              <br/>
+              <!------------------------------------------------------------->
+              <el-form-item label-width="0">
+                <button type="button" class="submitBtn btn btn-lg btn-primary block hover focus" @click="getApi()">登录</button>
+              </el-form-item>
+              <!------------------------------------------------------------->
+              </el-form>
+            </el-tab-pane>
+            <el-tab-pane label="密码登录" name="1">
+              <!-- el-form -->
+              <el-form :model="ruleForm3" status-icon ref="ruleForm3" label-width="150px" label-position=left class="reg-ruleForm" v-loading="loading">
+              <!------------------------------------------------------------->
+              <el-form-item label="手机号码" prop="sjhm">
+                <el-input v-model="ruleForm3.sjhm" prefix-icon="iconfont icon-user" clearable></el-input>
+              </el-form-item>
+              <!------------------------------------------------------------->
+              <el-form-item label="密码" prop="pass">
+                <el-input type="password" v-model="ruleForm3.pass" prefix-icon="iconfont icon-lamp" clearable></el-input>
+              </el-form-item>
+              <br/>
+              <!------------------------------------------------------------->
+              <el-form-item label-width="0">
+                <button type="button" class="submitBtn btn btn-lg btn-primary block hover focus" @click="getApi()">登录</button>
+              </el-form-item>
+              <!------------------------------------------------------------->
+              </el-form>
+            </el-tab-pane>
+          </el-tabs>
+        </el-tab-pane>
+      </el-tabs>
+      <div class="reg-msg flex">
+        <span><router-link to="/reg">注册</router-link></span>
+        <span>忘记密码</span>
       </div>
     </div>
   </div>
@@ -46,10 +98,20 @@ export default {
   data: function() {
     return {
       loading: false,
-      ruleForm: {
+      loginTab: '0',
+      loginTabMini: '0',
+      ruleForm1: {
         sjhm: '',
         pass: '',
         visitCode: ''
+      },
+      ruleForm2: {
+        sjhm: '',
+        visitCode: ''
+      },
+      ruleForm3: {
+        sjhm: '',
+        pass: '',
       },
       // rules: {
       //   jgdm: [
@@ -82,8 +144,8 @@ export default {
     getApi: function(){
       this.loading = true
       this.$http.post(this.$url.qyzcxx.login,{
-        sjhm: this.ruleForm.sjhm,
-        mm: this.$md5(this.ruleForm.pass)
+        sjhm: this.ruleForm1.sjhm,
+        mm: this.$md5(this.ruleForm1.pass)
       }).then((res) => {
         this.loading = false
         if(res.status===200){
@@ -146,44 +208,90 @@ export default {
 </script>
 
 
-<style lang="scss">
+<style lang="scss" scoped>
 .reg {
+  background-color: #fff;
   .reg-box {
     width: 100%;
     margin: 30px auto 80px auto;
-    .reg-title {
-      height: 80px;
-      line-height: 80px;
-      font-size: 24px;
-      border-bottom: 1px solid #e1e1e1;
-      margin-bottom: 40px;
-      @include theme_bd(neutral,0.6);
-      @include theme_font(neutral-title);
-      span {
-        display: block;
-        width: 600px;
-        margin: 0 auto;
-      }
-    }
-    .reg-area {
-      width: 600px;
-      margin: 0 auto;
-      .el-form-item__label {
-        font-size: $font-size-lgm;
-      }
-      button.submitBtn {
-        width: 100%;
-        padding: 14px 20px;
-        font-size: $font-size-lg;
-      }
-      .reg-msg {
-        justify-content: space-between;
-        span,span a {
-          border-bottom: 1px solid #e1e1e1;
-          @include theme_bd(primary-light);
-          @include theme_font(primary-light);
+    .tabs {
+      /deep/ >.el-tabs__header {
+        .el-tabs__nav-wrap::after {
+          height: 1px;
+          @include theme_bg(neutral-border);
+        }
+        .el-tabs__nav-scroll {
+          width: 600px;
+          margin: 0 auto;
+        }
+        .el-tabs__active-bar {
+          height: 4px;
+          @include theme_bg(primary-sec);
+        }
+        .el-tabs__item {
+          height: 80px;
+          line-height: 80px;
+          font-size: $font-size-lgx;
+        }
+        .el-tabs__item:hover,.el-tabs__item.is-active {
+          @include theme_font(primary-sec);
         }
       }
+      /deep/ >.el-tabs__content {
+        width: 640px;
+        padding: 0 20px;
+        margin: 0 auto;
+        .el-form-item__label {
+          font-size: $font-size-lgm;
+        }
+        .el-input__inner {
+          font-weight: 600;
+          font-family: initial;
+          @include theme_font(neutral-title);
+        }
+        .el-input__icon {
+          font-size: $font-size-lgx;
+        }
+      }
+    }
+    .tabsMini {
+      /deep/ >.el-tabs__header {
+        @include theme_bg(neutral-disabled,0.4);
+        .el-tabs__nav-wrap::after {
+          height: 1px;
+          @include theme_bg(primary);
+        }
+        .el-tabs__nav {
+          float: right;
+        }
+        .el-tabs__active-bar {
+          display: none;
+        }
+        .el-tabs__item {
+          padding: 0 20px;
+          font-size: $font-size-xs;
+        }
+        .el-tabs__item:hover {
+          color: #999;
+        }
+        .el-tabs__item.is-active {
+          color: #fff;
+          @include theme_bg(primary);
+        }
+      }
+      /deep/ >.el-tabs__content {
+        padding: 20px 0;
+      }
+    }
+  }
+  .reg-msg {
+    width: 600px;
+    margin: 0 auto;
+    justify-content: space-between;
+    span,span a {
+      border-bottom: 1px solid #e1e1e1;
+      @include theme_bd(primary-light);
+      @include theme_font(primary-light);
     }
   }
 }

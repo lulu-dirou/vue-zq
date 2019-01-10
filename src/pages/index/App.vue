@@ -1,7 +1,8 @@
 <template>
   <div id="app" class="flex">
-    <the-head v-if="headShow"></the-head>
-    <the-menu v-if="menuShow"></the-menu>
+    <the-hd v-if="headShow"></the-hd>
+<!--     <the-head v-if="headShow"></the-head>
+    <the-menu v-if="menuShow"></the-menu> -->
     <div class="theContent clear"> 
       <router-view></router-view>
     </div>
@@ -10,12 +11,14 @@
 </template>
 
 <script>
+import TheHd from '../../components/TheHd.vue'
 import TheHead from '../../components/TheHead.vue'
 import TheMenu from '../../components/TheMenu.vue'
 import TheFooter from '../../components/TheFooter.vue'
 
 export default {
   components: {
+    'the-hd': TheHd,
     'the-head': TheHead,
     'the-menu': TheMenu,
     'the-footer': TheFooter,
@@ -56,7 +59,7 @@ export default {
   flex-direction: column;
   min-width: 1200px;
   height: 100%;
-  overflow: hidden;
+  // overflow: hidden;
   .theContent {
     flex: auto;
     -webkit-flex: 100%;

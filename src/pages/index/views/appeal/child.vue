@@ -1,9 +1,12 @@
 <template>
   <div class="child child-appeal">
     <div class="child-banner">
+      <div class="maskbg"><img src="../../../../common/images/child-banner-appeal.jpg"></div>
       <div class="w-1200">
-        <list-search-appeal class="childSearch" @search="Search"></list-search-appeal>
-        <div class="childTitle">我的诉求</div>
+        <div class="msg-box clear">
+          <div class="title">我要诉求</div>
+          <div class="dot"><i class="iconfont icon-xialajiantou-down"></i></div>
+        </div>
       </div>
     </div>
     <div class="navBar">

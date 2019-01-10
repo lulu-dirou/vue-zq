@@ -318,3 +318,38 @@
 }
 
 
+/*------------------------------------
++. theme_shadow
++. (主题文字色，左右，上下，模糊，大小，透明度)
+----------------------------------- */
+@mixin theme_text_shadow($sel, $x:0, $y:2px, $blur:10px, $opacity:0.1){
+    [data-theme="theme"] & {
+        @each $mysel in map-keys($theme) {  
+            @if $sel == $mysel {
+                @include text-shadow($x,$y,$blur,rgba(map-get($theme, $mysel),$opacity));
+            } 
+        }
+    }
+    [data-theme="theme1"] & {
+        @each $mysel in map-keys($theme1) {  
+            @if $sel == $mysel {
+                @include text-shadow($x,$y,$blur,rgba(map-get($theme1, $mysel),$opacity));
+            } 
+        }
+    }
+    [data-theme="theme2"] & {
+        @each $mysel in map-keys($theme2) {  
+            @if $sel == $mysel {
+                @include text-shadow($x,$y,$blur,rgba(map-get($theme2, $mysel),$opacity));
+            } 
+        }
+    }
+    [data-theme="theme3"] & {
+        @each $mysel in map-keys($theme3) {  
+            @if $sel == $mysel {
+                @include text-shadow($x,$y,$blur,rgba(map-get($theme3, $mysel),$opacity));
+            } 
+        }
+    }
+}
+

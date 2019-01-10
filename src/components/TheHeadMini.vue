@@ -132,7 +132,8 @@ export default {
 
 <style lang="scss" scoped>
 .the-head-mini {
-  border-bottom: 1px solid rgba(#fff,0.3);
+  height: 80px;
+  background-color: rgba(#000,0.2);
   .box {
     width: 1200px;
     height: 80px;

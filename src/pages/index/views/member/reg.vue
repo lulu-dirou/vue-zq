@@ -1,5 +1,14 @@
 <template>
-  <div class="reg clear">
+  <div class="child reg clear">
+    <div class="child-banner">
+      <div class="maskbg"><img src="../../../../common/images/child-banner-reg.jpg"></div>
+      <div class="w-1200">
+        <div class="msg-box clear">
+          <div class="title">注册</div>
+          <div class="dot"><i class="iconfont icon-xialajiantou-down"></i></div>
+        </div>
+      </div>
+    </div>
     <!--  -->
     <div class="reg-box clear">
       <div class="reg-title"><span>用户注册</span></div>
@@ -23,16 +32,15 @@
             <el-col :span="17">
             <el-form-item prop="visitCode"><el-input v-model="ruleForm.visitCode"></el-input></el-form-item>
             </el-col>
-            <el-col :span="6" :offset="1">
-            <el-form-item><el-button type="warning" plain>获取验证码</el-button></el-form-item></el-col>
+            <el-col :span="6" :offset="1"><button type="button" class="btn btn0-primary-sec block hover focus">获取验证码</button></el-col>
           </el-form-item>
           <!------------------------------------------------------------->
           <el-form-item>
-            <el-button @click="resetForm('ruleForm')">重置</el-button>
+            <button type="button" class="btn btn-disabled hover focus" @click="resetForm('ruleForm')">重置</button>
           </el-form-item>
           <!------------------------------------------------------------->
           <el-form-item label-width="0">
-            <el-button class="submitBtn" type="primary" @click="submitForm('ruleForm')">立即创建</el-button>
+            <button type="button" class="submitBtn btn btn-primary hover focus" @click="submitForm('ruleForm')">立即创建</button>
           </el-form-item>
           <!------------------------------------------------------------->
           
