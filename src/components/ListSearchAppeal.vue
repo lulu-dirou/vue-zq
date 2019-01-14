@@ -2,7 +2,7 @@
   <div class="listSearch listSearchAppeal">
     <div class="search-box flex-middle">
       <input type="text" v-model="keyword" @keyup.enter="searchEnterFun"/>
-      <button type="button" @click="clickSearch(keyword)"><i class="iconfont icon-search"></i></button>
+      <button type="button" @click="clickSearch(keyword)"><i class="iconfont icon-sousuo"></i></button>
     </div>
   </div>
 </template>

@@ -179,3 +179,144 @@ fieldset:disabled a.btn {
   &.hover:hover {color:#fff;@include theme_mixbg(#fff,neutral-disabled,20);}
   &.focus:focus {@include theme_shadow(neutral-disabled,0,0,0,4px,0.3);}
 }
+
+
+
+
+
+
+
+
+.lab {
+  display: inline-block;
+  border: 1px solid transparent;
+  padding: 1px 5px;
+  font-size: $font-size-xs;
+  @include transition(0.2s);
+  @include radius(2px);
+}
+
+.lab-primary {
+  color: #fff;
+  @include theme_bg(primary);
+}
+.lab-primary-sec {
+  color: #fff;
+  @include theme_bg(primary-sec);
+}
+.lab-primary-light {
+  color: #fff;
+  @include theme_bg(primary-light);
+}
+.lab-primary-dark {
+  color: #fff;
+  @include theme_bg(primary-dark);
+}
+.lab-info {
+  color: #fff;
+  @include theme_bg(info);
+}
+.lab-success {
+  color: #fff;
+  @include theme_bg(success);
+}
+.lab-warning {
+  color: #fff;
+  @include theme_bg(warning);
+}
+.lab-danger {
+  color: #fff;
+  @include theme_bg(danger);
+}
+.lab-disabled {
+  color: #fff;
+  @include theme_bg(neutral-disabled);
+}
+
+
+
+
+.lab0-primary {
+  @include theme_font(primary);
+  @include theme_bd(primary);
+}
+.lab0-primary-sec {
+  @include theme_font(primary-sec);
+  @include theme_bd(primary-sec);
+}
+.lab0-primary-light {
+  @include theme_font(primary-light);
+  @include theme_bd(primary-light);
+}
+.lab0-primary-dark {
+  @include theme_font(primary-dark);
+  @include theme_bd(primary-dark);
+}
+.lab0-info {
+  @include theme_font(info);
+  @include theme_bd(info);
+}
+.lab0-success {
+  @include theme_font(success);
+  @include theme_bd(success);
+}
+.lab0-warning {
+  @include theme_font(warning);
+  @include theme_bd(warning);
+}
+.lab0-danger {
+  @include theme_font(danger);
+  @include theme_bd(danger);
+}
+.lab0-disabled {
+  @include theme_font(neutral-disabled);
+  @include theme_bd(neutral-disabled);
+}
+
+
+
+.lab1-primary {
+  @include theme_font(primary);
+  @include theme_bd(primary,0.3);
+  @include theme_bg(primary,0.1);
+}
+.lab1-primary-sec {
+  @include theme_font(primary-sec);
+  @include theme_bd(primary-sec,0.3);
+  @include theme_bg(primary-sec,0.1);
+}
+.lab1-primary-light {
+  @include theme_font(primary-light);
+  @include theme_bd(primary-light,0.3);
+  @include theme_bg(primary-light,0.1);
+}
+.lab1-primary-dark {
+  @include theme_font(primary-dark);
+  @include theme_bd(primary-dark,0.3);
+  @include theme_bg(primary-dark,0.1);
+}
+.lab1-info {
+  @include theme_font(info);
+  @include theme_bd(info,0.3);
+  @include theme_bg(info,0.1);
+}
+.lab1-success {
+  @include theme_font(success);
+  @include theme_bd(success,0.3);
+  @include theme_bg(success,0.1);
+}
+.lab1-warning {
+  @include theme_font(warning);
+  @include theme_bd(warning,0.3);
+  @include theme_bg(warning,0.1);
+}
+.lab1-danger {
+  @include theme_font(danger);
+  @include theme_bd(danger,0.3);
+  @include theme_bg(danger,0.1);
+}
+.lab1-disabled {
+  @include theme_font(neutral-disabled);
+  @include theme_bd(neutral-disabled,0.3);
+  @include theme_bg(neutral-disabled,0.1);
+}

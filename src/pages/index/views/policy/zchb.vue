@@ -1,54 +1,69 @@
 <template>
-  <div class="zchb flex">
-    <div class="left-box">
-      <div class="list-box">
-        <div class="screening clear">
-          <div class="left"><span class="shaixuan" @click="dialogVisible = true"><i class="iconfont icon-shaixuan"></i> 智能筛选</span></div>
-          <!--  -->
-          <el-dialog
-            :visible.sync="dialogVisible"
-            width="800px" class="dialogScreening">
-            <the-dialog-screening></the-dialog-screening>
-          </el-dialog>
-          <!--  -->
-          <div class="right">
-            <span>5-10万</span>
-            <span>金融产业</span>
-            <span>园区企业</span>
-          </div>
-        </div>
-        <list-zc :paginationShow="true" :popIds="ids"></list-zc>
+  <div class="zchb">
+    <div class="top-box">
+      <div class="screening">
+        <button class="btn btn-lg btn-primary-sec hover"  @click="dialogVisible = true"><i class="iconfont icon-shaixuan"></i> 智能筛选</button>
       </div>
+      <!--  -->
+      <el-dialog class="dialogScreening" :visible.sync="dialogVisible" width="800px">
+        <the-dialog-screening></the-dialog-screening>
+      </el-dialog>
+      <!--  -->
+
+      <!-- el-collapse -->
+      <el-collapse v-model="activeNames">
+        <el-collapse-item name="1">
+          <template slot="title"><span class="iconfont icon-xialajiantou-down"></span></template>
+          <nav class="topNav">
+            <el-row :gutter="60">
+<!--               <el-col :span="24" class="flex">
+                <div class="title"></div>
+                <ul class="clear">
+                  <li 
+                    :class="{active:changeNum==-1}" 
+                    @click="changeActive('',-1)">
+                    <i v-if="changeNum==-1" class="iconfont icon-dui"></i>
+                    <span>全部</span>
+                  </li>
+                </ul>
+              </el-col> -->
+              <el-col :span="24" class="flex">
+                <div class="title"><span>综合类</span></div>
+                <ul class="clear">
+                  <li 
+                    v-for="(list,index) in navlist1" 
+                    :key="list.id" 
+                    :class="{active:index==changeNum}" 
+                    @click="changeActive(list.id,index)">
+                    <i v-if="index==changeNum" class="iconfont icon-dui"></i>
+                    <span>{{ list.name }}</span>
+                  </li>
+                </ul>
+              </el-col>
+              <el-col :span="24" class="flex">
+                <div class="title"><span>产业类</span></div>
+                <ul class="clear">
+                  <li 
+                    v-for="(list,index) in navlist2" 
+                    :key="list.id" 
+                    :class="{active:(index+navlist1)==changeNum}" 
+                    @click="changeActive(list.id,index+navlist1)">
+                    <i v-if="(index+navlist1)==changeNum" class="iconfont icon-dui"></i>
+                    <span>{{ list.name }}</span>
+                  </li>
+                </ul>
+              </el-col>
+            </el-row>
+          </nav>
+        </el-collapse-item>
+      </el-collapse>
+      <!-- el-collapse end -->
+
+
+
     </div>
-    <div class="right-box">
-<!--       <div class="screening">
-        <button class="btn-danger"><i class="iconfont icon-shaixuan"></i>智能筛选</button>
-      </div> -->
-      <div class="nav">
-        <div class="title"><span>综合类</span></div>
-        <ul class="flex">
-          <li @click="jump('fe5ac768714b45faaa90f79ae0297b11')"><i class="iconfont icon-info"></i><span>促投资</span></li>
-          <li @click="jump('4d78f8e6994a486981338da601384998')" class="active"><i class="iconfont icon-notifications"></i><span>助融资</span></li>
-          <li @click="jump('8160ff0c0a354c72a4718eef3a2e5c32')"><i class="iconfont icon-user"></i><span>引人才</span></li>
-          <li @click="jump('0619c5b14e144e61b7635ee65e12fc14')"><i class="iconfont icon-hot"></i><span>促创新</span></li>
-          <li @click="jump('9dbeb07c5d4f4176a410f24b9a9045e2')"><i class="iconfont icon-crown"></i><span>建品牌</span></li>
-          <li @click="jump('3827b8d067d54e2cb7f8db615f68905c')"><i class="iconfont icon-repeat-"></i><span>降成本</span></li>
-          <li @click="jump('6d8fa80fd308440eaa880044566e4cec')"><i class="iconfont icon-fb-messenger"></i><span>扶成长</span></li>
-          <li @click="jump('4a7730d35ded4d9f9620c5962bd73afd')"><i class="iconfont icon-route"></i><span>鼓励园区发展</span></li>
-        </ul>
-      </div>
-      <div class="nav">
-        <div class="title"><span>产业类</span></div>
-        <ul class="flex">
-          <li @click="jump('aeb977fa85834ca591419dbe90660686')"><i class="iconfont icon-chart"></i><span>金融产业</span></li>
-          <li @click="jump('b826e2ce62ea4f8d884ba77850266201')"><i class="iconfont icon-user"></i><span>服务业</span></li>
-          <li @click="jump('aeb977fa85834ca591419dbe90660686')"><i class="iconfont icon-office-box"></i><span>制造业</span></li>
-          <li @click="jump('aeb977fa85834ca591419dbe90660686')"><i class="iconfont icon-monitor"></i><span>电子商务</span></li>
-          <li @click="jump('aeb977fa85834ca591419dbe90660686')"><i class="iconfont icon-globe"></i><span>文旅产业</span></li>
-          <li @click="jump('8b370fa9c5284b0b83f1e0525ddcf170')"><i class="iconfont icon-delivery"></i><span>物流产业</span></li>
-          <li @click="jump('d7a272b248cf475d831d0fc99ee1b9ce')"><i class="iconfont icon-lamp"></i><span>生命健康</span></li>
-        </ul>
-      </div>
+    <div class="bottom-box">
+        <list-zc :popIds="ListIds" ref="ListRef" :paginationShow="true"></list-zc>
     </div>
   </div>
 </template>
@@ -68,8 +83,29 @@ export default {
   },
   data: function() {
     return {
+      activeNames: ['1'],
+      changeNum: '-1',
       dialogVisible: false,
-      ids: ''
+      ListIds: '',
+      navlist1: [
+        {name: '促投资',id: 'f656d7259661486d933999c1a314d564'},
+        {name: '助融资',id: '32b844d0b1754087868aa277da80e613'},
+        {name: '引人才',id: '3470e8bd069a4fba8bd5689a24b21b9e'},
+        {name: '促创新',id: '46eadcc59bd3475f8f9fd726ba5c675b'},
+        {name: '建品牌',id: '9e56188591dd44628caeb9ad79c91239'},
+        {name: '降成本',id: 'af1d4548e26a4e8f8aaad7b8dc4e3bbf'},
+        {name: '扶成长',id: '2600b3682ee840c68e818e8c912a60ab'},
+        {name: '鼓励园区发展',id: '9c6968b96d9a4419a4e010bba50e97bf'},
+      ],
+      navlist2: [
+        {name: '金融产业',id: 'aeb977fa85834ca591419dbe90660686'},
+        {name: '服务业',id: 'b826e2ce62ea4f8d884ba77850266201'},
+        {name: '制造业',id: 'cc81ff20799b404097bf051704a567c4'},
+        {name: '电子商务',id: '0cdc0c809e6d4ea38b62b88fb2ed69c5'},
+        {name: '文旅产业',id: '513e55d71af34c60b5cbd72840619e97'},
+        {name: '物流产业',id: '8b370fa9c5284b0b83f1e0525ddcf170'},
+        {name: '生命健康',id: 'd7a272b248cf475d831d0fc99ee1b9ce'},
+      ]
     }
   },
   computed: {
@@ -77,9 +113,18 @@ export default {
   watch: {
   },
   methods: {
-    jump: function(val){
-      this.ids = val
-    }
+    // @企业标签,@下标
+    changeActive: function(idsVal,index){
+      if(index == this.changeNum){
+        this.changeNum = -1
+        this.ListIds = ''
+        this.$refs.ListRef.getApi('',1)
+      }else{
+        this.changeNum = index
+        this.ListIds = idsVal
+        this.$refs.ListRef.getApi(idsVal,1)
+      }
+    },
   },
   created: function(){
   },
@@ -91,32 +136,57 @@ export default {
 
 <style lang="scss" scoped>
 .zchb {
-  .screening {
-    padding: 20px;
-    margin-bottom: 10px;
-    background-color: #fff;
-    border-top: 2px solid #e1e1e1;
-    @include theme_bd(danger);
-    .left {
-      float: left;
-      span {
-        margin-left: 0;
+  background-color: #fff;
+  .top-box {
+    position: relative;
+    .screening {
+      z-index: 3;
+      position: absolute;
+      right: 0;
+      top: -90px;
+      button {
+        width: 210px;
+        height: 60px;
+        padding: 0;
+        @include radius(1000px);
+        @include theme_shadow(primary-sec,0,5px,20px,0,0.5);
       }
     }
-    .right {
-      float: right;
-    }
-    span {
-      display: inline-block;
-      padding: 5px 10px;
-      margin-left: 5px;
-      border: 1px solid #e1e1e1;
-      @include theme_font(danger);
-      @include theme_bd(danger);
-      &.shaixuan {
-        cursor: pointer;
-        color: #fff;
-        @include theme_bg(danger);
+    /deep/ .el-collapse {
+      border: 0;
+      .el-collapse-item {
+        .el-collapse-item__header {
+          display: block;
+          position: absolute;
+          top: 0;
+          left: 50%;
+          margin-left: -50px;
+          width: 100px;
+          height: 20px;
+          line-height: 20px;
+          text-align: center;
+          border-bottom: 0;
+          @include theme_font(neutral);
+          @include theme_bg(neutral-disabled);
+          span {
+            display:block;
+            @include transition(0.2s);
+          }
+          .el-collapse-item__arrow {
+            display: none;
+          }
+          &.is-active {
+            span {
+              @include rotate(-180deg);
+            }
+          }
+        }
+        .el-collapse-item__wrap {
+          border-bottom: 0;
+          .el-collapse-item__content {
+            padding-bottom: 0;
+          }
+        }
       }
     }
   }
