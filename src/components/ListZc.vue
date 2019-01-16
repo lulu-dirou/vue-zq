@@ -7,7 +7,7 @@
           <div class="title-max"><span>{{ list.fwdw}}</span></div>
           <div class="title"><span>{{ $common.html_decode(list.bt) }}</span></div>
           <div class="rd" title="阅读量"><i class="iconfont icon-hot"></i><b>{{ list.djl }}</b></div>
-          <div class="label"><span class="lab lab1-primary-sec" v-for="bq in bqs(index)" :key="bq.id">{{ bq.name }}</span></div>
+          <div class="label"><span class="lab lab1-primary" v-for="bq in bqs(index)" :key="bq.id">{{ bq.name }}</span></div>
         </div>
         <!-- <div class="grid-content">
           <div class="title-max"><span>{{ list.fwdw}}</span></div>
@@ -146,6 +146,7 @@ export default {
 
 <style lang="scss" scoped>
 .listZc {
+  padding: 30px;
   background-color: #fff;
   .grid-content {
     position: relative;
@@ -179,7 +180,7 @@ export default {
     }
     .title-max {
       margin-bottom: 10px;
-      font-size: $font-size-lg;
+      font-size: $font-size-lgx;
       font-weight: 600;
       @include lines(1);
       @include theme_font(neutral-title);
@@ -187,6 +188,7 @@ export default {
     .title {
       margin-bottom: 10px;
       height: 66px;
+      font-size: $font-size-lgm;
       @include lines(3);
     }
     .rd {

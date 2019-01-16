@@ -3,7 +3,7 @@
     <ul class="clear">
       <li><router-link to="/home">首页</router-link></li>
       <li><router-link to="/appeal">我要诉求</router-link></li>
-      <li><router-link to="/policy">我要找政策</router-link></li>
+      <li><router-link to="/policy">政策配一配</router-link></li>
       <li><router-link to="/declare">我要申报</router-link></li>
       <!-- <li><router-link to="/message">信息</router-link></li> -->
     </ul>

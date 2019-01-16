@@ -17,10 +17,12 @@
   &.btn-xs {
     font-size: $font-size-xs;
     padding: 1px 2px;
+    @include radius(2px);
   }
   &.btn-sm {
     font-size: $font-size-sm;
     padding: 4px 6px;
+    @include radius(3px);
   }
   &.btn-lg {
     font-size: $font-size-lg;
@@ -190,10 +192,26 @@ fieldset:disabled a.btn {
 .lab {
   display: inline-block;
   border: 1px solid transparent;
-  padding: 1px 5px;
-  font-size: $font-size-xs;
+  padding: 7px 10px;
+  font-size: $font-size-df;
   @include transition(0.2s);
   @include radius(2px);
+  &.lab-xs {
+    font-size: $font-size-xs;
+    padding: 1px 5px;
+  }
+  &.lab-sm {
+    font-size: $font-size-sm;
+    padding: 4px 6px;
+  }
+  &.lab-lg {
+    font-size: $font-size-lg;
+    padding: 10px 24px;
+  }
+  &.lab-lgx {
+    font-size: $font-size-lgx;
+    padding: 15px 30px;
+  }
 }
 
 .lab-primary {

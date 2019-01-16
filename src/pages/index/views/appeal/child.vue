@@ -6,20 +6,45 @@
         <div class="msg-box clear">
           <div class="title">我要诉求</div>
           <div class="dot"><i class="iconfont icon-xialajiantou-down"></i></div>
-          <div class="sq"><button class="btn btn-lg btn-primary-sec hover">提诉求</button></div>
+          <div class="sq"><button class="btn btn-lg btn-primary-sec hover" @click="jump()">提诉求</button></div>
           <list-search-appeal @search="Search"></list-search-appeal>
-          <div class="breadcrumb">
+          <!-- <div class="breadcrumb">
             <el-breadcrumb separator="/">
               <el-breadcrumb-item>您现在的位置</el-breadcrumb-item>
               <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
               <el-breadcrumb-item :to="{ path: '/appeal' }">诉求</el-breadcrumb-item>
             </el-breadcrumb>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
-    <div class="child-box w-1200">
-      <div class="top-box">
+    <div class="child-box w-1200 clear">
+      <div class="left-box">
+        <div class="md">
+          <div class="hd"><span>诉求类型</span></div>
+          <div class="bd">
+            <ul class="nav-list flex">
+              <li 
+              v-for="(sqlx,index) in sqlxs" 
+              :key="sqlx.id" 
+              :class="{active:index==sqlxsNum}" 
+              @click="sqlxsActive(sqlx.id,'',index,1)">
+                <i class="iconfont icon-close"></i>
+                <span>{{ sqlx.name }}</span>
+                <em v-if="sqlx.sl">{{ filterSqlx(index) }}</em>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="right-box">
+        <list-appeal 
+          :paginationShow="true" 
+          :propSqlx="ListQqlx"
+          :propKeyWord="ListKeyWord"
+          ref="mylistappeal"></list-appeal>
+      </div>
+<!--       <div class="top-box">
         <ul class="flex clear">
           <li class="title">诉求类型：</li>
           <li class="all" :class="{active:sqlxsNum==-1}" @click="sqlxsActive('all','',-1,1)">
@@ -45,7 +70,7 @@
           :propKeyWord="ListKeyWord"
           ref="mylistappeal"
         ></list-appeal>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
@@ -86,16 +111,26 @@ export default {
       this.$router.push({path: '/appeal/appealFrom'})
     },
     sqlxsActive: function(sqlxVal,keywordVal,index,curVal){
-      this.sqlxsNum = index
-      this.ListQqlx = sqlxVal
-      this.ListKeyWord = keywordVal
-      this.$refs.mylistappeal.getApi(sqlxVal,keywordVal,curVal)
+      if(index == this.sqlxsNum){
+        this.sqlxsNum = -1
+        this.ListQqlx = 'all'
+        this.ListKeyWord = ''
+        this.$refs.mylistappeal.getApi('all','',1)
+      }else{
+        this.sqlxsNum = index
+        this.ListQqlx = sqlxVal
+        this.ListKeyWord = keywordVal
+        this.$refs.mylistappeal.getApi(sqlxVal,keywordVal,curVal)
+      }
     },
     Search: function(val){
       this.ListQqlx = 'all'
       this.ListKeyWord = val
       this.$refs.mylistappeal.getApi('all',val,1)
-    } 
+    },
+    filterSqlx: function(val){
+      return this.sqlxs[val].sl.slice(1, 2)
+    },
   },
   created: function(){
     this.getApi_xqlx()
@@ -121,9 +156,6 @@ export default {
         @include theme_shadow(primary-sec,0,5px,20px,0,0.5);
       }
     }
-  }
-  .child-box {
-    background-color: #fff;
   }
 }
 </style>

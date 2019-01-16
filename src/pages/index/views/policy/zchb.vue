@@ -1,13 +1,14 @@
 <template>
   <div class="zchb">
+    <div class="w-1200">
     <div class="top-box">
-      <div class="screening">
+<!--       <div class="screening">
         <button class="btn btn-lg btn-primary-sec hover"  @click="dialogVisible = true"><i class="iconfont icon-shaixuan"></i> 智能筛选</button>
-      </div>
+      </div> -->
       <!--  -->
-      <el-dialog class="dialogScreening" :visible.sync="dialogVisible" width="800px">
+<!--       <el-dialog class="dialogScreening" :visible.sync="dialogVisible" width="800px">
         <the-dialog-screening></the-dialog-screening>
-      </el-dialog>
+      </el-dialog> -->
       <!--  -->
 
       <!-- el-collapse -->
@@ -65,18 +66,19 @@
     <div class="bottom-box">
         <list-zc :popIds="ListIds" ref="ListRef" :paginationShow="true"></list-zc>
     </div>
+    </div>
   </div>
 </template>
 
 
 <script>
 import ListZc from '../../../../components/ListZc'
-import TheDialogScreening from '../../../../components/TheDialogScreening'
+// import TheDialogScreening from '../../../../components/TheDialogScreening'
 
 export default {
   components: {
     'list-zc': ListZc,
-    'the-dialog-screening': TheDialogScreening,
+    // 'the-dialog-screening': TheDialogScreening,
   },
   props: {
 
@@ -85,7 +87,7 @@ export default {
     return {
       activeNames: ['1'],
       changeNum: '-1',
-      dialogVisible: false,
+      // dialogVisible: false,
       ListIds: '',
       navlist1: [
         {name: '促投资',id: 'f656d7259661486d933999c1a314d564'},
@@ -136,22 +138,22 @@ export default {
 
 <style lang="scss" scoped>
 .zchb {
-  background-color: #fff;
+  // background-color: #fff;
   .top-box {
     position: relative;
-    .screening {
-      z-index: 3;
-      position: absolute;
-      right: 0;
-      top: -90px;
-      button {
-        width: 210px;
-        height: 60px;
-        padding: 0;
-        @include radius(1000px);
-        @include theme_shadow(primary-sec,0,5px,20px,0,0.5);
-      }
-    }
+    // .screening {
+    //   z-index: 3;
+    //   position: absolute;
+    //   right: 0;
+    //   top: -90px;
+    //   button {
+    //     width: 210px;
+    //     height: 60px;
+    //     padding: 0;
+    //     @include radius(1000px);
+    //     @include theme_shadow(primary-sec,0,5px,20px,0,0.5);
+    //   }
+    // }
     /deep/ .el-collapse {
       border: 0;
       .el-collapse-item {
