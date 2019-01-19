@@ -1,9 +1,9 @@
 <template>
   <div class="child child-policy">
     <!--  -->
-    <el-dialog class="dialogScreening" :visible.sync="dialogVisible" width="800px">
+    <!-- <el-dialog class="dialogScreening" :visible.sync="dialogVisible" width="800px">
       <the-dialog-screening></the-dialog-screening>
-    </el-dialog>
+    </el-dialog> -->
     <!--  -->
     <div class="child-banner">
       <div class="maskbg"><img src="../../../../common/images/child-banner-policy.jpg"></div>
@@ -12,7 +12,10 @@
           <div class="title">政策配一配</div>
           <div class="dot"><i class="iconfont icon-xialajiantou-down"></i></div>
           <div class="zcgj">
-            <button class="btn btn-lg btn-primary-sec hover" @click="dialogVisible = true">
+            <!-- <button class="btn btn-lg btn-primary-sec hover" @click="dialogVisible = true">
+              <i class="iconfont icon-shaixuan"></i> 政策管家
+            </button> -->
+            <button class="btn btn-lg btn-primary-sec hover" @click="jumpChildHome()">
               <i class="iconfont icon-shaixuan"></i> 政策管家
             </button>
           </div>
@@ -45,20 +48,20 @@
 
 
 <script>
-import TheDialogScreening from '../../../../components/TheDialogScreening'
+// import TheDialogScreening from '../../../../components/TheDialogScreening'
   
 // import ListSearchPolicy from '../../../../components/ListSearchPolicy'
 
 export default {
   components: {
     // 'list-search-policy': ListSearchPolicy
-    'the-dialog-screening': TheDialogScreening,
+    // 'the-dialog-screening': TheDialogScreening,
   },
   props: {
   },
   data: function() {
     return {
-      dialogVisible: false,
+      // dialogVisible: false,
     }
   },
   computed: {
@@ -66,6 +69,9 @@ export default {
   watch: {
   },
   methods: {
+    jumpChildHome: function(){
+      this.$router.push({path:'./childHome'}) 
+    }
   },
   created: function(){
   },

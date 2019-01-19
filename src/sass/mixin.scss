@@ -319,7 +319,7 @@
 
 
 /*------------------------------------
-+. theme_shadow
++. theme_text_shadow
 +. (主题文字色，左右，上下，模糊，大小，透明度)
 ----------------------------------- */
 @mixin theme_text_shadow($sel, $x:0, $y:2px, $blur:10px, $opacity:0.1){

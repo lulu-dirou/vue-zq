@@ -137,6 +137,14 @@ const instance = new Router({
       ]
     },
     {
+      path: "/policy/childHome",
+      component: () => import('./views/policy/childHome.vue')
+    },
+    {
+      path: "/policy/childHomeList",
+      component: () => import('./views/policy/childHomeList.vue')
+    },
+    {
       path: "/policy/detail",
       component: () => import('./views/policy/detail.vue')
     },
