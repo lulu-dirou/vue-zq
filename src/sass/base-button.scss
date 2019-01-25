@@ -14,6 +14,10 @@
   background: none;
   @include transition(0.2s);
   @include radius(5px);
+  i {
+    vertical-align: middle;
+    margin-right: 5px;
+  }
   &.btn-xs {
     font-size: $font-size-xs;
     padding: 1px 2px;
@@ -198,7 +202,7 @@ fieldset:disabled a.btn {
   @include radius(2px);
   &.lab-xs {
     font-size: $font-size-xs;
-    padding: 1px 5px;
+    padding: 3px 5px;
   }
   &.lab-sm {
     font-size: $font-size-sm;
@@ -250,6 +254,10 @@ fieldset:disabled a.btn {
   color: #fff;
   @include theme_bg(neutral-disabled);
 }
+.lab-dark {
+  color: #fff;
+  @include theme_bg(neutral-sec);
+}
 
 
 
@@ -289,6 +297,10 @@ fieldset:disabled a.btn {
 .lab0-disabled {
   @include theme_font(neutral-disabled);
   @include theme_bd(neutral-disabled);
+}
+.lab0-dark {
+  @include theme_font(neutral-sec);
+  @include theme_bd(neutral-sec);
 }
 
 
@@ -337,4 +349,9 @@ fieldset:disabled a.btn {
   @include theme_font(neutral-disabled);
   @include theme_bd(neutral-disabled,0.3);
   @include theme_bg(neutral-disabled,0.1);
+}
+.lab1-dark {
+  @include theme_font(neutral-sec);
+  @include theme_bd(neutral-sec,0.3);
+  @include theme_bg(neutral-sec,0.1);
 }

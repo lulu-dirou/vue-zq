@@ -1,12 +1,12 @@
 <template>
-  <div class="child member">
-    <div class="navBar">
-      <div class="w-1200 flex">
-        <i class="iconfont icon-periscope icohome"></i>
-        <el-breadcrumb separator="/">
-          <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-          <el-breadcrumb-item :to="{ path: '/member' }">个人中心</el-breadcrumb-item>
-        </el-breadcrumb>
+  <div class="child child-member">
+    <div class="child-banner">
+      <div class="maskbg"><img src="../../../../common/images/child-banner-setting.jpg"></div>
+      <div class="w-1200">
+        <div class="msg-box clear">
+          <div class="title">个人中心</div>
+          <div class="dot"><i class="iconfont icon-xialajiantou-down"></i></div>
+        </div>
       </div>
     </div>
     <div class="child-box w-1200 flex">
@@ -18,10 +18,10 @@
         <nav>
           <ul>
             <li><router-link to="/member/baseMsg"><i class="iconfont icon-user"></i>基本信息</router-link></li>
-            <li><router-link to="/member/push"><i class="iconfont icon-route"></i>推送</router-link></li>
-            <li><router-link to="/member/fav"><i class="iconfont icon-like-heart"></i>收藏夹</router-link></li>
+            <li><router-link to="/member/push"><i class="iconfont icon-route"></i>我的推送</router-link></li>
+            <li><router-link to="/member/fav"><i class="iconfont icon-like-heart"></i>我的收藏</router-link></li>
             <li><router-link to="/member/myLive"><i class="iconfont icon-zhibo1"></i>我的直播</router-link></li>
-            <li><router-link to="/member/setting"><i class="iconfont icon-gear-settings"></i>个人设置</router-link></li>
+            <li><router-link to="/member/setting"><i class="iconfont icon-gear-settings"></i>设置</router-link></li>
           </ul>
         </nav>
       </div>
@@ -58,44 +58,59 @@ export default {
 
 
 <style lang="scss" scoped>
-.member {
+.child-member {
   .left {
-    flex: 0 0 300px;
+    flex: 0 0 215px;
     margin-right: 20px;
+    background-color: #fff;
     .msg-box {
       flex-direction: column;
-      padding: 20px;
-      margin-bottom: 10px;
-      background-color: #fff;
+      padding: 30px;
+      border-bottom: 1px solid #eee;
+      @include theme_bd(neutral-divider);
       .userImg {
+        margin-bottom: 10px;
         img {
-          width: 120px;
-          height: 120px;
+          width: 100px;
+          height: 100px;
           @include radius(50%);
         }
       }
+      .userName {
+        text-align: center;
+      }
     }
     nav {
-      background-color: #fff;
+      padding: 30px 0;
       li {
         a {
+          position: relative;
           display: block;
-          padding: 10px 30px;
-          border-bottom: 1px solid #eee;
-          @include theme_font(neutral-content);
+          padding: 5px 30px;
+          margin: 15px 0;
+          &:before {
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 5px;
+            content: '';
+            @include theme_shadow(primary,5px,0,10px,0,0.2);
+            @include theme_bg(primary);
+            @include opacity(0);
+            @include transition(0.2s);
+          }
           i {
             position: relative;
             top: -1px;
             margin-right: 20px;
             font-size: 20px;
             vertical-align: middle;
-            @include theme_font(primary-light);
           }
-          &.router-link-active {
-            color: #fff;
-            @include theme_bg(primary);
-            i {
-              color: #fff;
+          &:hover,&.router-link-active {
+            @include theme_font(primary);
+            &:before {
+              @include opacity(1);
             }
           }
         }
@@ -104,7 +119,6 @@ export default {
   }
   .right {
     flex: 1;
-    padding: 40px;
     background-color: #fff;
   }
 }

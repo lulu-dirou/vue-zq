@@ -36,8 +36,8 @@
                     :key="list.id" 
                     :class="{active:index==changeNum}" 
                     @click="changeActive(list.id,index)">
-                    <i v-if="index==changeNum" class="iconfont icon-dui"></i>
-                    <span>{{ list.name }}</span>
+                    <i class="iconfont icon-close"></i>
+                    <span><em></em>{{ list.name }}</span>
                   </li>
                 </ul>
               </el-col>
@@ -49,8 +49,8 @@
                     :key="list.id" 
                     :class="{active:(index+navlist1)==changeNum}" 
                     @click="changeActive(list.id,index+navlist1)">
-                    <i v-if="(index+navlist1)==changeNum" class="iconfont icon-dui"></i>
-                    <span>{{ list.name }}</span>
+                    <i class="iconfont icon-close"></i>
+                    <span><em></em>{{ list.name }}</span>
                   </li>
                 </ul>
               </el-col>
@@ -100,12 +100,12 @@ export default {
         {name: '鼓励园区发展',id: '9c6968b96d9a4419a4e010bba50e97bf'},
       ],
       navlist2: [
-        {name: '金融产业',id: 'aeb977fa85834ca591419dbe90660686'},
+        {name: '金融业',id: 'aeb977fa85834ca591419dbe90660686'},
         {name: '服务业',id: 'b826e2ce62ea4f8d884ba77850266201'},
         {name: '制造业',id: 'cc81ff20799b404097bf051704a567c4'},
         {name: '电子商务',id: '0cdc0c809e6d4ea38b62b88fb2ed69c5'},
-        {name: '文旅产业',id: '513e55d71af34c60b5cbd72840619e97'},
-        {name: '物流产业',id: '8b370fa9c5284b0b83f1e0525ddcf170'},
+        {name: '文旅业',id: '513e55d71af34c60b5cbd72840619e97'},
+        {name: '物流业',id: '8b370fa9c5284b0b83f1e0525ddcf170'},
         {name: '生命健康',id: 'd7a272b248cf475d831d0fc99ee1b9ce'},
       ]
     }
@@ -141,6 +141,7 @@ export default {
   // background-color: #fff;
   .top-box {
     position: relative;
+    background-color: #fff;
     // .screening {
     //   z-index: 3;
     //   position: absolute;
@@ -191,6 +192,9 @@ export default {
         }
       }
     }
+  }
+  .bottom-box {
+    padding-top: 20px;
   }
 }
 </style>

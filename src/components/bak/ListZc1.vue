@@ -1,25 +1,19 @@
 <template>
   <div class="listZc" v-loading="loading">
-    <el-row :gutter="30">
+    <el-row :gutter="20">
       <el-col :span="8" v-for="(list,index) in filterLists" :key="list.id">
         <div class="li-box">
           <div class="t">
-            <div class="title-max"><span class="lab lab-sm lab-primary">{{ list.fwdw}}</span></div>
+            <div class="time"><span><i class="iconfont icon-calendar"></i> {{ list.ctsj }}</span></div>
+            <div class="title-max"><span class="lab lab-sm lab-primary"><i class="iconfont icon-calendar"></i> {{ list.fwdw}}</span></div>
           </div>
           <div class="c">
-            <div class="title">
-              <router-link v-bind:to="{path:'./detail',query:{id:list.id}}"><span>{{ $common.html_decode(list.bt) }}</span></router-link>
-            </div>
-            <div class="lable"><span><em class="" v-for="bq in bqs(index)" :key="bq.id">{{ bq.name }}</em></span></div>
+            <!-- <div class="title-max"><span>{{ list.fwdw}}</span></div> -->
+            <div class="title"><span>{{ $common.html_decode(list.bt) }}</span></div>
+            <div class="lable"><span class="lab lab-xs lab1-primary" v-for="bq in bqs(index)" :key="bq.id">{{ bq.name }}</span></div>
           </div>
-          <div class="b flex">
-            <div class="left">
-              <span title="阅读量" class="rd"><i class="iconfont icon-hot"></i>{{ list.djl }}</span>
-              <span title="收藏" class="sc"><i class="iconfont icon-like-heart"></i></span>
-            </div>
-            <div class="right">
-              <span class="time">{{ list.ctsj }}</span>
-            </div>
+          <div class="b">
+            <div class="rd" title="阅读量"><i class="iconfont icon-hot"></i>{{ list.djl }}</div>
           </div>
         </div>
       </el-col>
@@ -89,6 +83,12 @@ export default {
         }
       })
     },
+    filterDate1: function(val){
+      return this.lists[val].ctsj.slice(0, 7)
+    },
+    filterDate2: function(val){
+      return this.lists[val].ctsj.slice(8, 10)
+    },
     bqs: function(index){
       return this.lists[index].bqname
     },
@@ -97,9 +97,6 @@ export default {
       this.currentPage = val
       this.getApi(this.popIds)
       console.log(`当前页: ${val}`)
-    },
-    jump: function(index){
-      this.$router.push({path:'./detail', query:{id:this.lists[index].id}}) 
     }
   },
   created: function(){
@@ -115,76 +112,50 @@ export default {
 .listZc {
   .li-box {
     position: relative;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     text-align: left;
     background-color: #fff;
-    @include transition(0.2s);
-    &:hover {
-      @include shadow(0,5px,20px,0,rgba(#000,0.15));
-    }
     .t {
-      position: relative;
       padding: 20px 30px;
       border-bottom: 1px solid #e1e1e1;
       @include theme_bd(neutral-divider);
+      .time {
+        padding: 10px 0;
+        font-weight: 600;
+        font-size: $font-size-xs;
+        // @include shadow(0,5px,20px,0,rgba(#000,0.15));
+        // @include radius(5px);
+        @include theme_font(primary-light);
+      }
       .title-max {
-        height: 29px;
-        overflow:hidden;
         font-size: $font-size-sm;
         font-weight: 600;
         @include lines(1);
       }
-      .sc {
-        position: absolute;
-        right: 30px;
-        bottom: 20px;
-      }
     }
     .c {
-      padding: 20px 30px 30px 30px;
+      padding: 10px 30px 20px 30px;
       border-bottom: 1px solid #e1e1e1;
       @include theme_bd(neutral-divider);
       .title {
-        line-height: 1.5;
-        height: 70px;
+        height: 66px;
         margin-bottom: 20px;
         @include lines(3);
       }
       .lable {
-        position: relative;
-        border: 1px solid #e1e1e1;
-        padding: 10px;
-        @include theme_bd(neutral-border);
-        span {
-          height: 20px;
-          @include lines(1);
-        }
-        em {
-          border-right: 1px solid #e1e1e1;
-          font-size: $font-size-xs;
-          margin-right: 10px;
-          padding-right: 10px;
-          @include theme_font(primary);
+        width: 70%;
+        height: 25px;
+        @include lines(1);
+        .lab {
+          margin-right: 3px;
+          margin-bottom: 3px;
         }
       }
     }
     .b {
       font-size: $font-size-xs;
-      padding: 15px 30px;
-      span {
-        @include theme_font(neutral-sec);
-        i {
-          vertical-align: middle;
-          margin-right: 5px;
-        }
-      }
-      .left {
-        flex: 1;
-      }
-      .rd {
-        margin-right: 20px;
-        @include theme_font(primary-sec);
-      }
+      padding: 10px 30px;
+      @include theme_font(primary-sec);
     }
   }
   .pagination {

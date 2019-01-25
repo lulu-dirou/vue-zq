@@ -31,6 +31,7 @@ export default {
     s = s.replace(/&ldquo;/g, '“')
     s = s.replace(/&rdquo;/g, '”')
     s = s.replace(/<br>/g, '\n')
+    s = s.replace(/\r/g, '<br>')
     return s
   },
   // 时间戳转时间

@@ -1,58 +1,60 @@
 <template>
   <div class="baseMsg">
     <div class="mySetting-title"><span>基本信息</span></div>
-    <table class="tc tc-f tc-bb tc-pdt10" v-loading="loading">
-      <tbody>
-        <tr>
-          <td style="width: 200px">统一社会信用代码</td>
-          <td><span class="btn btn0-danger">{{ list.tyshxydm }}</span></td>
-        </tr>
-        <tr>
-          <td>组织机构代码</td>
-          <td>{{ list.zzjgdm }}</td>
-        </tr>
-        <tr>
-          <td>注册号</td>
-          <td>{{ list.zch }}</td>
-        </tr>
-        <tr>
-          <td>经营状态</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>经营地址</td>
-          <td>{{ list.jydz }}</td>
-        </tr>
-        <tr>
-          <td>公司类型</td>
-          <td>{{ list.qylx }}</td>
-        </tr>
-        <tr>
-          <td>成立日期</td>
-          <td>{{ $common.date_en(list.clsj) }}</td>
-        </tr>
-        <tr>
-          <td>法定代表人</td>
-          <td>{{ list.frdb }}</td>
-        </tr>
-        <tr>
-          <td>营业期限</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>注册资本</td>
-          <td>{{ list.zczb }}万</td>
-        </tr>
-        <tr>
-          <td>发照日期</td>
-          <td>{{ $common.date_en(list.hzrq) }}</td>
-        </tr>
-        <tr>
-          <td>登记机关</td>
-          <td>{{ list.gxdw }}</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="mySetting-content">
+      <table class="tc tc-f tc-b tc-pdt10 tc-pdl20" v-loading="loading">
+        <tbody>
+          <tr>
+            <th style="width: 200px">统一社会信用代码</th>
+            <td><span class="lab lab0-primary-sec">{{ list.tyshxydm }}</span></td>
+          </tr>
+          <tr>
+            <th>组织机构代码</th>
+            <td>{{ list.zzjgdm }}</td>
+          </tr>
+          <tr>
+            <th>注册号</th>
+            <td>{{ list.zch }}</td>
+          </tr>
+          <tr>
+            <th>经营状态</th>
+            <td></td>
+          </tr>
+          <tr>
+            <th>经营地址</th>
+            <td>{{ list.jydz }}</td>
+          </tr>
+          <tr>
+            <th>公司类型</th>
+            <td>{{ list.qylx }}</td>
+          </tr>
+          <tr>
+            <th>成立日期</th>
+            <td>{{ $common.date_en(list.clsj) }}</td>
+          </tr>
+          <tr>
+            <th>法定代表人</th>
+            <td>{{ list.frdb }}</td>
+          </tr>
+          <tr>
+            <th>营业期限</th>
+            <td></td>
+          </tr>
+          <tr>
+            <th>注册资本</th>
+            <td>{{ list.zczb }}万</td>
+          </tr>
+          <tr>
+            <th>发照日期</th>
+            <td>{{ $common.date_en(list.hzrq) }}</td>
+          </tr>
+          <tr>
+            <th>登记机关</th>
+            <td>{{ list.gxdw }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </template>
 

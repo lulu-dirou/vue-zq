@@ -15,7 +15,7 @@
 .tc input ,
 .tc select ,
 .tc textarea {
-  font-size: $font-size-df;
+  font-size: $font-size-sm;
   @include theme_font(neutral);
 }
 

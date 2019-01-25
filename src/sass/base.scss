@@ -161,6 +161,121 @@ a {
 
 //********************************
 //
+// element from
+//
+//********************************
+.el-form {
+  .el-form-item {
+    &:last-child {
+      margin-bottom: 0;
+    }
+    .el-form-item__label {
+      font-size: $font-size-sm;
+      @include theme_font(neutral);
+    }
+    .el-form-item__content {
+      .el-input__inner,.el-textarea__inner {
+        @include theme_bd(neutral,0.3);
+        &:focus {
+          @include theme_bd(primary);
+        }
+      }
+      .el-textarea__inner {
+        font-family: 'microsoft yahei';
+      }   
+      .el-date-editor,.el-select {
+        width: 100%;
+      }
+    }
+    table {
+      th,td,input,textarea {
+        line-height: 1;
+        font-size: $font-size-sm;
+      }
+      .el-input__inner {
+        padding: 0 8px;
+        font-size: $font-size-xs;
+      }
+    }
+  }
+  .el-form-item.is-error .el-input__inner, .el-form-item.is-error .el-input__inner:focus, .el-form-item.is-error .el-textarea__inner, .el-form-item.is-error .el-textarea__inner:focus {
+    @include theme_bd(danger);
+  }
+  .el-form-item.is-success .el-input__inner, .el-form-item.is-success .el-input__inner:focus, .el-form-item.is-success .el-textarea__inner, .el-form-item.is-success .el-textarea__inner:focus {
+    @include theme_bd(success);
+  }
+  .el-form-item__error,.el-form-item.is-required:not(.is-no-asterisk) > .el-form-item__label:before {
+    @include theme_font(danger);
+  }
+}
+.el-upload {
+  &.el-upload--text {
+    position: relative;
+    border: 1px dashed #d9d9d9;
+    border-radius: 6px;
+    cursor: pointer;
+    overflow: hidden;
+    @include theme_bd(neutral-sec);
+    &:hover {
+      @include theme_bd(primary);
+    }
+    .logo-upload-icon {
+      font-size: 28px;
+      color: #8c939d;
+      width: 150px;
+      height: 150px;
+      line-height: 150px;
+      text-align: center;
+    }
+    .logo {
+      width: 150px;
+      height: 150px;
+      display: block;
+    }
+  }
+}
+.el-upload-list {
+  .el-upload-list__item {
+    @include theme_bd(neutral,0.3);
+  }
+  .el-upload-list__item-status-label {
+    @include theme_bg(success);
+  }
+}
+.el-switch {
+  margin-right: 30px;
+  .el-switch__label,.el-switch__label.is-active {
+    @include theme_font(neutral);
+  }
+  &.is-checked .el-switch__core {
+    @include theme_bd(primary-light);
+    @include theme_bg(primary-light);
+  }
+}
+.el-checkbox-group {
+  padding-top: 5px;
+  line-height: 1.5;
+  .el-checkbox {
+    margin-left: 0;
+    margin-right: 30px;
+  }
+  .el-checkbox__input.is-checked + .el-checkbox__label {
+    @include theme_font(neutral);
+  }
+  .el-checkbox__input.is-checked .el-checkbox__inner {
+    @include theme_bd(primary-light);
+    @include theme_bg(primary-light);
+  }
+  .el-checkbox__inner:hover,.el-checkbox__input.is-focus .el-checkbox__inner {
+    @include theme_bd(primary-light);
+  }
+}
+
+
+
+
+//********************************
+//
 // child
 //
 //********************************
@@ -350,50 +465,128 @@ a {
       padding: 30px;
       border-bottom: 1px solid #e1e1e1;
       @include theme_bd(neutral-border);
+      // @include shadow();
       .topNav {
         .el-col {
           align-items: center;
         }
         .title {
           flex: 0 0 80px;
-          margin-bottom: 10px;
-          font-size: $font-size-df;
-          font-weight: 600;
+          font-size: $font-size-sm;
           @include lines(1);
           @include theme_font(primary);
         }
         ul {
+          flex: 1;
           li {
-            display: inline-block;
-            position: relative;
-            padding: 6px 20px;
-            margin-right: 10px;
-            margin-bottom: 10px;
-            border: 0 solid #e1e1e1;
-            text-align: center;
-            cursor: pointer;
-            font-size: $font-size-sm;
-            @include theme_font(neutral);
-            @include theme_bg(neutral-divider,0.6);
-            @include transition(0.2s);
-            @include radius(2px);
-            i {
-              margin-right: 5px;
+              float: left;
+              position: relative;
+              margin-right: 25px;
+              cursor: pointer;
               font-size: $font-size-sm;
+              overflow: hidden;
+              @include radius(3px);
+              @include theme_font(neutral);
+              &:after {
+                display: none;
+                position: absolute;
+                right: -35px;
+                bottom: -10px;
+                width: 60px;
+                height: 30px;
+                content: '';
+                @include theme_bg(primary-sec);
+                @include rotate(-45deg);
+              }
+              i {
+                display: none;
+                z-index: 2;
+                position: absolute;
+                right: -1px;
+                bottom: -4px;
+                font-size: $font-size-xs;
+                color: #fff;
+              }
+              span {
+                display: inline-block;
+                padding: 4px 12px;
+              }
+              em {
+                display: inline-block;
+                width: 10px;
+                height: 10px;
+                margin-right: 5px;
+                border: 3px solid #e1e1e1;
+                @include theme_bd(neutral-border);
+                @include radius(100%);
+              }
+              &:hover {
+                @include theme_font(primary);
+                @include theme_bg(primary,0.2);
+                em {
+                  @include theme_bd(primary);
+                }
+              }
+              &.active {
+                @include theme_font(primary-sec);
+                @include theme_bg(primary-sec,0.2);
+                em {
+                  @include theme_bd(primary-sec);
+                }
+                &:after {
+                  display: block;
+                }
+                i {
+                  display: block;
+                }
+              }
             }
-            &:hover {
-              @include theme_font(primary);
-              @include theme_bd(primary);
-            }
-            &.active,&.active:hover {
-              // color: #fff;
-              @include theme_font(primary-sec);
-              @include theme_bd(primary-sec,0.5);
-              @include theme_bg(primary-sec,0.1);
-            }
-          }
         }
       }
+      // .topNav {
+      //   .el-col {
+      //     align-items: center;
+      //   }
+      //   .title {
+      //     flex: 0 0 80px;
+      //     margin-bottom: 10px;
+      //     font-size: $font-size-df;
+      //     font-weight: 600;
+      //     @include lines(1);
+      //     @include theme_font(primary);
+      //   }
+      //   ul {
+      //     li {
+      //       display: inline-block;
+      //       position: relative;
+      //       padding: 6px 20px;
+      //       margin-right: 10px;
+      //       margin-bottom: 10px;
+      //       border: 0 solid #e1e1e1;
+      //       text-align: center;
+      //       cursor: pointer;
+      //       font-size: $font-size-sm;
+      //       @include theme_font(neutral);
+      //       @include theme_bg(neutral-divider,0.6);
+      //       @include transition(0.2s);
+      //       @include radius(2px);
+      //       i {
+      //         margin-right: 5px;
+      //         font-size: $font-size-sm;
+      //       }
+      //       &:hover {
+      //         @include theme_font(primary);
+      //         @include theme_bd(primary);
+      //       }
+      //       &.active,&.active:hover {
+      //         // color: #fff;
+      //         @include theme_font(primary-sec);
+      //         @include theme_bd(primary-sec,0.5);
+      //         @include theme_bg(primary-sec,0.1);
+      //       }
+      //     }
+      //   }
+      // }
       // ul {
       //   margin-bottom: 10px;
       //   li {
@@ -450,7 +643,7 @@ a {
       // }
     }
     .bottom-box {
-      padding: 30px;
+      // padding: 30px;
     }
     .left-box {
       float: left;
@@ -718,9 +911,20 @@ a {
 //
 //********************************
 .detail {
-  background: url("../common/images/detail-banner.png") center 0 no-repeat;
-  background-attachment: fixed;
+  position: relative;
+  .maskbg {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -140px;
+    bottom: 0;
+    overflow:hidden;
+    background: url("../common/images/detail-banner.jpg") center 0 no-repeat;
+    background-attachment: fixed;
+  }
   .detail-box {
+    z-index: 2;
+    position: relative;
     width: 1200px;
     padding: 20px;
     margin: 40px auto;
@@ -736,23 +940,17 @@ a {
       padding: 20px 40px;
       .title {
         text-align: center;
-        margin: 20px 0 30px 0;
+        margin: 30px 150px 30px;
         font-size: 24px;
-        @include theme_font(neutral);
+        @include theme_font(neutral-title);
       }
       .msg-box {
         font-size: $font-size-xs;
-        @include theme_font(neutral,0.6);
         .label {
-          margin-bottom: 5px;
+          margin-bottom: 10px;
           span {
-            padding: 2px 5px;
             margin-right: 5px;
-            border: 1px solid #e1e1e1;
-            @include radius(3px);
-            @include theme_font(primary-light);
-            @include theme_bd(primary-light,0.3);
-            @include theme_bg(primary-light,0.1);
+            margin-bottom: 5px;
           }
         }
         .state {
@@ -805,6 +1003,7 @@ a {
             margin-left: 20px;
             .el-tabs__active-bar {
               height: 4px;
+              @include theme_bg(primary);
             }
             .el-tabs__item {
               height: 50px;
@@ -1049,23 +1248,19 @@ a {
 //********************************
 .mySetting-title {
   width: 100%;
-  height: 100px;
-  line-height: 100px;
-  margin-bottom: 40px;
-  text-align: right;
-  background: url("../common/images/mySetting-banner.jpg") center center no-repeat;
-  background-size: 100% 100%;
-  @include transition(0.5s);
-  &:hover {
-    background-size: 120% 120%;
-  }
+  height: 90px;
+  line-height: 90px;
+  padding: 0 40px;
+  border-bottom: 1px solid #e1e1e1;
   span {
-    margin-right: 40px;
-    color: #fff;
-    font-size: 35px;
+    font-size: 24px;
+    font-weight:600;
+    @include theme_font(neutral-title);
   }
 }
-
+.mySetting-content {
+  padding: 30px 40px;
+}
 
 
 

@@ -20,7 +20,7 @@
             </div>
             <div class="intro-box"><p v-html="item.e_intro"></p></div>
             <div class="ctr-box">
-              <button class="btn btn-sm btn0-primary hover focus">详细</button>
+              <button class="btn btn-sm btn0-disabled hover focus">详细</button>
               <button class="btn btn-sm btn-primary-sec hover focus">我要申报</button>
             </div>
           </li>
@@ -42,7 +42,7 @@
             </div>
             <div class="intro-box"><p v-html="item.e_intro"></p></div>
             <div class="ctr-box">
-              <button class="btn btn-sm btn0-primary hover focus">详细</button>
+              <button class="btn btn-sm btn0-disabled hover focus">详细</button>
               <button class="btn btn-sm btn-primary-sec hover focus">我要申报</button>
             </div>
           </li>
@@ -167,6 +167,7 @@ export default {
                 display: block;
               }
               em {
+                @include lines(1);
                 // @include theme_font(primary);
               }
               /deep/ .el-progress {
@@ -224,6 +225,7 @@ export default {
       }
       .intro-box {
         padding: 20px 30px;
+        padding-left: 140px;
         border-bottom: 1px solid #e1e1e1;
         /deep/ p {
           font-size: $font-size-sm;
